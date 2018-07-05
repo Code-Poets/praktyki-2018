@@ -118,3 +118,6 @@ Desktop.ini
 
 # Binary database storage
 *.sqlite3
+
+#pycharm
+/.idea
