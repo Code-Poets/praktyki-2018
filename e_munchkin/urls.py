@@ -26,4 +26,6 @@ urlpatterns = [
     url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
     url(r'^signup/$', core_views.signup, name='signup'),
+    url(r'^login/create$', auth_views.logout, {'template_name': 'create_game.html'}, name='create'),
+    url(r'^login/join$', auth_views.logout, {'template_name': 'join_game.html'}, name='join'),
 ]
