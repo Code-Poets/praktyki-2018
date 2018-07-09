@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}I want to play a game...{% endblock %}
+
+{% block content %}
+  <h2>Login</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Log me in now!</button>
+  </form>
+{% endblock %}

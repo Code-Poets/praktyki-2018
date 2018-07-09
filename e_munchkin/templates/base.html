@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{% block title %}e_munchkin{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>Web application e_munchkin</h1>
+
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+     <p> <a href="{% url 'logout' %}">Logout</a> </p>
+
+    {% else %}
+     <p> <a href="{% url 'login' %}">Login</a> </p>
+    {% endif %}
+
+  </header>
+  <hr>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <hr>
+</body>
+</html>
