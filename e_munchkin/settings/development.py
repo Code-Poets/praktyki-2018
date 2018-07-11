@@ -14,4 +14,3 @@ DATABASES['default']['HOST']     = ''
 DATABASES['default']['PORT']     = ''
 
 STATIC_ROOT = '/tmp/static/'
-
