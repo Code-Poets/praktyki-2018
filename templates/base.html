@@ -22,9 +22,9 @@
 
      <p>You are not logged in</p>
      <p> <a href="{% url 'login' %}">Login</a> </p>
-     <p> <a href="{% url 'signup' %}">SignUp</a> </p>
+     <p> <a href="{% url 'users:signup' %}">SignUp</a> </p>
     {% endif %}
-     <p> <a href="{% url 'join' %}">Join an existing game</a> </p>
+     <p> <a href="{% url 'users:join' %}">Join an existing game</a> </p>
   </header>
   <hr>
   <main>
