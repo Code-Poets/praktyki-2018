@@ -1,0 +1,18 @@
+<h1>{{ gamer.nick }}</h1>
+
+<form action="{% url 'games:update_stats' gamer.id %}" method="post">
+    {% csrf_token %}
+    <label for="level">level</label>
+    <input type="number" name="level" id="level" value="{{ gamer.level }}" />
+    <br />
+    <label for="bonus">bonus</label>
+    <input type="number" name="bonus" id="bonus" value="{{ gamer.bonus }}" />
+    <br />
+    <label>gender</label>
+    <br />
+    <input type="radio" name="gender" id="gender_1" value="True" />
+    <input type="radio" name="gender" id="gender_2" value="False" />
+    <input type="radio" name="gender" id="gender_3" value="None" />
+    <br />
+    <input type="submit" value="Update" />
+    </form>
