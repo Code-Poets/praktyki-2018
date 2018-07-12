@@ -10,3 +10,5 @@ flake8                           \
 find e_munchkin/ users/ -maxdepth 1 -mindepth 1 -type d   \
     | grep --invert-match --regexp '^.*__pycache__.*' \
     | xargs pylint --rcfile=pylintrc
+
+read $CMD
