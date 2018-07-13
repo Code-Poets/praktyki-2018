@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="John Doe">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{% block title %}e_munchkin{% endblock %}</title>
+</head>
+<body>
+  <header>
+    <h1>Web application e_munchkin</h1>
+
+    {% if user.is_authenticated %}
+      Hi {{ user.username }}!
+     <p> <a href="{% url 'logout' %}">Logout</a> </p>
+
+    {% else %}
+
+     <p>You are not logged in</p>
+     <p> <a href="{% url 'login' %}">Login</a> </p>
+     <p> <a href="{% url 'signup' %}">SignUp</a> </p>
+    {% endif %}
+     <p> <a href="{% url 'join' %}">Join an existing game</a> </p>
+  </header>
+  <hr>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <hr>
+</body>
+</html>
