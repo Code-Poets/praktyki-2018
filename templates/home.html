@@ -6,7 +6,9 @@
   <h2>Welcome. Join us and play with us.</h2>
 
     {% if user.is_authenticated %}
+    <!--
      <p> <a href="{% url 'create' %}">Create a new game</a> </p>
      <p> <a href="{% url 'join' %}">Join an existing game</a> </p>
+    -->
     {% endif %}
 {% endblock %}

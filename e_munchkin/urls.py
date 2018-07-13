@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls import url
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
@@ -22,10 +22,8 @@ from e_munchkin import views as core_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
     url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
-    url(r'^login/$', auth_views.login, {'template_name': 'login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, {'template_name': 'logged_out.html'}, name='logout'),
-    url(r'^signup/$', core_views.signup, name='signup'),
-    url(r'^login/create$', auth_views.logout, {'template_name': 'create_game.html'}, name='create'),
-    url(r'^login/join$', auth_views.logout, {'template_name': 'join_game.html'}, name='join'),
 ]
