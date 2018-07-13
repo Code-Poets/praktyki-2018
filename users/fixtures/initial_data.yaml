@@ -1,0 +1,56 @@
+- model: users.customuser
+  pk: 1
+  fields:
+    #password superuser
+    password: pbkdf2_sha256$100000$8Blr6zJbF54f$lRQgvO27i9RrUJXsYIUozrca17Huogn4k3Pyz0HBmrs=
+    last_login: 2018-07-13 11:04:30.746219+00:00
+    is_superuser: true
+    first_name: ''
+    last_name: ''
+    is_staff: true
+    is_active: true
+    username: admin
+    nick: ''
+    email: admin@example.com
+    date_joined: 2018-07-13 10:35:45.559938+00:00
+    updatedat: 2018-07-13 10:35:45.559954+00:00
+    groups: []
+    user_permissions: []
+
+- model: users.customuser
+  pk: 2
+  fields:
+    #password passwduser
+    password: pbkdf2_sha256$100000$ef9jYn75ldhO$igW5VnJdDYnXp9OhDKfaUIM99/PA60gI5kot9B90XmA=
+    last_login: 2018-07-13 11:05:16.280946+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    is_staff: false
+    is_active: true
+    username: user1
+    nick: user_nick_1
+    email: user1@example.com
+    date_joined: 2018-07-13 10:36:06.135877+00:00
+    updatedat: 2018-07-13 10:36:06.135888+00:00
+    groups: []
+    user_permissions: []
+
+- model: users.customuser
+  pk: 3
+  fields:
+    #password passwduser
+    password: pbkdf2_sha256$100000$VkNrUmZhpJ1W$XpIBh8DFGMAG1rTpVR7aVEiQr8Bb1ZZwZAJWLYuViE4=
+    last_login: 2018-07-13 11:05:24.892031+00:00
+    is_superuser: false
+    first_name: ''
+    last_name: ''
+    is_staff: false
+    is_active: true
+    username: user2
+    nick: user_nick_2
+    email: user2@example.com
+    date_joined: 2018-07-13 10:36:26.886544+00:00
+    updatedat: 2018-07-13 10:36:26.886563+00:00
+    groups: []
+    user_permissions: []
