@@ -132,4 +132,5 @@ LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
 FIXTURE_DIRS = [
     'users/fixtures/',
+    'games/fixtures/',
 ]
