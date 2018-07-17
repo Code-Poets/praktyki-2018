@@ -10,12 +10,12 @@ class GamerInline(admin.TabularInline):
 
 class GameAdmin(admin.ModelAdmin):
     fieldsets = [
-        (None, {'fields': ['password']}),
+        (None, {'fields': ['game_code']}),
     ]
     inlines = [GamerInline]
-    list_display = ('password', 'created_at', 'finished_at')
+    list_display = ('game_code', 'created_at', 'finished_at')
     list_filter = ['created_at']
-    search_fields = ['password']
+    search_fields = ['game_code']
 
 
 admin.site.register(Game, GameAdmin)
