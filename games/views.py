@@ -194,11 +194,22 @@ def update_stats(request, gamer_id):
 
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
 """
+"""
 
-
-class GamePanelView(generic.DetailView):                     # GUI of all game
+class GamePanelView(generic.DetailView):
     template_name = 'games/game_panel.html'
     model = Game
 
     def get_queryset(self):
         return Game.objects
+"""
+
+
+def game_panel_view(request,pk):
+        game=Game.objects.get(pk=pk)
+        gamers=Gamer.objects.filter(game__game_code=game.game_code)
+        context = {'gamers': gamers,'game': game}
+
+        return render(request, 'games/game_panel.html', context)
+
+
