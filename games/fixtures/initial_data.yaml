@@ -1,0 +1,38 @@
+- model: games.game
+  pk: 1
+  fields: {host: 2, game_code: ABCD, name: Default game, created_at: !!timestamp '2018-07-12 10:47:44.784047+00:00',
+finished_at: null, max_players: 8}
+- model: games.characterrace
+  pk: 1
+  fields: {name: Elf, description: I'm an elf and I'm cool.}
+- model: games.characterrace
+  pk: 2
+  fields: {name: Dwarf, description: This is a dwarf. It's a dwarf.}
+- model: games.characterrace
+  pk: 3
+  fields: {name: Hobbit, description: Beloved book turned into 3 disappointing films}
+- model: games.characterclass
+  pk: 1
+  fields: {name: Wizard, description: 'Hocus pocus, lost my focus.'}
+- model: games.characterclass
+  pk: 2
+  fields: {name: Warrior, description: 'Ah ehm ze mistarr univehrse. Gyaglhr, blaghr!'}
+- model: games.characterclass
+  pk: 3
+  fields: {name: Thief, description: Insert your favourite politician or triple A
+      game publisher here.}
+- model: games.gamer
+  pk: 1
+  fields: {game: 1, user: 2, nick: Humbert, winner: false, level: 2, bonus: 4, gender: true,
+race_slot_1: 1, race_slot_2: null, class_slot_1: 3, class_slot_2: null}
+- model: games.gamer
+  pk: 2
+  fields: {game: 1, user: 3, nick: Jonathan, winner: false, level: 0, bonus: 0, gender: true,
+    race_slot_1: 2, race_slot_2: 3, class_slot_1: null, class_slot_2: null}
+- model: games.gamer
+  pk: 3
+  fields: {game: 1, user: null, nick: Mike, winner: false, level: 0, bonus: 0, gender: false, race_slot_1: null, race_slot_2: null, class_slot_1: 1, class_slot_2: null}
+- model: games.gamer
+  pk: 4
+  fields: {game: 1, user: null, nick: JohnDoe, winner: false, level: 0, bonus: 0, gender: null,
+    race_slot_1: null, race_slot_2: null, class_slot_1: null, class_slot_2: null}

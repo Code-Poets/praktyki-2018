@@ -1,10 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
 <h1>{{ gamer.nick }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'games:update_stats' gamer.id %}" method="post">
+<form method="post"> <!--action="" method="post">-->
     {% csrf_token %}
-    <label for="level">level</label>
+    {{ form.as_p }}
+    <!--<label for="level">level</label>
     <input type="number" width="" name="level" id="level" value="{{ gamer.level }}" />
     <br />
     <label for="bonus">bonus</label>
@@ -31,6 +34,8 @@
         <option value="None">None</option>
     </select>
     <br />
+    -->
     <input type="submit" value="Update" />
 </form>
 {% if gamer.winner %}<p><strong>YOU WON</strong></p>{% endif %}
+{% endblock %}
