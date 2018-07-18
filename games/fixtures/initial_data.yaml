@@ -1,7 +1,7 @@
 - model: games.game
   pk: 1
   fields: {host: 2, game_code: ABCD, name: Default game, created_at: !!timestamp '2018-07-12 10:47:44.784047+00:00',
-finished_at: null, max_players: 8}
+finished_at: null, max_players: 8, winning_level: 10}
 - model: games.characterrace
   pk: 1
   fields: {name: Elf, description: I'm an elf and I'm cool.}
@@ -23,16 +23,16 @@ finished_at: null, max_players: 8}
       game publisher here.}
 - model: games.gamer
   pk: 1
-  fields: {game: 1, user: 2, nick: Humbert, winner: false, level: 2, bonus: 4, gender: true,
+  fields: {game: 1, user: 2, nick: Humbert, winner: false, level: 2, bonus: 4, gender: Gender.M,
 race_slot_1: 1, race_slot_2: null, class_slot_1: 3, class_slot_2: null}
 - model: games.gamer
   pk: 2
-  fields: {game: 1, user: 3, nick: Jonathan, winner: false, level: 0, bonus: 0, gender: true,
+  fields: {game: 1, user: 3, nick: Jonathan, winner: false, level: 0, bonus: 0, gender: Gender.M,
     race_slot_1: 2, race_slot_2: 3, class_slot_1: null, class_slot_2: null}
 - model: games.gamer
   pk: 3
-  fields: {game: 1, user: null, nick: Mike, winner: false, level: 0, bonus: 0, gender: false, race_slot_1: null, race_slot_2: null, class_slot_1: 1, class_slot_2: null}
+  fields: {game: 1, user: null, nick: Mike, winner: false, level: 0, bonus: 0, gender: Gender.F, race_slot_1: null, race_slot_2: null, class_slot_1: 1, class_slot_2: null}
 - model: games.gamer
   pk: 4
-  fields: {game: 1, user: null, nick: JohnDoe, winner: false, level: 0, bonus: 0, gender: null,
+  fields: {game: 1, user: null, nick: JohnDoe, winner: false, level: 0, bonus: 0, gender: Gender.N,
     race_slot_1: null, race_slot_2: null, class_slot_1: null, class_slot_2: null}
