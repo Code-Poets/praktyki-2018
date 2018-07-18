@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <style>
+     <!--body {background-color:lightgrey}-->
+    </style>
+ </head>
+<body>
+
+<h1>To join enter game-code: {{ game.game_code }}</h1>
+<h2>Created by: {{ game.host.username }}</h2>
+
+<table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
+    <tr>
+        <th>Statistics</th>
+        <th>Gamer 1</th>
+        <th>Gamer 2</th>
+        <th>Gamer 3</th>
+        <th>Gamer 4</th>
+        <th>Gamer 5</th>
+        <th>Gamer 6</th>
+        <th>Gamer 7</th>
+        <th>Gamer 8</th>
+    </tr>
+    <tr>         <th>Nick</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.nick }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Level</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.level }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Bonus</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.bonus }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Gender</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.gender }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Race</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.race_slot_1 }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Class</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.class_slot_1 }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Username</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.user.username }}</td>
+    {% endfor %}
+    </tr>
+</table>
+
+<br> </br>
+
+<table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
+    <tr>
+        <th> Statistics </th>
+    {% for gamer in game.gamers.all %}
+        <th>Gamer {{ forloop.counter }}</th>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Nick</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.nick }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Level</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.level }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Bonus</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.bonus }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Gender</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.gender }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Race</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.race_slot_1 }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Class</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.class_slot_1 }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Username</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.user.username }}</td>
+    {% endfor %}
+    </tr>
+</table>
+
+<br> </br>
+
+<table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
+  <tr align="center">
+    <td>X:
+      <table>
+        <tr><td>0:{{ game.gamers.all.0.nick }}</td></tr>
+        <tr><td>1:{{ game.gamers.all.1.nick }}</td></tr>
+        <tr><td>2:{{ game.gamers.all.2.nick }}</td></tr>
+        <tr><td>3:{{ game.gamers.all.3.nick }}</td></tr>
+        <tr><td>4:{{ game.gamers.all.4.nick }}</td></tr>
+        <tr><td>5:{{ game.gamers.all.5.nick }}</td></tr>
+        <tr><td>6:{{ game.gamers.all.6.nick }}</td></tr>
+        <tr><td>7:{{ game.gamers.all.7.nick }}</td></tr>
+      </table>
+    </td>
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 1 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 2 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 3 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>X</td>
+  </tr>
+  <tr align="center">
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 4 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>X</td>
+    <td>X</td>
+    <td>X</td>
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 5 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+  </tr>
+  <tr align="center">
+    <td>X</td>
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 6 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>      
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 7 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        <tr><td>{{ gamer.user.username }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>
+      <table>
+    {% for gamer in game.gamers.all %}
+        {% if forloop.counter == 8 %}
+        <tr><td>{{ gamer.nick }}</td></tr>
+        <tr><td>{{ gamer.level }}</td></tr>
+        <tr><td>{{ gamer.bonus }}</td></tr>
+        <tr><td>{{ gamer.gender }}</td></tr>
+        <tr><td>{{ gamer.race_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.class_slot_1 }}</td></tr>
+        <tr><td>{{ gamer.game.game_code }}</td></tr>
+        {% endif %}
+    {% endfor %}
+      </table>
+    </td>
+    <td>X</td>
+  </tr>
+</table>
+
+
+</body>
+</html>

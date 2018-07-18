@@ -131,3 +131,11 @@ def update_stats(request, gamer_id):
 
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
 """
+
+
+class GamePanelView(generic.DetailView):                     # GUI of all game
+    template_name = 'games/game_panel.html'
+    model = Game
+
+    def get_queryset(self):
+        return Game.objects
