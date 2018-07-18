@@ -7,14 +7,14 @@ from .forms import CustomUserCreationForm
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
-    template_name = 'signup.html'
+    template_name = 'users/signup.html'
 
 
 class JoinIn(generic.CreateView):
     form_class = CustomUserCreationForm
-    template_name = 'join_game.html'
+    template_name = 'users/join_game.html'
 
 
 class Create(generic.CreateView):
     form_class = CustomUserCreationForm
-    template_name = 'create_game.html'
+    template_name = 'users/create_game.html'

@@ -16,8 +16,11 @@
     <h1>Web application e_munchkin</h1>
 
     {% if user.is_authenticated %}
-      Hi {{ user.username }}!
+     <p> Hi {{ user.username }}! </p> 
      <p> <a href="{% url 'logout' %}">Logout</a> </p>
+     {% if request.get_full_path != "/home" %}
+     <p> <a href="{% url 'home' %}">Home</a> </p>
+     {% endif %}
 
     {% else %}
 
@@ -32,6 +35,9 @@
 
     {% endif %}
      <p> <a href="{% url 'join' %}">Join an existing game</a> </p>
+     {% endif %}
+
+    {% endif %}
   </header>
   <hr>
   <main>
