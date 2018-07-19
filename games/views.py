@@ -10,6 +10,13 @@ import string
 
 
 
+def redirect(request):
+    gamer_id = request.session.get('gamer_id', None)
+    if gamer_id is not None:
+        return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
+    return super(GameAccessView, self).dispatch(request, *args, **kwargs)
+
+
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
@@ -63,6 +70,7 @@ class GamerView(generic.UpdateView):                        # GUI for player's s
 
 
 class JoinForm(forms.Form):
+
     nick = forms.CharField(label='Nick')                    # Text input for player's nickname
     game_pass = forms.CharField(label='Game access code')   # Text input for game password
 
@@ -73,9 +81,33 @@ class JoinForm(forms.Form):
         return self.data['nick']
 
 
+'''
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits+1
+
+    # Render the HTML template index.html with the data in the context variable.
+    return render(
+        request,
+        'home.html',
+        context={
+            'num_visits': num_visits},  # num_visits appended
+    )
+'''
+
+
 class GameAccessView(generic.FormView):                     # GUI for joining existing game
     template_name = 'games/game_access.html'
     form_class = JoinForm
+
+    # '''
+    def dispatch(self, request, *args, **kwargs):
+        # redirect(request)
+        gamer_id = request.session.get('gamer_id', None)
+        if gamer_id is not None:
+            return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
+        return super(GameAccessView, self).dispatch(request, *args, **kwargs)
+    # '''
 
     def get_initial(self):
 
@@ -111,6 +143,9 @@ def join_game(request, gamepass, nick):                     # View for assigning
                     game=game,
                     nick=nick
                 )
+                # request.session.get('gamer_id', gamer.id)
+                request.session['gamer_id']
+                request.session['gamer_id'] = gamer.id
                 if request.user.is_authenticated:
                     gamer.user = request.user
                 gamer.save()
