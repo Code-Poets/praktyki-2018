@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse, reverse_lazy
@@ -205,11 +205,9 @@ class GamePanelView(generic.DetailView):
 """
 
 
-def game_panel_view(request,pk):
+def game_panel_view(request, pk):
         game=Game.objects.get(pk=pk)
         gamers=Gamer.objects.filter(game__game_code=game.game_code).order_by('id')
-        context = {'gamers': gamers,'game': game}
+        context = {'gamers': gamers, 'game': game}
 
         return render(request, 'games/game_panel.html', context)
-
-
