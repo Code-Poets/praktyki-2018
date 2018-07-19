@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
+
 <h1>{{ gamer.nick }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -7,35 +11,11 @@
 <form method="post"> <!--action="" method="post">-->
     {% csrf_token %}
     {{ form.as_p }}
-    <!--<label for="level">level</label>
-    <input type="number" width="" name="level" id="level" value="{{ gamer.level }}" />
-    <br />
-    <label for="bonus">bonus</label>
-    <input type="number" name="bonus" id="bonus" value="{{ gamer.bonus }}" />
-    <br />
-    <label>gender</label>
-    <br />
-    <input type="radio" name="gender" id="gender_1" value="{{ True }}" />
-    <label for="gender_1">male</label>
-    <input type="radio" name="gender" id="gender_2" value="{{ False }}" />
-    <label for="gender_2">female</label>
-    <input type="radio" name="gender" id="gender_3" value="{{ None }}" />
-    <label for="gender_1">none</label>
-    <br />
-    <label>Race</label>
-    <br />
-    <select>
-        <option value="None">None</option>
-    </select>
-    <br />
-    <label>Class</label>
-    <br />
-    <select>
-        <option value="None">None</option>
-    </select>
-    <br />
-    -->
     <input type="submit" value="Update" />
 </form>
+<form action="{% url 'games:delete_gamer' gamer.id %}">
+    <input type="submit" value="Leave game" />
+</form>
+
 {% if gamer.winner %}<p><strong>YOU WON</strong></p>{% endif %}
 {% endblock %}

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
+
 <h1>Join game</h1>
 
 <form method="post">{% csrf_token %}
@@ -7,3 +11,4 @@
     <input type="submit" value="Join"/>
 </form>
 {% endblock %}
+

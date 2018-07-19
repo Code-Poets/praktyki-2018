@@ -7,7 +7,7 @@
 
     {% if user.is_authenticated %}
 
-     <p> <a href="{% url 'create' %}">Create a new game</a> </p>
+     <p> <a href="{% url 'games:create_game' %}">Create a new game</a> </p>
      <p> <a href="{% url 'games:game_access' %}">Join an existing game</a> </p>
 
     {% endif %}
