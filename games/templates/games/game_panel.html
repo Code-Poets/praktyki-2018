@@ -88,7 +88,23 @@
 <h2><font color="DimGray">To join enter game-code: </font>{{ game.game_code }}</h1>
 <h3><font color="DimGray">Created by: </font>{{ game.host.username }}</h2>
 <p><font color="DimGray">This game is for: </font>{{ game.max_players }}<font color="DimGray"> players</font><p>
+<p><font color="DimGray">Winning level: </font>{{ game.winning_level }}<p>
 <p> <a href="{% url 'games:edit_game' game.id%}">Edit this game</a> </p>
+
+    {% for gamer in gamers.all %}
+        {% if gamer.level >= game.winning_level %}
+            <h4 align="center"><font color="red"> Is that the end of a game? Oh no! </font></h4>
+            <h5 align="center">The winner is: 
+            {% for gamer in gamers.all %}
+                {% if gamer.level >= 10 %}
+                <p align="center"><li> {{ gamer.nick }} </li></p>
+                {% endif %}
+            {% endfor %}
+            </h5>
+
+        {% endif %}
+    {% endfor %}
+
 <br> </br>
 
 <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
@@ -152,6 +168,11 @@
         {% else %}
         <td> </td>
         {% endif %}
+    {% endfor %}
+    </tr>
+    <tr>         <th><font color="red">Kick</font></th>
+    {% for gamer in gamers.all %}
+        <td><a href="{% url 'games:delete_gamer' gamer.id%}">Kick gamer</a> </td>
     {% endfor %}
     </tr>
 </table>
