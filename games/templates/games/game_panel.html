@@ -84,9 +84,11 @@
  </head>
 <body>
 
-<h1><font color="DimGray">To join enter game-code: </font>{{ game.game_code }}</h1>
-<h2><font color="DimGray">Created by: </font>{{ game.host.username }}</h2>
-
+<h1><font color="DimGray">Welcome to: </font>{{ game.name }}</h1>
+<h2><font color="DimGray">To join enter game-code: </font>{{ game.game_code }}</h1>
+<h3><font color="DimGray">Created by: </font>{{ game.host.username }}</h2>
+<p><font color="DimGray">This game is for: </font>{{ game.max_players }}<font color="DimGray"> players</font><p>
+<p> <a href="{% url 'games:edit_game' game.id%}">Edit this game</a> </p>
 <br> </br>
 
 <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
