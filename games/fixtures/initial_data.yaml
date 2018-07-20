@@ -4,23 +4,28 @@
 finished_at: null, max_players: 8, winning_level: 10}
 - model: games.characterrace
   pk: 1
-  fields: {name: Elf, description: I'm an elf and I'm cool.}
+  fields: {name: Elf, description: '+1 do Ucieczki. Zyskujesz 1 poziom za każdego Potwora pokonanego w walce, w której pomagałeś.'}
 - model: games.characterrace
   pk: 2
-  fields: {name: Dwarf, description: This is a dwarf. It's a dwarf.}
+  fields: {name: Dwarf, description: 'Możesz nieść dowolna ilość Dużych Rzeczy. Możesz mieć 6 kart na ręku.'}
 - model: games.characterrace
   pk: 3
-  fields: {name: Hobbit, description: Beloved book turned into 3 disappointing films}
+  fields: {name: Hobbit, description: 'Raz w trakcie swojej tury możesz sprzedać jeden przedmiot za podwójną cenę (pozostałe przedmioty są warte tyle co zwykle). Jeśli nie uda ci się pierwszy rzut na ucieczkę, możesz odrzucić kartę i spróbować raz jeszcze.'}
 - model: games.characterclass
   pk: 1
-  fields: {name: Wizard, description: 'Hocus pocus, lost my focus.'}
+  fields: {name: Wizard, description: 'Czar Lot: Możesz odrzucić do 3 kart przy próbie Ucieczki. Każda z nich daje ci +1 do rzutu kostką. Czar Zauroczenie: Odrzuć całą rękę (co najmniej 3 karty), żeby zauroczyć jednego Potwora zamiast z nim walczyć. Odrzuć go i weź jego skarb.'}
 - model: games.characterclass
   pk: 2
-  fields: {name: Warrior, description: 'Ah ehm ze mistarr univehrse. Gyaglhr, blaghr!'}
+  fields: {name: Warrior, description: 'Szał bojowy: Możesz odrzucić do 3 kart w trakcie walki. Każda z nich daje ci bonus +1. Wygrywasz, jeśli walka kończyła by się remisem.'}
 - model: games.characterclass
   pk: 3
-  fields: {name: Thief, description: Insert your favourite politician or triple A
-      game publisher here.}
+  fields: {name: Thief, description: 'Zdrada: Możesz odrzucić kartę aby wbić nóż w plecy innego gracza (ma -2 na czas trwania walki). Ten sam gracz nie może paść twoją ofiarą dwukrotnie w jednej walce, ale jeśli walczących jest dwóch, to możesz zdradzić każdego z nich. Kradzież: Możesz odrzucić kartę aby spróbować ukraść nie-Duży przedmiot innemu graczowi. Rzuć kostką: wynik 4 lub więcej to sukces. Porażka oznacza, że zostałeś przyłapany i tracisz 1 Poziom.'}
+- model: games.characterclass
+  pk: 4
+  fields: {name: Priest, description: 'Wskrzeszenie: Raz w trakcie tury, zamiast ciągnąc kartę odkrytą, możesz wziąć kartę z wierzchu odpowiedniego stosu kart odrzuconych. Gdy to zrobisz, musisz odrzucić jedną kartę z ręki za każdą dobraną tak kartę. Odpędzenie Nieumarłych: Możesz odrzucić do 3 kart w trakcie walki z Nieumarłym. Każda z nich daje ci bonus +3.'}
+- model: games.characterclass
+  pk: 5
+  fields: {name: Pirate, description: 'Liczy się SkARRRb: Raz na turę, w swojej turze, zanim otworzysz Drzwi, możesz wymienić 1 Poziom na jeden zakryty Skarb. Zakopany Skarb: Zamiast przeszukiwania pokoju, możesz wziąć wierzchnią kartę ze stosu Skarbów, albo ze stosu odrzuconych Skarbów.'}
 - model: games.gamer
   pk: 1
   fields: {game: 1, user: 2, nick: Humbert, winner: false, level: 2, bonus: 4, gender: Gender.M,
