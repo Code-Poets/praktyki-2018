@@ -143,8 +143,8 @@ def join_game(request, gamepass, nick):                     # View for assigning
                     game=game,
                     nick=nick
                 )
-                # request.session.get('gamer_id', gamer.id)
-                request.session['gamer_id']
+                request.session.get('gamer_id', gamer.id)
+                # request.session['gamer_id']
                 request.session['gamer_id'] = gamer.id
                 if request.user.is_authenticated:
                     gamer.user = request.user
