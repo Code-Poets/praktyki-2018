@@ -44,6 +44,7 @@ class Gender(Enum):
     M = 'Male'
     N = 'None'
 
+
 GENDER_CHOICES = (
     (Gender.F.value,    'Female'),
     (Gender.M.value,    'Male'),
