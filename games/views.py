@@ -1,23 +1,28 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import generic
-from django.urls import reverse
-from .models import Game, Gamer, CharacterRace, CharacterClass
+from django.urls import reverse, reverse_lazy
+from .models import Game, Gamer, CharacterRace, CharacterClass, GENDER_CHOICES
 from django import forms
-#from django.http import JsonResponse
+import random
+import string
+# from django.http import JsonResponse
+
 
 
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
         fields = ['level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2']
-    level = forms.IntegerField(label='Level', initial=1)
+    level = forms.IntegerField(label='Level', initial=1, min_value=1)
     bonus = forms.IntegerField(label='Bonus', initial=0)
+    gender = forms.ChoiceField(choices=GENDER_CHOICES)
     race_slot_1 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     race_slot_2 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     class_slot_1 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
     class_slot_2 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
-    #gender = forms.ChoiceField
+
+    # gender = forms.ChoiceField()
 
 
 """
@@ -116,6 +121,64 @@ def join_game(request, gamepass, nick):                     # View for assigning
 
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
 
+
+def generate_game_code():
+
+    code = ''
+
+    already_exists = True
+
+    unique = True
+
+    while already_exists:
+        code = code.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(Game._meta.get_field('game_code').max_length))
+
+        for game in Game.objects.all():
+            if game.game_code == code:
+                unique = False
+
+        already_exists = not unique
+
+    return code
+
+
+class EditGameForm(forms.Form):
+    name = forms.CharField(label="Name")
+    max_players = forms.IntegerField(label="Players number", min_value=2, max_value=8, initial=6)
+    winning_level = forms.IntegerField(label="Finish at level", min_value=1, initial=10)
+
+
+class CreateGameView(generic.CreateView):
+    model = Game
+    fields = ['name', 'max_players', 'winning_level']
+    template_name = 'games/game_create.html'
+    # success_url =
+
+    def form_valid(self, form):
+        form.instance.host = self.request.user
+        form.instance.game_code = generate_game_code()
+        form.save()
+        return HttpResponse("Game created yo!")     # super(CreateGameView, self).form_valid(form)
+
+
+class EditGameView(generic.UpdateView):
+    model = Game
+    fields = ['name', 'max_players', 'winning_level']
+    template_name = 'games/game_edit.html'
+    # success_url =
+
+    def get_queryset(self):
+        return Game.objects
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponse("Game edited yo!")      # super(CreateGameView, self).form_valid(form)
+
+
+class DeleteGamer(generic.DeleteView):
+    model = Gamer
+    template_name = 'games/delete_gamer.html'
+    success_url = '/'
 
 """
 def update_stats(request, gamer_id):
