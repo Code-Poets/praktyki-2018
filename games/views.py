@@ -193,8 +193,8 @@ class CreateGameView(generic.CreateView):
         form.instance.host = self.request.user
         form.instance.game_code = generate_game_code()
         form.save()
-        return HttpResponse("Game created yo!")     # super(CreateGameView, self).form_valid(form)
-
+#        return HttpResponse("Game created yo!")     # super(CreateGameView, self).form_valid(form)
+        return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
 
 class EditGameView(generic.UpdateView):
     model = Game
@@ -207,8 +207,8 @@ class EditGameView(generic.UpdateView):
 
     def form_valid(self, form):
         form.save()
-        return HttpResponse("Game edited yo!")      # super(CreateGameView, self).form_valid(form)
-
+#        return HttpResponse("Game edited yo!")      # super(CreateGameView, self).form_valid(form)
+        return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
 
 class DeleteGamer(generic.DeleteView):
     model = Gamer
