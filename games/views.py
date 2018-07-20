@@ -9,7 +9,6 @@ import string
 # from django.http import JsonResponse
 
 
-
 def redirect(request):
     gamer_id = request.session.get('gamer_id', None)
     if gamer_id is not None:
@@ -28,8 +27,6 @@ class GamerForm(forms.ModelForm):
     race_slot_2 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     class_slot_1 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
     class_slot_2 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
-
-    # gender = forms.ChoiceField()
 
 
 """
@@ -143,9 +140,9 @@ def join_game(request, gamepass, nick):                     # View for assigning
                     game=game,
                     nick=nick
                 )
-                request.session.get('gamer_id', gamer.id)
+                # request.session.get('gamer_id', gamer.id)
                 # request.session['gamer_id']
-                request.session['gamer_id'] = gamer.id
+                request.session['gamer_id'] = gamer.id          # Add gamer id to actual session
                 if request.user.is_authenticated:
                     gamer.user = request.user
                 gamer.save()
@@ -215,6 +212,12 @@ class DeleteGamer(generic.DeleteView):
     template_name = 'games/delete_gamer.html'
     success_url = '/'
 
+    def delete(self, request, *args, **kwargs):
+        request.session['gamer_id'] = None
+        # request.session.modified = True
+        return super(DeleteGamer, self).delete(request, *args, **kwargs)
+
+
 """
 def update_stats(request, gamer_id):
     gamer = get_object_or_404(Gamer, pk=gamer_id)
@@ -241,8 +244,8 @@ class GamePanelView(generic.DetailView):
 
 
 def game_panel_view(request, pk):
-        game=Game.objects.get(pk=pk)
-        gamers=Gamer.objects.filter(game__game_code=game.game_code).order_by('id')
+        game = Game.objects.get(pk=pk)
+        gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('id')
         context = {'gamers': gamers, 'game': game}
 
         return render(request, 'games/game_panel.html', context)
