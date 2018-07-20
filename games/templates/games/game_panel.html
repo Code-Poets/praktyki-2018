@@ -10,55 +10,6 @@
 <h1><font color="DimGray">To join enter game-code: </font>{{ game.game_code }}</h1>
 <h2><font color="DimGray">Created by: </font>{{ game.host.username }}</h2>
 
-<table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
-    <tr>
-        <th>Statistics</th>
-        <th>Gamer 1</th>
-        <th>Gamer 2</th>
-        <th>Gamer 3</th>
-        <th>Gamer 4</th>
-        <th>Gamer 5</th>
-        <th>Gamer 6</th>
-        <th>Gamer 7</th>
-        <th>Gamer 8</th>
-    </tr>
-    <tr>         <th>Nick</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.nick }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Level</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.level }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Bonus</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.bonus }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Gender</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.gender }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Race</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.race_slot_1 }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Class</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.class_slot_1 }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Username</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.user.username }}</td>
-    {% endfor %}
-    </tr>
-</table>
-
 <br> </br>
 
 <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
@@ -130,7 +81,7 @@
 <!-- <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center"> -->
 <table border="3" cellpadding="5" cellspacing="4" align="center">
   <tr align="center" height="200">
-    <td>X</td>
+    <td><font color="DimGray">X</font></td>
     <td width="200">
 <!-- 1. gamer -->
         {% if gamers.0 == NULL %}
@@ -242,7 +193,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">X</td>
+    <td width="200"><font color="DimGray">X</font></td>
   </tr>
   <tr align="center" height="200">
     <td width="200">
@@ -282,9 +233,9 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">X</td>
-    <td width="200">X</td>
-    <td width="200">X</td>
+    <td width="200"><font color="DimGray">X</font></td>
+    <td width="200"><font color="DimGray">X</font></td>
+    <td width="200"><font color="DimGray">X</font></td>
     <td width="200">
 <!-- 5. gamer -->
         {% if gamers.4 == NULL %}
@@ -324,7 +275,7 @@
     </td>
   </tr>
   <tr align="center" height="200">
-    <td width="200">X</td>
+    <td width="200"><font color="DimGray">X</font></td>
     <td width="200">
 <!-- 4. gamer -->
         {% if gamers.3 == NULL %}
@@ -436,7 +387,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">X</td>
+    <td width="200"><font color="DimGray">X</font></td>
   </tr>
 </table>
 
