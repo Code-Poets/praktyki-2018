@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse, reverse_lazy
 from .models import Game, Gamer, CharacterRace, CharacterClass, GENDER_CHOICES
@@ -57,6 +57,33 @@ class GamerView(generic.UpdateView):                        # GUI for player's s
     model = Gamer
     form_class = GamerForm
     template_name = 'games/gamer.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if self.get_object().game.finished_at is not None:
+            raise Http404("No gamer found")
+        else:
+            if self.request.user.is_authenticated:
+                if self.get_object().user != self.request.user:
+                    raise Http404("No gamer found")
+            else:
+                # if 'gamer_id' not in request.session:
+                gamer_id = request.session.get('gamer_id', None)
+                if gamer_id is None:
+                    raise Http404("No gamer found")
+                else:
+                    # gamer_id = request.session['gamer_id']
+                    if self.get_object().id != request.session['gamer_id']:
+                        raise Http404("No gamer found")
+
+        '''
+        gamer_id = request.session.get('gamer_id', None)
+        if gamer_id is not None:
+            if self.get_object().id != gamer_id:
+                raise Http404("No gamer found matching the query")
+        else:
+            return HttpResponseRedirect(reverse('games:game_access'))
+        '''
+        return super(GamerView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return Gamer.objects
