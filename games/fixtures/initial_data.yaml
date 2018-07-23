@@ -28,16 +28,16 @@ finished_at: null, max_players: 8, winning_level: 10}
   fields: {name: Pirate, description: 'Liczy się SkARRRb: Raz na turę, w swojej turze, zanim otworzysz Drzwi, możesz wymienić 1 Poziom na jeden zakryty Skarb. Zakopany Skarb: Zamiast przeszukiwania pokoju, możesz wziąć wierzchnią kartę ze stosu Skarbów, albo ze stosu odrzuconych Skarbów.'}
 - model: games.gamer
   pk: 1
-  fields: {game: 1, user: 2, nick: Humbert, winner: false, level: 2, bonus: 4, gender: Gender.M,
+  fields: {game: 1, user: 2, nick: Humbert, winner: false, level: 2, bonus: 4, gender: Male,
 race_slot_1: 1, race_slot_2: null, class_slot_1: 3, class_slot_2: null}
 - model: games.gamer
   pk: 2
-  fields: {game: 1, user: 3, nick: Jonathan, winner: false, level: 0, bonus: 0, gender: Gender.M,
+  fields: {game: 1, user: 3, nick: Jonathan, winner: false, level: 1, bonus: 0, gender: Male,
     race_slot_1: 2, race_slot_2: 3, class_slot_1: null, class_slot_2: null}
 - model: games.gamer
   pk: 3
-  fields: {game: 1, user: null, nick: Mike, winner: false, level: 0, bonus: 0, gender: Gender.F, race_slot_1: null, race_slot_2: null, class_slot_1: 1, class_slot_2: null}
+  fields: {game: 1, user: null, nick: Mike, winner: false, level: 1, bonus: 0, gender: Female, race_slot_1: null, race_slot_2: null, class_slot_1: 1, class_slot_2: null}
 - model: games.gamer
   pk: 4
-  fields: {game: 1, user: null, nick: JohnDoe, winner: false, level: 0, bonus: 0, gender: Gender.N,
+  fields: {game: 1, user: null, nick: JohnDoe, winner: false, level: 1, bonus: 0, gender: None,
     race_slot_1: null, race_slot_2: null, class_slot_1: null, class_slot_2: null}
