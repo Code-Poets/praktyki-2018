@@ -11,6 +11,10 @@
     <p>This will irreversibly delete all of your current stats.</p>
     <br/>
     <p>Are you sure you want to proceed?</p>
-    <input type="submit" value="Confirm" />
+    <br/>
+    <input type="submit" value="Yes">
+</form>
+<form method="get" action="{% url 'games:gamer' gamer.id %}">
+    <button type="submit">No</button>
 </form>
 {% endblock %}
