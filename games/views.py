@@ -238,6 +238,17 @@ class DeleteGamerView(generic.DeleteView):
         return super(DeleteGamerView, self).delete(request, *args, **kwargs)
 
 
+class KickGamerView(generic.DeleteView):
+    model = Gamer
+    template_name = 'games/kick_gamer.html'
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.success_url = reverse('games:edit_game', args=(self.object.game.id,))
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
+
+
 """
 def update_stats(request, gamer_id):
     gamer = get_object_or_404(Gamer, pk=gamer_id)

@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
+
+<h1>Leave game</h1>
+<form method="post">{% csrf_token %}
+    <p><strong>Are you sure you want to kick the player?</strong></p>
+    <br/>
+    <p>This will irreversibly remove the player and all his progress from the game.</p>
+    <br/>
+    <p>Are you sure you want to proceed?</p>
+    <br/>
+    <input type="submit" value="Yes">
+</form>
+<form method="get" action="{% url 'games:edit_game' gamer.game.id %}">
+    <button type="submit">No</button>
+</form>
+{% endblock %}
