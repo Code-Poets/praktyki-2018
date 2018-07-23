@@ -141,19 +141,26 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
         # It should return an HttpResponse.
         game_pass = form.get_game_pass()
         nick = form.get_nick()
-        return HttpResponseRedirect(reverse('games:join_game', args=(game_pass, nick)))
+        return join_game(self.request, game_pass, nick) # HttpResponseRedirect(reverse('games:join_game', args=(game_pass, nick)))
 
 
 def join_game(request, gamepass, nick):                     # View for assigning player to game
     try:
         game = Game.objects.get(game_code=gamepass)          # Find game by code
     except Game.DoesNotExist:
-        return HttpResponse('WHOOPS! No such game could be found!')
+        return HttpResponseRedirect(reverse('games:game_access', args=['error_message']))
+        #render(request, 'games/game_access.html', {
+                #      'form': GameAccessView().form_class,
+                 #     'error_message': "WHOOPS! No such game could be found!",
+                  #    })#HttpResponse('WHOOPS! No such game could be found!')
     try:
         # from ipdb import set_trace; set_trace()
         gamer = game.gamers.get(nick=nick)                  # Find player by nickname in existing players
         if gamer.user is None or gamer.user.id is not request.user.id:
-            return HttpResponse('This nickname has already been taken. :-(')
+            return render(request, 'games/game_access.html', {
+                      'form': GameAccessView().form_class,
+                      'error_message': "This nickname has already been taken. :-(",
+                      })# HttpResponse('This nickname has already been taken. :-(')
     except Gamer.DoesNotExist:
         if game.is_available():
             if not game.is_finished():
@@ -168,9 +175,17 @@ def join_game(request, gamepass, nick):                     # View for assigning
                     gamer.user = request.user
                 gamer.save()
             else:
-                return HttpResponse('Sorry, this game has already finished.')
+                return render(request, 'games/game_access.html', {
+                    'form': GameAccessView().form_class,
+                    'error_message': "Sorry, this game has already finished.",
+                })
+                # return HttpResponse('Sorry, this game has already finished.')
         else:
-            return HttpResponse('Sorry, no more places available. :-(')
+            return render(request, 'games/game_access.html', {
+                'form': GameAccessView().form_class,
+                'error_message': "Sorry, no more places available. :-(",
+            })
+            # return HttpResponse('Sorry, no more places available. :-(')
 
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
 
