@@ -4,9 +4,26 @@
   <meta name="description" content="Free Web tutorials">
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="John Doe">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
    <style>
      body {background-color:Gainsboro}
+html { font-size: 50%; }
+
+@media (max-width: 300px) {
+    html { font-size: 30%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 50%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 120%; }
+}
     </style>
 
     <SCRIPT LANGUAGE="JavaScript">
@@ -84,7 +101,6 @@
     }
     window.onload=doload;
     </SCRIPT>
-
  </head>
 <body>
 
@@ -111,7 +127,7 @@
 
 <br> </br>
 
-<table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
+<table id="game_stats_table" width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
     <tr>
         <th> Statistics </th>
     {% for gamer in gamers.all %}
@@ -178,10 +194,10 @@
 
 <br> </br>
 <!-- <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center"> -->
-<table border="3" cellpadding="5" cellspacing="4" align="center">
-  <tr align="center" height="200">
+<table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
+  <tr align="center" height="33%">
     <td><font color="DimGray">X</font></td>
-    <td width="200">
+    <td width="20%">
 <!-- 1. gamer -->
         {% if gamers.0 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -218,7 +234,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 7. gamer -->
         {% if gamers.6 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -255,7 +271,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 3. gamer -->
         {% if gamers.2 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -292,10 +308,10 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
   </tr>
-  <tr align="center" height="200">
-    <td width="200">
+  <tr align="center" height="33%">
+    <td width="20%">
 <!-- 6. gamer -->
         {% if gamers.5 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -332,10 +348,10 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200">
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%">
 <!-- 5. gamer -->
         {% if gamers.4 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -373,9 +389,9 @@
         {% endif %}
     </td>
   </tr>
-  <tr align="center" height="200">
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200">
+  <tr align="center" height="33%">
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%">
 <!-- 4. gamer -->
         {% if gamers.3 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -412,7 +428,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 8. gamer -->
         {% if gamers.7 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -449,7 +465,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 2. gamer -->
         {% if gamers.1 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -486,10 +502,34 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
   </tr>
 </table>
 
+<br/><br/>
 
+<script language="javascript" type="text/javascript">
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
+    if (isMobileDevice() == true){
+//    document.getElementById('game_panel_table').setAttribute('height', window.visualViewport.height);
+//    document.getElementById('game_panel_table').setAttribute('width', window.visualViewport.width);
+//    document.getElementById('game_panel_table').setAttribute('height', screen.height);
+//    document.getElementById('game_panel_table').setAttribute('width', screen.width);
+    document.getElementById('game_panel_table').setAttribute('height', 0.95*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
+        if (window.innerHeight<window.innerWidth){
+            document.getElementById('game_panel_table').style.fontSize = "75%"; 
+        }
+        else document.getElementById('game_panel_table').style.fontSize = "90%";
+    }
+    else {
+    document.getElementById('game_panel_table').setAttribute('height', 0.95*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
+
+    }
+</script>
 </body>
 </html>
