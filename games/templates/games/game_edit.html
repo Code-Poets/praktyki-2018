@@ -18,7 +18,8 @@
     <div id="second">
         <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
             {% for gamer in game.gamers.all %}
-            <tr><td>{{ gamer.nick }}</td></tr>
+            <tr><td>{{ gamer.nick }}</td>
+            <td><a href="{% url 'games:delete_gamer' gamer.id%}">Kick</a></td></tr>
             {% endfor %}
         </table>
     </div>

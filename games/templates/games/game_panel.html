@@ -170,11 +170,6 @@
         {% endif %}
     {% endfor %}
     </tr>
-    <tr>         <th><font color="red">Kick</font></th>
-    {% for gamer in gamers.all %}
-        <td><a href="{% url 'games:delete_gamer' gamer.id%}">Kick gamer</a> </td>
-    {% endfor %}
-    </tr>
 </table>
 
 <br> </br>
