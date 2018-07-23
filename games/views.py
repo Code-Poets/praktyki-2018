@@ -97,14 +97,14 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
     template_name = 'games/game_access.html'
     form_class = JoinForm
 
-    # '''
+    '''
     def dispatch(self, request, *args, **kwargs):
         # redirect(request)
         gamer_id = request.session.get('gamer_id', None)
         if gamer_id is not None:
             return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
         return super(GameAccessView, self).dispatch(request, *args, **kwargs)
-    # '''
+    '''
 
     def get_initial(self):
 
