@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
-
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
 <h1>{{ gamer.nick }}</h1>
@@ -16,6 +18,26 @@
 <form action="{% url 'games:delete_gamer' gamer.id %}">
     <input type="submit" value="Leave game" />
 </form>
+
+    {% for gamer in gamer.game.gamers.all %}
+        {% if gamer.level >= gamer.game.winning_level %}
+
+        <div id="dialog" title="Wait, wait, wait...">
+            <p>I think we have a winner...<br />But wait for game-master decision</p>
+        </div>
+        {% endif %}
+    {% endfor %}
+
+<script type="text/javascript">
+
+$("div#dialog").dialog({
+                modal: true,
+                closeOnEscape: false,
+                open: function(event, ui) {
+                $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+                }
+});
+</script>
 
 {% if gamer.winner %}<p><strong>YOU WON</strong></p>{% endif %}
 {% endblock %}
