@@ -18,9 +18,6 @@
     {% if user.is_authenticated %}
      <p> Hi {{ user.username }}! </p> 
      <p> <a href="{% url 'logout' %}">Logout</a> </p>
-     {% if request.get_full_path != "/" %}
-     <p> <a href="{% url 'home' %}">Home</a> </p>
-     {% endif %}
 
     {% else %}
 
@@ -28,6 +25,10 @@
      <p> <a href="{% url 'login' %}">Login</a> </p>
      <p> <a href="{% url 'signup' %}">SignUp</a> </p>
     {% endif %}
+
+     {% if request.get_full_path != "/" %}
+     <p> <a href="{% url 'home' %}">Home</a> </p>
+     {% endif %}
   </header>
   <hr>
   <main>
