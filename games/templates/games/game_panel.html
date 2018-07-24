@@ -1,8 +1,29 @@
 <!DOCTYPE html>
 <html>
  <head>
+  <meta name="description" content="Free Web tutorials">
+  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
+  <meta name="author" content="John Doe">
+  <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
    <style>
      body {background-color:Gainsboro}
+html { font-size: 50%; }
+
+@media (max-width: 300px) {
+    html { font-size: 30%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 50%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 120%; }
+}
     </style>
 
     <SCRIPT LANGUAGE="JavaScript">
@@ -81,108 +102,64 @@
     window.onload=doload;
     </SCRIPT>
 
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#dialog" ).dialog();
+  } );
+  </script>
  </head>
 <body>
 
-<h1><font color="DimGray">Welcome to: </font>{{ game.name }}</h1>
-<h2><font color="DimGray">To join enter game-code: </font>{{ game.game_code }}</h1>
-<h3><font color="DimGray">Created by: </font>{{ game.host.username }}</h2>
-<p><font color="DimGray">This game is for: </font>{{ game.max_players }}<font color="DimGray"> players</font><p>
-<p><font color="DimGray">Winning level: </font>{{ game.winning_level }}<p>
-<p> <a href="{% url 'games:edit_game' game.id%}">Edit this game</a> </p>
-
     {% for gamer in gamers.all %}
-        {% if gamer.level >= game.winning_level %}
-            <h4 align="center"><font color="red"> Is that the end of a game? Oh no! </font></h4>
-            <h5 align="center">The winner is: 
-            {% for gamer in gamers.all %}
-                {% if gamer.level >= 10 %}
-                <p align="center"><li> {{ gamer.nick }} </li></p>
-                {% endif %}
-            {% endfor %}
-            </h5>
+        {% if gamer.level >= gamer.game.winning_level %}
 
+        <div id="dialog" title="Do we have a winner?">
+            <p>Is that the end of a game? <br />Oh no!</p>
+        </div>
         {% endif %}
     {% endfor %}
 
-<br> </br>
+<script>
 
-<table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
-    <tr>
-        <th> Statistics </th>
-    {% for gamer in gamers.all %}
-        <th>Gamer {{ forloop.counter }}</th>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Nick</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.nick }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Level</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.level }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Bonus</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.bonus }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Gender</th>
-    {% for gamer in gamers.all %}
-        <td>{{ gamer.gender }}</td>
-    {% endfor %}
-    </tr>
-    <tr>         <th>Race</th>
-    {% for gamer in gamers.all %}
-        {% if gamer.race_slot_1 != None %}
-        <td>{{ gamer.race_slot_1 }}</td>
-        {% else %}
-        <td> </td>
-        {% endif %}
-    {% endfor %}
-    </tr>
-    <tr>         <th>Race 2</th>
-    {% for gamer in gamers.all %}
-        {% if gamer.race_slot_2 != None %}
-        <td>{{ gamer.race_slot_2 }}</td>
-        {% else %}
-        <td> </td>
-        {% endif %}
-    {% endfor %}
-    </tr>
-    <tr>         <th>Class</th>
-    {% for gamer in gamers.all %}
-        {% if gamer.class_slot_1 != None %}
-        <td>{{ gamer.class_slot_1 }}</td>
-        {% else %}
-        <td> </td>
-        {% endif %}
-    {% endfor %}
-    </tr>
-    <tr>         <th>Class 2</th>
-    {% for gamer in gamers.all %}
-        {% if gamer.class_slot_2 != None %}
-        <td>{{ gamer.class_slot_2 }}</td>
-        {% else %}
-        <td> </td>
-        {% endif %}
-    {% endfor %}
-    </tr>
-    <tr>         <th><font color="red">Kick</font></th>
-    {% for gamer in gamers.all %}
-        <td><a href="{% url 'games:delete_gamer' gamer.id%}">Kick gamer</a> </td>
-    {% endfor %}
-    </tr>
+$("div#dialog").dialog ({
+    modal: true,
+    buttons : {
+        "Yes, that's right!" : function ()
+        {
+            window.location.href = "{% url 'games:end_game' game.id%}";
+        },
+        "No, we change rules" : function ()
+        {
+            window.location.href = "{% url 'games:edit_game' game.id%}";
+        }
+    }
+}).prev().find(".ui-dialog-titlebar-close").hide ();
+
+</script>
+
+<table width="100%" align="center">
+  <tr>
+    <td align="center" style="padding:0 5px 0 5px;"> <font size="6"><b> {{ game.game_code }} </b></font> </td>
+    <td align="center" style="padding:0 5px 0 30px;"> <font size="7"><b> {{ game.name }} </b></font> </td>
+    <td align="center" style="padding:0 5px 0 5px;"> <font size="2">made by: </font><font size="3"> <b>{{ game.host.username }} </b></font></td>
+    <td align="center" style="padding:0 5px 0 5px;"> </font><font size="3"> <b>{{ game.winning_level }}</b></font></td>
+    <td align="center"> 
+<form action="{% url 'games:edit_game' game.id%}">
+   <input type="submit" value="Edit" style="font-size:15px" />
+</form>
+    </td>
+  </tr>
 </table>
 
-<br> </br>
 <!-- <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center"> -->
-<table border="3" cellpadding="5" cellspacing="4" align="center">
-  <tr align="center" height="200">
+<table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
+  <tr align="center" height="33%">
     <td><font color="DimGray">X</font></td>
-    <td width="200">
+    <td width="20%">
 <!-- 1. gamer -->
         {% if gamers.0 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -219,7 +196,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 7. gamer -->
         {% if gamers.6 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -256,7 +233,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 3. gamer -->
         {% if gamers.2 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -293,10 +270,10 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
   </tr>
-  <tr align="center" height="200">
-    <td width="200">
+  <tr align="center" height="33%">
+    <td width="20%">
 <!-- 6. gamer -->
         {% if gamers.5 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -333,10 +310,10 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200">
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%">
 <!-- 5. gamer -->
         {% if gamers.4 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -374,9 +351,9 @@
         {% endif %}
     </td>
   </tr>
-  <tr align="center" height="200">
-    <td width="200"><font color="DimGray">X</font></td>
-    <td width="200">
+  <tr align="center" height="33%">
+    <td width="20%"><font color="DimGray">X</font></td>
+    <td width="20%">
 <!-- 4. gamer -->
         {% if gamers.3 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -413,7 +390,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 8. gamer -->
         {% if gamers.7 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -450,7 +427,7 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200">
+    <td width="20%">
 <!-- 2. gamer -->
         {% if gamers.1 == NULL %}
             <font color="DimGray">Free place for gamer</font>
@@ -487,10 +464,35 @@
       </table> 
         {% endif %}
     </td>
-    <td width="200"><font color="DimGray">X</font></td>
+    <td width="20%"><font color="DimGray">X</font></td>
   </tr>
 </table>
 
 
+<br/><br/>
+
+<script language="javascript" type="text/javascript">
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+};
+
+    if (isMobileDevice() == true){
+//    document.getElementById('game_panel_table').setAttribute('height', window.visualViewport.height);
+//    document.getElementById('game_panel_table').setAttribute('width', window.visualViewport.width);
+//    document.getElementById('game_panel_table').setAttribute('height', screen.height);
+//    document.getElementById('game_panel_table').setAttribute('width', screen.width);
+    document.getElementById('game_panel_table').setAttribute('height', 0.9*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
+        if (window.innerHeight<window.innerWidth){
+            document.getElementById('game_panel_table').style.fontSize = "75%"; 
+        }
+        else document.getElementById('game_panel_table').style.fontSize = "90%";
+    }
+    else {
+    document.getElementById('game_panel_table').setAttribute('height', 0.9*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
+
+    }
+</script>
 </body>
 </html>

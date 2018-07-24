@@ -6,6 +6,7 @@ from .models import Game, Gamer, CharacterRace, CharacterClass, GENDER_CHOICES
 from django import forms
 import random
 import string
+from django.utils import timezone
 # from django.http import JsonResponse
 
 
@@ -269,3 +270,27 @@ def game_panel_view(request, pk):
         context = {'gamers': gamers, 'game': game}
 
         return render(request, 'games/game_panel.html', context)
+
+
+class EndGameView(generic.DetailView):
+    model = Game
+    template_name = 'games/game_end.html'
+
+    def get_queryset(self):
+        return Game.objects
+
+
+def update_stats(request, pk):
+    game = Game.objects.get(pk=pk)
+    gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('level')
+    
+    for gamer in gamers:
+        if gamer.level >= game.winning_level:
+            gamer.winner = True
+            gamer.save()
+
+    game.finished_at = timezone.now()
+    # game.game_code = None
+    game.save()
+    return HttpResponseRedirect(reverse('home'))
+

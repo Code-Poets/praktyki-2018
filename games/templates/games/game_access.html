@@ -5,10 +5,43 @@
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
 <h1>Join game</h1>
+<!--
+    <table align="center">
+        <form method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Join"/>
+        </form>
+    </table>
+-->
 
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Join"/>
-</form>
+  <form method="post">
+    {% csrf_token %}
+        <table align="center">
+    {% for field in form %}
+        <tr>
+        <td>{{ field.label_tag }}</td>
+        <td>{{ field }}</td>
+
+        </tr>
+        <tr>
+        {% if field.help_text %}
+            <td colspan="2" align="center"><small style="color: LightGray ">{{ field.help_text }}</small></td>
+        {% endif %}
+        </tr>
+
+        <tr>
+        {% for error in field.errors %}
+            <tr>
+          <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
+            </tr>
+        {% endfor %}
+        </tr>
+
+    {% endfor %}
+        </table>
+   
+    <input type="submit" value="Sign up"/>
+  </form>
+
 {% endblock %}
 
