@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse, reverse_lazy
 from .models import Game, Gamer, CharacterRace, CharacterClass, GENDER_CHOICES
@@ -7,13 +7,6 @@ from django import forms
 import random
 import string
 # from django.http import JsonResponse
-
-
-def redirect(request):
-    gamer_id = request.session.get('gamer_id', None)
-    if gamer_id is not None:
-        return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
-    return super(GameAccessView, self).dispatch(request, *args, **kwargs)
 
 
 class GamerForm(forms.ModelForm):
@@ -58,6 +51,33 @@ class GamerView(generic.UpdateView):                        # GUI for player's s
     form_class = GamerForm
     template_name = 'games/gamer.html'
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.get_object().game.finished_at is not None:
+            raise Http404("No gamer found")
+        else:
+            if self.request.user.is_authenticated:
+                if self.get_object().user != self.request.user:
+                    raise Http404("No gamer found")
+            else:
+                # if 'gamer_id' not in request.session:
+                gamer_id = request.session.get('gamer_id', None)
+                if gamer_id is None:
+                    raise Http404("No gamer found")
+                else:
+                    # gamer_id = request.session['gamer_id']
+                    if self.get_object().id != request.session['gamer_id']:
+                        raise Http404("No gamer found")
+
+        '''
+        gamer_id = request.session.get('gamer_id', None)
+        if gamer_id is not None:
+            if self.get_object().id != gamer_id:
+                raise Http404("No gamer found matching the query")
+        else:
+            return HttpResponseRedirect(reverse('games:game_access'))
+        '''
+        return super(GamerView, self).dispatch(request, *args, **kwargs)
+
     def get_queryset(self):
         return Gamer.objects
 
@@ -97,14 +117,14 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
     template_name = 'games/game_access.html'
     form_class = JoinForm
 
-    # '''
+    '''
     def dispatch(self, request, *args, **kwargs):
         # redirect(request)
         gamer_id = request.session.get('gamer_id', None)
         if gamer_id is not None:
             return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
         return super(GameAccessView, self).dispatch(request, *args, **kwargs)
-    # '''
+    '''
 
     def get_initial(self):
 
