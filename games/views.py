@@ -92,11 +92,45 @@ class JoinForm(forms.Form):
     nick = forms.CharField(label='Nick')                    # Text input for player's nickname
     game_pass = forms.CharField(label='Game access code')   # Text input for game password
 
+    #def __init__(self, user):
+    #    self.user = user
+
     def get_game_pass(self):
         return self.data['game_pass']
 
     def get_nick(self):
         return self.data['nick']
+
+    def clean(self):
+        cleaned_data = super(JoinForm, self).clean()
+        game_pass = self.cleaned_data['game_pass']
+        nick = self.cleaned_data['nick']
+        user = self.initial['user']
+
+        try:
+            game = Game.objects.get(game_code=game_pass)  # Find game by code
+
+        except Game.DoesNotExist:
+            raise forms.ValidationError('WHOOPS! No such game could be found!')
+
+        if user is not None:
+            logged_gamer = Gamer.objects.filter(game=game, user=user)
+
+            if logged_gamer:
+                raise forms.ValidationError('You have already joined this game!')
+
+        if game.is_finished():
+            raise forms.ValidationError('Sorry, this game has already finished.')
+        if not game.is_available():
+            raise forms.ValidationError('Sorry, no more places available. :-(')
+
+        gamers = game.gamers.all()
+
+        for gamer in gamers:
+            if gamer.nick == nick:
+                raise forms.ValidationError('This nickname has already been taken. :-(')
+        return cleaned_data
+
 
 
 '''
@@ -127,12 +161,32 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
         return super(GameAccessView, self).dispatch(request, *args, **kwargs)
     '''
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        if self.request.user.is_authenticated:
+            data['gamers'] = Gamer.objects.filter(user=self.request.user)
+
+        #from ipdb import set_trace;set_trace()
+        gamer_cookie = self.request.session.get('gamer_id', None)                 #COOKIE USED
+        if gamer_cookie is not None:
+            try:
+                data['unregistered_gamer'] = Gamer.objects.get(pk=gamer_cookie)
+            except Gamer.DoesNotExist:
+                self.request.session['gamer_id'] = None
+                gamer_cookie = None
+        data['gamer_cookie'] = gamer_cookie
+
+        return data
+
     def get_initial(self):
 
         initial = super(GameAccessView, self).get_initial()
 
         if self.request.user.is_authenticated:
             initial['nick'] = self.request.user.nick
+            initial['user'] = self.request.user.id
+        else:
+            initial['user'] = None
 
         return initial
 
@@ -141,18 +195,31 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
         # It should return an HttpResponse.
         game_pass = form.get_game_pass()
         nick = form.get_nick()
-        return join_game(self.request, game_pass, nick) # HttpResponseRedirect(reverse('games:join_game', args=(game_pass, nick)))
 
+        game = Game.objects.get(game_code=game_pass)
 
+        gamer = Gamer.objects.create(  # Create player and add to game if possible
+            game=game,
+            nick=nick
+        )
+        # request.session.get('gamer_id', gamer.id)
+        # request.session['gamer_id']
+        self.request.session['gamer_id'] = gamer.id  # Add gamer id to actual session
+        if self.request.user.is_authenticated:
+            gamer.user = self.request.user
+        gamer.save()
+
+        return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,))) #join_game(self.request, game_pass, nick) # HttpResponseRedirect(reverse('games:join_game', args=(game_pass, nick)))
+
+"""
 def join_game(request, gamepass, nick):                     # View for assigning player to game
     try:
         game = Game.objects.get(game_code=gamepass)          # Find game by code
     except Game.DoesNotExist:
-        return HttpResponseRedirect(reverse('games:game_access', args=['error_message']))
-        #render(request, 'games/game_access.html', {
-                #      'form': GameAccessView().form_class,
-                 #     'error_message': "WHOOPS! No such game could be found!",
-                  #    })#HttpResponse('WHOOPS! No such game could be found!')
+        return render(request, 'games/game_access.html', {
+                      'form': GameAccessView().form_class,
+                      'error_message': "WHOOPS! No such game could be found!",
+                      })#HttpResponse('WHOOPS! No such game could be found!')
     try:
         # from ipdb import set_trace; set_trace()
         gamer = game.gamers.get(nick=nick)                  # Find player by nickname in existing players
@@ -188,7 +255,7 @@ def join_game(request, gamepass, nick):                     # View for assigning
             # return HttpResponse('Sorry, no more places available. :-(')
 
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
-
+"""
 
 def generate_game_code():
 

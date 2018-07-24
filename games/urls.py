@@ -21,9 +21,9 @@ urlpatterns = [
     # ex: /games/access/
     path('access/', views.GameAccessView.as_view(), name='game_access'),
     # ex: /games/ABCD/Humbert/join_game/
-    path('<gamepass>/<nick>/join_game/', views.join_game, name='join_game'),
+    # path('<gamepass>/<nick>/join_game/', views.join_game, name='join_game'),
     # ex: /games/gamer/5/
-    path('gamer/<int:pk>', views.GamerView.as_view(), name='gamer'),
+    path('gamer/<int:pk>/', views.GamerView.as_view(), name='gamer'),
     # ex: /games/gamer/5/lave
     path('gamer/<int:pk>/leave/', views.DeleteGamerView.as_view(), name='delete_gamer'),
     # ex: /games/gamer/5/kick
