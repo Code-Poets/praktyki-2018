@@ -8,9 +8,30 @@
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-    <form method="post">{% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Save" />
-    </form>
-
+<form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save" />
+</form>
+<br/>
+{% if hosted_games %}
+<p>Games you are currently hosting:</p>
+<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
+    <tr>
+        <th> Game name </th>
+        <th> Game code </th>
+        <th> Players </th>
+        <th> Game created at</th>
+    </tr>
+    {% for game in hosted_games %}
+    <tr>
+        <td><a href="{% url 'games:game_panel' game.id %}">{{ game.name }}</a></td>
+        <td>{{ game.game_code }}</td>
+        <td>{{ game.gamers.count }}/{{ game.max_players }}</td>
+        <td>{{ game.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You are not hosting any games.</p>
+{% endif %}
 {% endblock %}
