@@ -125,7 +125,7 @@ html { font-size: 50%; }
         {% if gamer.level >= gamer.game.winning_level %}
 
         <div id="dialog" title="Do we have a winner?">
-            <p>Is that the end of a game? Oh no!</p>
+            <p>Is that the end of a game? <br />Oh no!</p>
         </div>
         {% endif %}
     {% endfor %}
@@ -137,7 +137,7 @@ $("div#dialog").dialog ({
     buttons : {
         "Yes, that's right!" : function ()
         {
-            $("div#dialog").dialog ("close");
+            window.location.href = "{% url 'games:end_game' game.id%}";
         },
         "No, we change rules" : function ()
         {

@@ -20,11 +20,16 @@
 </form>
 
     {% for gamer in gamer.game.gamers.all %}
-        {% if gamer.level >= gamer.game.winning_level %}
-
+        {% if gamer.level >= gamer.game.winning_level and gamer.game.finished_at is None %}
         <div id="dialog" title="Wait, wait, wait...">
             <p>I think we have a winner...<br />But wait for game-master decision</p>
         </div>
+        <script>
+            window.setTimeout(function () {
+            location.href = "{% url 'games:gamer' gamer.id %}";
+            }, 5000);
+        </script>
+
         {% endif %}
     {% endfor %}
 
@@ -39,5 +44,9 @@ $("div#dialog").dialog({
 });
 </script>
 
-{% if gamer.winner %}<p><strong>YOU WON</strong></p>{% endif %}
+    {% if gamer.winner or gamer.game.finished_at is not None %}
+        <script>
+        window.location.href = "{% url 'home' %}";
+        </script>
+    {% endif %}
 {% endblock %}

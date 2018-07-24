@@ -13,6 +13,10 @@ urlpatterns = [
     path('<int:pk>/', views.game_panel_view, name='game_panel'),
     # ex: /games/1/edit
     path('<int:pk>/edit/', views.EditGameView.as_view(), name='edit_game'),
+    # ex: /games/1/end
+    path('<int:pk>/end/', views.EndGameView.as_view(), name='end_game'),
+    # ex: /games/1/end/update
+    path('<int:pk>/end/update/', views.update_stats, name='update_stats'),
 
     # ex: /games/access/
     path('access/', views.GameAccessView.as_view(), name='game_access'),

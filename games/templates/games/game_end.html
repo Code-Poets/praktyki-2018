@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+<head>
+
+    <script>
+window.setTimeout(function () {
+    location.href = "/games/{{ game.pk }}/end/";
+}, 5000);
+    </script>
+</head>
+
+<h1>This is the end of the {{ game.name }} </h1>
+
+<table id="game_stats_table" width="80%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center">
+    <tr>
+        <th> Statistics </th>
+    {% for gamer in game.gamers.all %}
+        <th>Gamer {{ forloop.counter }}</th>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Nick</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.nick }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Level</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.level }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Bonus</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.bonus }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Gender</th>
+    {% for gamer in game.gamers.all %}
+        <td>{{ gamer.gender }}</td>
+    {% endfor %}
+    </tr>
+    <tr>         <th>Race</th>
+    {% for gamer in game.gamers.all %}
+        {% if gamer.race_slot_1 != None %}
+        <td>{{ gamer.race_slot_1 }}</td>
+        {% else %}
+        <td> </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+    <tr>         <th>Race 2</th>
+    {% for gamer in game.gamers.all %}
+        {% if gamer.race_slot_2 != None %}
+        <td>{{ gamer.race_slot_2 }}</td>
+        {% else %}
+        <td> </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+    <tr>         <th>Class</th>
+    {% for gamer in game.gamers.all %}
+        {% if gamer.class_slot_1 != None %}
+        <td>{{ gamer.class_slot_1 }}</td>
+        {% else %}
+        <td> </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+    <tr>         <th>Class 2</th>
+    {% for gamer in game.gamers.all %}
+        {% if gamer.class_slot_2 != None %}
+        <td>{{ gamer.class_slot_2 }}</td>
+        {% else %}
+        <td> </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+    <tr>
+        <th> Status </th>
+    {% for gamer in game.gamers.all %}
+        {% if gamer.level >= gamer.game.winning_level %}
+        <td> <font color="red">Winner</font> </td>
+        {% else %}
+        <td> </td>
+        {% endif %}
+    {% endfor %}
+    </tr>
+</table>
+
+<form action="{% url 'games:update_stats' game.id %}">
+    <input type="submit" value="That's right" />
+</form>
+
+{% endblock %}
