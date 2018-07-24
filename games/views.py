@@ -146,7 +146,7 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
 
 def join_game(request, gamepass, nick):                     # View for assigning player to game
     try:
-        game = Game.objects.get(game_code=gamepass)          # Find player by nickname in existing players
+        game = Game.objects.get(game_code=gamepass)          # Find game by code
     except Game.DoesNotExist:
         return HttpResponse('WHOOPS! No such game could be found!')
     try:
@@ -211,8 +211,8 @@ class CreateGameView(generic.CreateView):
         form.instance.host = self.request.user
         form.instance.game_code = generate_game_code()
         form.save()
-#        return HttpResponse("Game created yo!")     # super(CreateGameView, self).form_valid(form)
         return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
+
 
 class EditGameView(generic.UpdateView):
     model = Game
@@ -225,18 +225,28 @@ class EditGameView(generic.UpdateView):
 
     def form_valid(self, form):
         form.save()
-#        return HttpResponse("Game edited yo!")      # super(CreateGameView, self).form_valid(form)
         return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
 
-class DeleteGamer(generic.DeleteView):
+
+class DeleteGamerView(generic.DeleteView):
     model = Gamer
     template_name = 'games/delete_gamer.html'
     success_url = '/'
 
     def delete(self, request, *args, **kwargs):
         request.session['gamer_id'] = None
-        # request.session.modified = True
-        return super(DeleteGamer, self).delete(request, *args, **kwargs)
+        return super(DeleteGamerView, self).delete(request, *args, **kwargs)
+
+
+class KickGamerView(generic.DeleteView):
+    model = Gamer
+    template_name = 'games/kick_gamer.html'
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        self.success_url = reverse('games:edit_game', args=(self.object.game.id,))
+        self.object.delete()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 """
