@@ -114,13 +114,6 @@ html { font-size: 50%; }
  </head>
 <body>
 
-<h1><font color="DimGray">Welcome to: </font>{{ game.name }}</h1>
-<h2><font color="DimGray">To join enter game-code: </font>{{ game.game_code }}</h1>
-<h3><font color="DimGray">Created by: </font>{{ game.host.username }}</h2>
-<p><font color="DimGray">This game is for: </font>{{ game.max_players }}<font color="DimGray"> players</font><p>
-<p><font color="DimGray">Winning level: </font>{{ game.winning_level }}<p>
-<p> <a href="{% url 'games:edit_game' game.id%}">Edit this game</a> </p>
-
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
 
@@ -148,7 +141,20 @@ $("div#dialog").dialog ({
 
 </script>
 
-<br> </br>
+<table width="100%" align="center">
+  <tr>
+    <td align="center" style="padding:0 5px 0 5px;"> <font size="6"><b> {{ game.game_code }} </b></font> </td>
+    <td align="center" style="padding:0 5px 0 30px;"> <font size="7"><b> {{ game.name }} </b></font> </td>
+    <td align="center" style="padding:0 5px 0 5px;"> <font size="2">made by: </font><font size="3"> <b>{{ game.host.username }} </b></font></td>
+    <td align="center" style="padding:0 5px 0 5px;"> </font><font size="3"> <b>{{ game.winning_level }}</b></font></td>
+    <td align="center"> 
+<form action="{% url 'games:edit_game' game.id%}">
+   <input type="submit" value="Edit" style="font-size:15px" />
+</form>
+    </td>
+  </tr>
+</table>
+
 <!-- <table width="100%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center"> -->
 <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
   <tr align="center" height="33%">
@@ -462,6 +468,7 @@ $("div#dialog").dialog ({
   </tr>
 </table>
 
+
 <br/><br/>
 
 <script language="javascript" type="text/javascript">
@@ -474,7 +481,7 @@ function isMobileDevice() {
 //    document.getElementById('game_panel_table').setAttribute('width', window.visualViewport.width);
 //    document.getElementById('game_panel_table').setAttribute('height', screen.height);
 //    document.getElementById('game_panel_table').setAttribute('width', screen.width);
-    document.getElementById('game_panel_table').setAttribute('height', 0.95*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('height', 0.9*window.innerHeight);
     document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
         if (window.innerHeight<window.innerWidth){
             document.getElementById('game_panel_table').style.fontSize = "75%"; 
@@ -482,7 +489,7 @@ function isMobileDevice() {
         else document.getElementById('game_panel_table').style.fontSize = "90%";
     }
     else {
-    document.getElementById('game_panel_table').setAttribute('height', 0.95*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('height', 0.9*window.innerHeight);
     document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
 
     }
