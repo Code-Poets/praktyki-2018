@@ -7,12 +7,15 @@ from enum import Enum, unique
 # Create your models here.
 class Game(models.Model):
     host = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    game_code = models.CharField(max_length=4)
+    game_code = models.CharField(max_length=4, null=True, blank=True)
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
-    finished_at = models.DateTimeField(null=True, default=None)
+    finished_at = models.DateTimeField(null=True, default=None, blank=True)
     max_players = models.IntegerField(default=6, validators=[MinValueValidator(2), MaxValueValidator(8)])
     winning_level = models.IntegerField(default=10, validators=[MinValueValidator(1)])
+
+    def __str__(self):
+        return str(self.pk) + ' ' + self.name
 
     def is_available(self):
         gamers = self.gamers.count()
@@ -55,18 +58,18 @@ assert set(s.value for s in Gender) == set(dict(GENDER_CHOICES))
 
 class Gamer(models.Model):
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='gamers')
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, default=None)
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, default=None, blank=True)
     nick = models.CharField(max_length=50, unique=False)
     winner = models.BooleanField(default=False)
     level = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     bonus = models.IntegerField(default=0)
-    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default = Gender.N.value)
-    race_slot_1 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL, related_name='race_slot_1', default=None)
-    race_slot_2 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL, related_name='race_slot_2', default=None)
-    class_slot_1 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL, related_name='class_slot_1', default=None)
-    class_slot_2 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL, related_name='class_slot_2', default=None)
-    #races = models.ManyToManyField(CharacterRace)
-    #classes = models.ManyToManyField(CharacterClass)
+    gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default=Gender.N.value)
+    race_slot_1 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL, related_name='race_slot_1', default=None, blank=True)
+    race_slot_2 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL, related_name='race_slot_2', default=None, blank=True)
+    class_slot_1 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL, related_name='class_slot_1', default=None, blank=True)
+    class_slot_2 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL, related_name='class_slot_2', default=None, blank=True)
+    # races = models.ManyToManyField(CharacterRace)
+    # classes = models.ManyToManyField(CharacterClass)
 
     def __str__(self):
         return self.nick
