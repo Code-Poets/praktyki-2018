@@ -9,13 +9,6 @@ import string
 # from django.http import JsonResponse
 
 
-def redirect(request):
-    gamer_id = request.session.get('gamer_id', None)
-    if gamer_id is not None:
-        return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
-    return super(GameAccessView, self).dispatch(request, *args, **kwargs)
-
-
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
