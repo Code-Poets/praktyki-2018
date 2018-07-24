@@ -3,16 +3,25 @@
 {% block title %}e_munchkin{% endblock %}
 
 {% block content %}
-  <h2>Welcome. Join us and play with us.</h2>
+ 
+    <h1>Web application e_munchkin</h1>
+    <br />
 
     {% if user.is_authenticated %}
+    <h4>Welcome <font color="orange">{{ user.username }}</font>! <br /> Join us and play with us.</h4>
+    <br />
 
      <p> <a href="{% url 'games:create_game' %}">Create a new game</a> </p>
 
+    {% else %}
+    <h4>Welcome <font color="orange">mysterious stranger</font>! <br /> Join us and play with us.</h4>
+    <br />
     {% endif %}
 
      <p> <a href="{% url 'games:game_access' %}">Join an existing game</a> </p>
 
+    <br />
+    <br />
     <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 
 {% endblock %}
