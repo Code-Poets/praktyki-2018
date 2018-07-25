@@ -22,7 +22,7 @@
 
     {% for gamer in gamer.game.gamers.all %}
         {% if gamer.level >= gamer.game.winning_level and gamer.game.finished_at is None %}
-        <div id="dialog" title="Wait, wait, wait...">
+        <div id="dialog" title="Wait, wait, wait..." align="center">
             <p>I think we have a winner...<br />But wait for game-master decision</p>
         </div>
         <script>
