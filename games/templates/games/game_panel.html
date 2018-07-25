@@ -1,32 +1,16 @@
 <!DOCTYPE html>
 <html>
  <head>
+{% load static %}
+
   <meta name="description" content="Free Web tutorials">
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="John Doe">
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
-   <style>
-     body {background-color:Gainsboro}
-html { font-size: 50%; }
 
-@media (max-width: 300px) {
-    html { font-size: 30%; }
-}
+<link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
 
-@media (min-width: 500px) {
-    html { font-size: 50%; }
-}
-
-@media (min-width: 700px) {
-    html { font-size: 80%; }
-}
-
-@media (min-width: 1200px) {
-    html { font-size: 120%; }
-}
-    </style>
-
-    <SCRIPT LANGUAGE="JavaScript">
+<SCRIPT LANGUAGE="JavaScript">
     function getCookie(name)
     {
         var start = document.cookie.indexOf( name + "=" );
@@ -100,7 +84,7 @@ html { font-size: 50%; }
 
     }
     window.onload=doload;
-    </SCRIPT>
+</SCRIPT>
 
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -112,7 +96,7 @@ html { font-size: 50%; }
   } );
   </script>
  </head>
-<body>
+<body background="/home/ruda/Praktyki/src/e_munchkin/games/static/games/images/background-image.jpg">
 
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
@@ -159,11 +143,12 @@ $("div#dialog").dialog ({
 <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
   <tr align="center" height="33%">
     <td><font color="DimGray">X</font></td>
-    <td width="20%">
-<!-- 1. gamer -->
         {% if gamers.0 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 1. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.0.nick }}</td></tr>
@@ -196,11 +181,12 @@ $("div#dialog").dialog ({
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 7. gamer -->
         {% if gamers.6 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 7. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.6.nick }}</td></tr>
@@ -233,11 +219,12 @@ $("div#dialog").dialog ({
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 3. gamer -->
         {% if gamers.2 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 3. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.2.nick }}</td></tr>
@@ -273,11 +260,12 @@ $("div#dialog").dialog ({
     <td width="20%"><font color="DimGray">X</font></td>
   </tr>
   <tr align="center" height="33%">
-    <td width="20%">
-<!-- 6. gamer -->
         {% if gamers.5 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 6. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.5.nick }}</td></tr>
@@ -313,11 +301,12 @@ $("div#dialog").dialog ({
     <td width="20%"><font color="DimGray">X</font></td>
     <td width="20%"><font color="DimGray">X</font></td>
     <td width="20%"><font color="DimGray">X</font></td>
-    <td width="20%">
-<!-- 5. gamer -->
         {% if gamers.4 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 5. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.4.nick }}</td></tr>
@@ -353,11 +342,12 @@ $("div#dialog").dialog ({
   </tr>
   <tr align="center" height="33%">
     <td width="20%"><font color="DimGray">X</font></td>
-    <td width="20%">
-<!-- 4. gamer -->
         {% if gamers.3 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 4. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.3.nick }}</td></tr>
@@ -390,11 +380,12 @@ $("div#dialog").dialog ({
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 8. gamer -->
         {% if gamers.7 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 8. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.7.nick }}</td></tr>
@@ -427,11 +418,12 @@ $("div#dialog").dialog ({
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 2. gamer -->
         {% if gamers.1 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 2. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.1.nick }}</td></tr>

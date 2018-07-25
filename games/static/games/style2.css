@@ -1,0 +1,21 @@
+body {
+    background: #FCD697 url("images/background-image.jpg");
+}
+
+html { font-size: 50%; }
+
+@media (max-width: 300px) {
+    html { font-size: 30%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 50%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 120%; }
+}
