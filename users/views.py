@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 from games.models import Game, Gamer
 from django.db.models import Q
@@ -11,6 +11,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+
 from django.shortcuts import render
 
 
@@ -37,8 +38,6 @@ class UserStats(generic.DetailView):
                 raise Http404("No user found")
         return super(UserStats, self).dispatch(request, *args, **kwargs)
 
-    def get_queryset(self):
-        return CustomUser.objects
 
     def get_context_data(self, **kwargs):
         data = super(UserStats, self).get_context_data(**kwargs)
@@ -87,4 +86,20 @@ def change_password(request):
         form = PasswordChangeForm(request.user)
     return render(request, 'users/change_password.html', {
         'form': form
+    })
+
+
+def CustomUser_update(request,pk):
+    if request.method == 'POST':
+        user_form = CustomUserChangeForm(request.POST, instance=request.user)
+        if user_form.is_valid():
+            user_form.save()
+            messages.success(request, _('Your profile was successfully updated!'))
+            return redirect('user_details')
+        else:
+            messages.error(request, _('Please correct the error below.'))
+    else:
+        user_form = CustomUserChangeForm(instance=request.user)
+    return render(request, 'users/user_details.html', {
+        'user_form': user_form,
     })
