@@ -314,6 +314,14 @@ class EditGameView(generic.UpdateView):
     template_name = 'games/game_edit.html'
     # success_url =
 
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+                raise Http404("No game found")
+        else:
+            if self.get_object().host != self.request.user:
+                raise Http404("No game found")
+        return super(EditGameView, self).dispatch(request, *args, **kwargs)
+
     def get_queryset(self):
         return Game.objects
 
