@@ -13,7 +13,6 @@
         </form>
     </table>
 -->
-
   <form method="post">
     {% csrf_token %}
         <table align="center">
@@ -39,14 +38,8 @@
 
     {% endfor %}
         </table>
-   
-    <input type="submit" value="Sign up"/>
-  </form>
-
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
     <input type="submit" value="Join"/>
-</form>
+  </form>
 <br/>
 {% if gamer_cookie != None or gamers %}
 <p>Recently played games:</p>
