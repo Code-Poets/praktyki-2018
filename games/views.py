@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse, reverse_lazy
@@ -257,6 +257,7 @@ def join_game(request, gamepass, nick):                     # View for assigning
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
 """
 
+
 def generate_game_code():
 
     code = ''
@@ -289,6 +290,11 @@ class CreateGameView(generic.CreateView):
     template_name = 'games/game_create.html'
     # success_url =
 
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('login')
+        return super(CreateGameView, self).dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         data = super(CreateGameView, self).get_context_data(**kwargs)
         data['hosted_games'] = Game.objects.filter(host=self.request.user, finished_at=None)
@@ -300,7 +306,6 @@ class CreateGameView(generic.CreateView):
         form.instance.game_code = generate_game_code()
         form.save()
         return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
-
 
 
 class EditGameView(generic.UpdateView):
