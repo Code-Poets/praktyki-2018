@@ -389,7 +389,7 @@ def update_stats(request, pk):
             gamer.save()
 
     game.finished_at = timezone.now()
-    # game.game_code = None
+    game.game_code = None
     game.save()
     return HttpResponseRedirect(reverse('home'))
 
