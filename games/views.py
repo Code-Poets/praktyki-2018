@@ -289,11 +289,18 @@ class CreateGameView(generic.CreateView):
     template_name = 'games/game_create.html'
     # success_url =
 
+    def get_context_data(self, **kwargs):
+        data = super(CreateGameView, self).get_context_data(**kwargs)
+        data['hosted_games'] = Game.objects.filter(host=self.request.user, finished_at=None)
+
+        return data
+
     def form_valid(self, form):
         form.instance.host = self.request.user
         form.instance.game_code = generate_game_code()
         form.save()
         return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
+
 
 
 class EditGameView(generic.UpdateView):
