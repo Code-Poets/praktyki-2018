@@ -4,11 +4,13 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
-<h1>Leave game</h1>
+<h1>Withdraw</h1>
 <form method="post">{% csrf_token %}
-    <p><strong>Are you sure you want to leave the game?</strong></p>
+    <p><strong>Are you sure you want to withdraw from the game?</strong></p>
     <br/>
-    <p>This will irreversibly delete all of your current stats.</p>
+    <p>This will irreversibly remove you from this game.</p>
+    <br/>
+    <p>You can join the game again, but all of your current stats will be lost.</p>
     <br/>
     <p>Are you sure you want to proceed?</p>
     <br/>
