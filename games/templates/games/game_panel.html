@@ -175,6 +175,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.0.nick }}</td></tr>
+        {% if gamers.0.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.0.status }}"</font></td></tr>
+        {% else %}
+        <tr><td id="status" colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.0.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -185,17 +190,17 @@ $("div#dialog").dialog ({
         {% if gamers.0.race_slot_1 != None %}
         <td>{{ gamers.0.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.0.class_slot_1 != None %}
-        <td>{{ gamers.0.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.0.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.0.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.0.class_slot_1 != None %}
+        <td>{{ gamers.0.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.0.class_slot_2 != None %}
@@ -216,6 +221,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.6.nick }}</td></tr>
+        {% if gamers.6.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.6.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.6.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -226,17 +236,17 @@ $("div#dialog").dialog ({
         {% if gamers.6.race_slot_1 != None %}
         <td>{{ gamers.6.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.6.class_slot_1 != None %}
-        <td>{{ gamers.6.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.6.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.6.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.6.class_slot_1 != None %}
+        <td>{{ gamers.6.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.6.class_slot_2 != None %}
@@ -257,6 +267,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.2.nick }}</td></tr>
+        {% if gamers.2.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.2.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.2.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -267,17 +282,17 @@ $("div#dialog").dialog ({
         {% if gamers.2.race_slot_1 != None %}
         <td>{{ gamers.2.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.2.class_slot_1 != None %}
-        <td>{{ gamers.2.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.2.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.2.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.2.class_slot_1 != None %}
+        <td>{{ gamers.2.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.2.class_slot_2 != None %}
@@ -301,6 +316,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.5.nick }}</td></tr>
+        {% if gamers.5.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.5.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.5.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -311,17 +331,17 @@ $("div#dialog").dialog ({
         {% if gamers.5.race_slot_1 != None %}
         <td>{{ gamers.5.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.5.class_slot_1 != None %}
-        <td>{{ gamers.5.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.5.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.5.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.5.class_slot_1 != None %}
+        <td>{{ gamers.5.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.5.class_slot_2 != None %}
@@ -345,6 +365,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.4.nick }}</td></tr>
+        {% if gamers.4.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.4.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.4.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -355,17 +380,17 @@ $("div#dialog").dialog ({
         {% if gamers.4.race_slot_1 != None %}
         <td>{{ gamers.4.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.4.class_slot_1 != None %}
-        <td>{{ gamers.4.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.4.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.4.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.4.class_slot_1 != None %}
+        <td>{{ gamers.4.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.4.class_slot_2 != None %}
@@ -389,6 +414,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.3.nick }}</td></tr>
+        {% if gamers.3.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.3.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.3.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -399,17 +429,17 @@ $("div#dialog").dialog ({
         {% if gamers.3.race_slot_1 != None %}
         <td>{{ gamers.3.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.3.class_slot_1 != None %}
-        <td>{{ gamers.3.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.3.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.3.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.3.class_slot_1 != None %}
+        <td>{{ gamers.3.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.3.class_slot_2 != None %}
@@ -430,6 +460,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.7.nick }}</td></tr>
+        {% if gamers.7.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.7.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.7.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -440,17 +475,17 @@ $("div#dialog").dialog ({
         {% if gamers.7.race_slot_1 != None %}
         <td>{{ gamers.7.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.7.class_slot_1 != None %}
-        <td>{{ gamers.7.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.7.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.7.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.7.class_slot_1 != None %}
+        <td>{{ gamers.7.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.7.class_slot_2 != None %}
@@ -471,6 +506,11 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.1.nick }}</td></tr>
+        {% if gamers.1.status is not None %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.1.status }}"</font></td></tr>
+        {% else %}
+        <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
+        {% endif %}
         <tr><td><font color="DimGray">Level: </font></td>
         <td>{{ gamers.1.level }}</td></tr>
         <tr><td><font color="DimGray">Bonus: </font></td>
@@ -481,17 +521,17 @@ $("div#dialog").dialog ({
         {% if gamers.1.race_slot_1 != None %}
         <td>{{ gamers.1.race_slot_1 }}</td></tr>
         {% endif %}
-        <tr><td><font color="DimGray">Class: </font></td>
-        {% if gamers.1.class_slot_1 != None %}
-        <td>{{ gamers.1.class_slot_1 }}</td></tr>
-        {% endif %}
-
         <!-- Race slot 2 -->
         {% if gamers.1.race_slot_2 != None %}
         <tr><td><font color="DimGray">Race 2: </font></td>
         <td>{{ gamers.1.race_slot_2 }}</td></tr>
         {% else %}
         <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
+
+        <tr><td><font color="DimGray">Class: </font></td>
+        {% if gamers.1.class_slot_1 != None %}
+        <td>{{ gamers.1.class_slot_1 }}</td></tr>
         {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.1.class_slot_2 != None %}
@@ -520,7 +560,7 @@ function isMobileDevice() {
 //    document.getElementById('game_panel_table').setAttribute('width', window.visualViewport.width);
 //    document.getElementById('game_panel_table').setAttribute('height', screen.height);
 //    document.getElementById('game_panel_table').setAttribute('width', screen.width);
-    document.getElementById('game_panel_table').setAttribute('height', 0.9*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('height', 0.85*window.innerHeight);
     document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
         if (window.innerHeight<window.innerWidth){
             document.getElementById('game_panel_table').style.fontSize = "75%"; 
@@ -528,9 +568,9 @@ function isMobileDevice() {
         else document.getElementById('game_panel_table').style.fontSize = "90%";
     }
     else {
-    document.getElementById('game_panel_table').setAttribute('height', 0.9*window.innerHeight);
+    document.getElementById('game_panel_table').setAttribute('height', 0.85*window.innerHeight);
     document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
-
+    document.getElementById('game_panel_table').style.fontSize = "90%";
     }
 </script>
 </body>

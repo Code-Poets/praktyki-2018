@@ -13,7 +13,7 @@ from django.utils import timezone
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
-        fields = ['level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2']
+        fields = ['level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2', 'status']
     level = forms.IntegerField(label='Level', initial=1, min_value=1)
     bonus = forms.IntegerField(label='Bonus', initial=0)
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
@@ -21,7 +21,7 @@ class GamerForm(forms.ModelForm):
     race_slot_2 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     class_slot_1 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
     class_slot_2 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
-
+    status = forms.CharField(label='Status')
 
 """
 class AjaxableResponseMixin:
