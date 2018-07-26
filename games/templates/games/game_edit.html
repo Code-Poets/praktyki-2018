@@ -2,11 +2,11 @@
 {% block content %}
 {% load static %}
 <head>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 </head>
 
 <h1>Edit your game</h1>
@@ -15,29 +15,27 @@
 
 <div id="wrapper">
     <div {% if game.gamers.count > 0 %} id="first" {% endif %}>
-          <form method="post">
+        <form method="post">
             {% csrf_token %}
-                <table align="center">
-            {% for field in form %}
-                <tr>
-                <td>{{ field.label_tag }}</td>
-                <td colspan="2">{{ field }}</td>
-
-                </tr>
-                <tr>
-                {% if field.help_text %}
-                    <td colspan="3" align="center"><small style="color: #5c8af9 ">{{ field.help_text }}</small></td>
-                {% endif %}
-                </tr>
-                <tr>
-                {% for error in field.errors %}
+            <table align="center">
+                {% for field in form %}
                     <tr>
-                  <td colspan="3" align="center"><small style="color: red">{{ error }}</small></td>
+                        <td align="right">{{ field.label_tag }}</td>
+                        <td colspan="2">{{ field }}</td>
+                    </tr>
+                    <tr>
+                        {% if field.help_text %}
+                            <td colspan="3" align="center"><small style="color: #5c8af9 ">{{ field.help_text }}</small></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% for error in field.errors %}
+                            <tr>
+                                <td colspan="3" align="center"><small style="color: red">{{ error }}</small></td>
+                            </tr>
+                        {% endfor %}
                     </tr>
                 {% endfor %}
-                </tr>
-
-            {% endfor %}
                 <tr>
                     <td> </td>
                     <td><input type="submit" value="Save"/></td>
@@ -47,77 +45,54 @@
                         </form>
                     </td>
                 </tr>
-                </table>
+            </table>
 
-          </form>
+        </form>
 
+        <script type="text/javascript">
+            $(function () {
+                $("#dialog").dialog ({
+                    modal: true,
+                    autoOpen: false,
+                    buttons : {
+                        "Yes" : function ()
+                        {
+                            window.location.href = "{% url 'games:end_game' game.id%}";
+                        },
+                        "No" : function ()
+                        {
+                            $(this).dialog('close');
+                        }
+                    }
+                }).prev().find(".ui-dialog-titlebar-close").hide ();
 
-<!--
- <script type="text/javascript">
-    $(function () {
-        $("#dialog").dialog ({
-            modal: true,
-            buttons : {
-                "Yes" : function ()
-                {
-                    window.location.href = "{% url 'games:end_game' game.id%}";
-                },
-                "No" : function ()
-                {
+                $("#DialogShow").click(function () {
+                    $('#dialog').dialog('open');
+                });
+            });
+        </script>
+        <br />
 
-                }
-            }
-        }).prev().find(".ui-dialog-titlebar-close").hide ();
-    });
-</script>
-<br />
-<input type="button" id="dialog" value="Delete game" />
-<div id="dialog" title="Wait1">
-    Are you sure?
-</div>
--->
- <script type="text/javascript">
-    $(function () {
-        $("#dialog").dialog ({
-            modal: true,
-            autoOpen: false,
-            buttons : {
-                "Yes" : function ()
-                {
-                    window.location.href = "{% url 'games:end_game' game.id%}";
-                },
-                "No" : function ()
-                {
-                    $(this).dialog('close');
-                }
-            }
-        }).prev().find(".ui-dialog-titlebar-close").hide ();
+        <input type="button" id="DialogShow" value="End game" />
 
-        $("#DialogShow").click(function () {
-            $('#dialog').dialog('open');
-        });
-    });
-</script>
-<br />
-
-<input type="button" id="DialogShow" value="Delete game" />
-
-<div id="dialog" title="Are you sure?" align="center">
-    Do you want to delete <b> {{ game.name }} </b> <br />
-    and save all gamers stats?
-</div>
+        <div id="dialog" title="Are you sure?" align="center">
+            Do you want to end <b> {{ game.name }} </b> <br />
+            and save all gamers stats?
+        </div>
 
     </div>
 
     {% if game.gamers.count > 0 %}
-    <div id="second">
-        <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
-            {% for gamer in game.gamers.all %}
-            <tr><td>{{ gamer.nick }}</td>
-            <td><a href="{% url 'games:kick_gamer' gamer.id%}">Kick</a></td></tr>
-            {% endfor %}
-        </table>
-    </div>
+        <div id="second">
+            <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
+                {% for gamer in game.gamers.all %}
+                <tr>
+                    <td>{{ gamer.nick }}</td>
+                    <td><a href="{% url 'games:kick_gamer' gamer.id%}">Kick</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     {% endif %}
 </div>
 {% endblock %}
