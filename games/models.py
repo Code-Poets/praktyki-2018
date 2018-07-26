@@ -3,16 +3,25 @@ from users.models import CustomUser
 from django.core.validators import MaxValueValidator, MinValueValidator
 from enum import Enum, unique
 
+MAX_GAMERS_PER_GAME = 8
+MIN_GAMERS_PER_GAME = 6
+DEFAULT_GAMERS_PER_GAME = MIN_GAMERS_PER_GAME
+MIN_WINNING_LEVEL = 1
+DEFAULT_WINNING_LEVEL = 10
+GAME_CODE_LENGTH = 4
+
 
 # Create your models here.
 class Game(models.Model):
     host = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    game_code = models.CharField(max_length=4, null=True, blank=True)
+    game_code = models.CharField(max_length=GAME_CODE_LENGTH, null=True, blank=True)
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     finished_at = models.DateTimeField(null=True, default=None, blank=True)
-    max_players = models.IntegerField(default=6, validators=[MinValueValidator(2), MaxValueValidator(8)])
-    winning_level = models.IntegerField(default=10, validators=[MinValueValidator(1)])
+    max_players = models.IntegerField(default=DEFAULT_GAMERS_PER_GAME,
+                                      validators=[MinValueValidator(MIN_GAMERS_PER_GAME),
+                                                  MaxValueValidator(MAX_GAMERS_PER_GAME)])
+    winning_level = models.IntegerField(default=DEFAULT_WINNING_LEVEL, validators=[MinValueValidator(MIN_WINNING_LEVEL)])
 
     def __str__(self):
         return str(self.pk) + ' ' + self.name
@@ -64,10 +73,14 @@ class Gamer(models.Model):
     level = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     bonus = models.IntegerField(default=0)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default=Gender.N.value)
-    race_slot_1 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL, related_name='race_slot_1', default=None, blank=True)
-    race_slot_2 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL, related_name='race_slot_2', default=None, blank=True)
-    class_slot_1 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL, related_name='class_slot_1', default=None, blank=True)
-    class_slot_2 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL, related_name='class_slot_2', default=None, blank=True)
+    race_slot_1 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL,
+                                    related_name='race_slot_1', default=None, blank=True)
+    race_slot_2 = models.ForeignKey(CharacterRace, null=True, on_delete=models.SET_NULL,
+                                    related_name='race_slot_2', default=None, blank=True)
+    class_slot_1 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL,
+                                     related_name='class_slot_1', default=None, blank=True)
+    class_slot_2 = models.ForeignKey(CharacterClass, null=True, on_delete=models.SET_NULL,
+                                     related_name='class_slot_2', default=None, blank=True)
     # races = models.ManyToManyField(CharacterRace)
     # classes = models.ManyToManyField(CharacterClass)
 
