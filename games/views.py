@@ -14,7 +14,7 @@ class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
         fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2']
-    status = forms.CharField(label='Status')
+    status = forms.CharField(label='Status', required=False)
     level = forms.IntegerField(label='Level', initial=1, min_value=1)
     bonus = forms.IntegerField(label='Bonus', initial=0)
     gender = forms.ChoiceField(choices=GENDER_CHOICES)
