@@ -1,32 +1,34 @@
 <!DOCTYPE html>
 <html>
  <head>
+{% load static %}
+
   <meta name="description" content="Free Web tutorials">
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="John Doe">
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
-   <style>
-     body {background-color:Gainsboro}
-html { font-size: 50%; }
 
-@media (max-width: 300px) {
-    html { font-size: 30%; }
+<link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
+
+<style>
+.button1 {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #2162ff;
+    border: 2px solid #a3beff;
+    padding: 6px 12px;
 }
 
-@media (min-width: 500px) {
-    html { font-size: 50%; }
+.button2 {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #f93109;
+    border: 2px solid #ff8d47;
+    padding: 6px 15px;
 }
+</style>
 
-@media (min-width: 700px) {
-    html { font-size: 80%; }
-}
-
-@media (min-width: 1200px) {
-    html { font-size: 120%; }
-}
-    </style>
-
-    <SCRIPT LANGUAGE="JavaScript">
+<SCRIPT LANGUAGE="JavaScript">
     function getCookie(name)
     {
         var start = document.cookie.indexOf( name + "=" );
@@ -100,7 +102,7 @@ html { font-size: 50%; }
 
     }
     window.onload=doload;
-    </SCRIPT>
+</SCRIPT>
 
 
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -112,12 +114,12 @@ html { font-size: 50%; }
   } );
   </script>
  </head>
-<body>
+<body background="/home/ruda/Praktyki/src/e_munchkin/games/static/games/images/background-image.jpg">
 
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
 
-        <div id="dialog" title="Do we have a winner?">
+        <div id="dialog" title="Do we have a winner?" align="center">
             <p>Is that the end of a game? <br />Oh no!</p>
         </div>
         {% endif %}
@@ -143,13 +145,18 @@ $("div#dialog").dialog ({
 
 <table width="100%" align="center">
   <tr>
+    <td align="center"> 
+<form action="{% url 'home' %}">
+   <input type="submit" value="Home" style="font-size:15px" class="button2"/>
+</form>
+    </td>
     <td align="center" style="padding:0 5px 0 5px;"> <font size="6"><b> {{ game.game_code }} </b></font> </td>
     <td align="center" style="padding:0 5px 0 30px;"> <font size="7"><b> {{ game.name }} </b></font> </td>
     <td align="center" style="padding:0 5px 0 5px;"> <font size="2">made by: </font><font size="3"> <b>{{ game.host.username }} </b></font></td>
     <td align="center" style="padding:0 5px 0 5px;"> </font><font size="3"> <b>{{ game.winning_level }}</b></font></td>
     <td align="center"> 
 <form action="{% url 'games:edit_game' game.id%}">
-   <input type="submit" value="Edit" style="font-size:15px" />
+   <input type="submit" value="Edit" style="font-size:15px" class="button1"/>
 </form>
     </td>
   </tr>
@@ -159,11 +166,12 @@ $("div#dialog").dialog ({
 <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
   <tr align="center" height="33%">
     <td><font color="DimGray">X</font></td>
-    <td width="20%">
-<!-- 1. gamer -->
         {% if gamers.0 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 1. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.0.nick }}</td></tr>
@@ -177,30 +185,34 @@ $("div#dialog").dialog ({
         {% if gamers.0.race_slot_1 != None %}
         <td>{{ gamers.0.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.0.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.0.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.0.class_slot_1 != None %}
         <td>{{ gamers.0.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.0.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.0.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.0.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.0.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 7. gamer -->
         {% if gamers.6 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 7. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.6.nick }}</td></tr>
@@ -214,30 +226,34 @@ $("div#dialog").dialog ({
         {% if gamers.6.race_slot_1 != None %}
         <td>{{ gamers.6.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.6.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.6.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.6.class_slot_1 != None %}
         <td>{{ gamers.6.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.6.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.6.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.6.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.6.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 3. gamer -->
         {% if gamers.2 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 3. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.2.nick }}</td></tr>
@@ -251,21 +267,24 @@ $("div#dialog").dialog ({
         {% if gamers.2.race_slot_1 != None %}
         <td>{{ gamers.2.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.2.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.2.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.2.class_slot_1 != None %}
         <td>{{ gamers.2.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.2.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.2.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.2.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.2.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
@@ -273,11 +292,12 @@ $("div#dialog").dialog ({
     <td width="20%"><font color="DimGray">X</font></td>
   </tr>
   <tr align="center" height="33%">
-    <td width="20%">
-<!-- 6. gamer -->
         {% if gamers.5 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 6. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.5.nick }}</td></tr>
@@ -291,21 +311,24 @@ $("div#dialog").dialog ({
         {% if gamers.5.race_slot_1 != None %}
         <td>{{ gamers.5.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.5.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.5.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.5.class_slot_1 != None %}
         <td>{{ gamers.5.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.5.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.5.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.5.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.5.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
@@ -313,11 +336,12 @@ $("div#dialog").dialog ({
     <td width="20%"><font color="DimGray">X</font></td>
     <td width="20%"><font color="DimGray">X</font></td>
     <td width="20%"><font color="DimGray">X</font></td>
-    <td width="20%">
-<!-- 5. gamer -->
         {% if gamers.4 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 5. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.4.nick }}</td></tr>
@@ -331,21 +355,24 @@ $("div#dialog").dialog ({
         {% if gamers.4.race_slot_1 != None %}
         <td>{{ gamers.4.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.4.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.4.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.4.class_slot_1 != None %}
         <td>{{ gamers.4.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.4.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.4.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.4.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.4.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
@@ -353,11 +380,12 @@ $("div#dialog").dialog ({
   </tr>
   <tr align="center" height="33%">
     <td width="20%"><font color="DimGray">X</font></td>
-    <td width="20%">
-<!-- 4. gamer -->
         {% if gamers.3 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 4. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.3.nick }}</td></tr>
@@ -371,30 +399,34 @@ $("div#dialog").dialog ({
         {% if gamers.3.race_slot_1 != None %}
         <td>{{ gamers.3.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.3.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.3.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.3.class_slot_1 != None %}
         <td>{{ gamers.3.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.3.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.3.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.3.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.3.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 8. gamer -->
         {% if gamers.7 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 8. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.7.nick }}</td></tr>
@@ -408,30 +440,34 @@ $("div#dialog").dialog ({
         {% if gamers.7.race_slot_1 != None %}
         <td>{{ gamers.7.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.7.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.7.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.7.class_slot_1 != None %}
         <td>{{ gamers.7.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.7.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.7.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.7.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.7.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}
     </td>
-    <td width="20%">
-<!-- 2. gamer -->
         {% if gamers.1 == NULL %}
+    <td width="20%">
             <font color="DimGray">Free place for gamer</font>
         {% else %}
+    <td width="20%" bgcolor="ffe5ba">
+<!-- 2. gamer -->
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.1.nick }}</td></tr>
@@ -445,21 +481,24 @@ $("div#dialog").dialog ({
         {% if gamers.1.race_slot_1 != None %}
         <td>{{ gamers.1.race_slot_1 }}</td></tr>
         {% endif %}
-        <!-- Race slot 2 -->
-        {% if gamers.1.race_slot_2 != None %}
-        <tr><td><font color="DimGray">Race 2: </font></td>
-        <td>{{ gamers.1.race_slot_2 }}</td></tr>
-        {% endif %}
-
         <tr><td><font color="DimGray">Class: </font></td>
         {% if gamers.1.class_slot_1 != None %}
         <td>{{ gamers.1.class_slot_1 }}</td></tr>
         {% endif %}
 
+        <!-- Race slot 2 -->
+        {% if gamers.1.race_slot_2 != None %}
+        <tr><td><font color="DimGray">Race 2: </font></td>
+        <td>{{ gamers.1.race_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Race 2: </font></td>
+        {% endif %}
         <!-- Class slot 2 -->
         {% if gamers.1.class_slot_2 != None %}
         <tr><td><font color="DimGray">Class 2: </font></td>
         <td>{{ gamers.1.class_slot_2 }}</td></tr>
+        {% else %}
+        <tr><td><font color="ffe5ba">Class 2: </font></td>
         {% endif %}
       </table> 
         {% endif %}

@@ -15,10 +15,43 @@
 
 <div id="wrapper">
     <div id="first">
-        <form method="post">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Save" />
-        </form>
+          <form method="post">
+            {% csrf_token %}
+                <table align="center">
+            {% for field in form %}
+                <tr>
+                <td>{{ field.label_tag }}</td>
+                <td colspan="2">{{ field }}</td>
+
+                </tr>
+                <tr>
+                {% if field.help_text %}
+                    <td colspan="3" align="center"><small style="color: #5c8af9 ">{{ field.help_text }}</small></td>
+                {% endif %}
+                </tr>
+                <tr>
+                {% for error in field.errors %}
+                    <tr>
+                  <td colspan="3" align="center"><small style="color: red">{{ error }}</small></td>
+                    </tr>
+                {% endfor %}
+                </tr>
+
+            {% endfor %}
+                <tr>
+                    <td> </td>
+                    <td><input type="submit" value="Save"/></td>
+                    <td>
+                        <form action="{% url 'games:game_panel' game.id%}">
+                           <input type="submit" value="Back"/>
+                        </form>
+                    </td>
+                </tr>
+                </table>
+
+          </form>
+
+
 <!--
  <script type="text/javascript">
     $(function () {
@@ -69,7 +102,7 @@
 
 <input type="button" id="DialogShow" value="Delete game" />
 
-<div id="dialog" title="Are you sure?">
+<div id="dialog" title="Are you sure?" align="center">
     Do you want to delete <b> {{ game.name }} </b> <br />
     and save all gamers stats?
 </div>
