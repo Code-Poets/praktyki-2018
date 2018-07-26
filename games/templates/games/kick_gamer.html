@@ -4,7 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
-<h1>Leave game</h1>
+<h1>Kick player</h1>
 <form method="post">{% csrf_token %}
     <p><strong>Are you sure you want to kick this player?</strong></p>
     <br/>
@@ -12,9 +12,16 @@
     <br/>
     <p>Are you sure you want to proceed?</p>
     <br/>
-    <input type="submit" value="Yes">
-</form>
-<form method="get" action="{% url 'games:edit_game' gamer.game.id %}">
-    <button type="submit">No</button>
+    <table align="center">
+        <tr>
+            <td>
+                <input type="submit" class="btn btn-success" value="Yes">
+            </td>
+            <td width="20px"></td>
+            <td>
+                <input type="submit" name="cancel" class="btn btn-danger" value="No">
+            </td>
+        </tr>
+    </table>
 </form>
 {% endblock %}

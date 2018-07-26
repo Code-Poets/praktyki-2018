@@ -382,6 +382,12 @@ class KickGamerView(generic.DeleteView):
         self.object.delete()
         return HttpResponseRedirect(self.get_success_url())
 
+    def post(self, request, *args, **kwargs):
+        if "cancel" in request.POST:
+            return HttpResponseRedirect(reverse('games:edit_game', args=(self.get_object().game.id,)))
+        else:
+            return super(KickGamerView, self).post(request, *args, **kwargs)
+
 
 """
 def update_stats(request, gamer_id):
