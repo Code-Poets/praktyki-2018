@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Hey <font color="orange">{{ user.username }}</font>, that's all yours! </h1>
+<hr>
+<h4> Hosted games </h4>
+{% if hosted_games %}
+<p>Games you are currently hosting:</p>
+<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
+    <tr>
+        <th> Game name </th>
+        <th> Game code </th>
+        <th> Players </th>
+        <th> Game created at</th>
+    </tr>
+    {% for game in hosted_games %}
+    <tr>
+        <td><a href="{% url 'games:game_stats' game.id %}">{{ game.name }}</a></td>
+        <td>{{ game.game_code }}</td>
+        <td>{{ game.gamers.count }}/{{ game.max_players }}</td>
+        <td>{{ game.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You are not hosting any finished games.</p>
+{% endif %}
+
+<br />
+
+{% if hosted_end_games %}
+<p>Games you have been hosting:</p>
+<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
+    <tr>
+        <th> Game name </th>
+        <th> Players </th>
+        <th> Game created at</th>
+        <th> Game finished at</th>
+        <th> Game winner </th>
+    </tr>
+    {% for game in hosted_end_games %}
+    <tr>
+        <td><a href="{% url 'games:game_stats' game.id %}">{{ game.name }}</a></td>
+        <td>{{ game.gamers.count }}/{{ game.max_players }}</td>
+        <td>{{ game.created_at }}</td>
+        <td>{{ game.finished_at }}</td>
+        <td>
+    {% for gamer in game.gamers.all %}
+        {% if gamer.winner == True %}
+            <font size="2">{{ gamer.nick }}</font>
+        {% endif %}
+    {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You not have been hosting any finished games.</p>
+{% endif %}
+
+<hr>
+<h4> Played games </h4>
+{% if gamers %}
+<p>You are playing as:</p>
+<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
+    <tr>
+        <th> Nick </th>
+        <th> Game name </th>
+        <th> Game code </th>
+        <th> Game host </th>
+        <th> Players </th>
+        <th> Game created at</th>
+    </tr>
+    {% for gamer in gamers %}
+    <tr>
+        <td>{{ gamer.nick }}</td>
+        <td><a href="{% url 'games:game_stats' gamer.game.id %}">{{ gamer.game.name }}</a></td>
+        <td>{{ gamer.game.game_code }}</td>
+        <td>{{ gamer.game.host.username }}</td>
+        <td>{{ gamer.game.gamers.count }}/{{ gamer.game.max_players }}</td>
+        <td>{{ gamer.game.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You are not playing any games as gamer.</p>
+{% endif %}
+
+<br />
+
+{% if gamers_end %}
+<p>You have been playing as:</p>
+<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
+    <tr>
+        <th> Nick </th>
+        <th> Game name </th>
+        <th> Game host </th>
+        <th> Players </th>
+        <th> Game created at</th>
+        <th> Game finished at</th>
+    </tr>
+    {% for gamer in gamers_end %}
+    <tr>
+        <td>{{ gamer.nick }}</td>
+        <td><a href="{% url 'games:game_stats' gamer.game.id %}">{{ gamer.game.name }}</a></td>
+        <td>{{ gamer.game.host.username }}</td>
+        <td>{{ gamer.game.gamers.count }}/{{ gamer.game.max_players }}</td>
+        <td>{{ gamer.game.created_at }}</td>
+        <td>{{ gamer.game.finished_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>You not have been playing any finished games as gamer.</p>
+{% endif %}
+{% endblock %}
