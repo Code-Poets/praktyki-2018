@@ -70,6 +70,10 @@ class Gamer(models.Model):
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, default=None, blank=True)
     nick = models.CharField(max_length=50, unique=False)
     winner = models.BooleanField(default=False)
+    status = models.CharField(max_length=30, null=True, default=None, blank=True)
+    order = models.IntegerField(validators=[MinValueValidator(1),
+                                            MaxValueValidator(MAX_GAMERS_PER_GAME)],
+                                null=True, blank=True)
     level = models.IntegerField(default=1, validators=[MinValueValidator(1)])
     bonus = models.IntegerField(default=0)
     gender = models.CharField(max_length=20, choices=GENDER_CHOICES, default=Gender.N.value)
