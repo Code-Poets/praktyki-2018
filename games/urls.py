@@ -17,6 +17,8 @@ urlpatterns = [
     path('<int:pk>/end/', views.EndGameView.as_view(), name='end_game'),
     # ex: /games/1/end/update
     path('<int:pk>/end/update/', views.update_stats, name='update_stats'),
+    # ex: /games/1/stats
+    path('<int:pk>/stats/', views.StatsGameView.as_view(), name='game_stats'),
 
     # ex: /games/access/
     path('access/', views.GameAccessView.as_view(), name='game_access'),

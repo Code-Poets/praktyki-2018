@@ -46,7 +46,8 @@
                      {% if request.get_full_path != "/" %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">Home</a></td>
                      {% endif %}
-        </tr>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'user_stats' user.id %}">Stats</a></td> 
+       </tr>
         </table>
 
     {% else %}
