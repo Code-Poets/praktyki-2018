@@ -1,11 +1,12 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
-
 from .forms import CustomUserCreationForm
 from .models import CustomUser
 from games.models import Game, Gamer
 from django.db.models import Q
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 
 class SignUp(generic.CreateView):
@@ -34,3 +35,18 @@ class UserStats(generic.DetailView):
         data['gamers_end'] = Gamer.objects.filter(user=self.request.user).filter(~Q(game__finished_at=None))
         return data
 
+
+class DeleteUserView(generic.DeleteView):
+    model = CustomUser
+    template_name = 'users/delete_user.html'
+    success_url = '/'
+
+    def delete(self, request, *args, **kwargs):
+        request.session['user_id'] = None
+        return super(DeleteUserView, self).delete(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        if "cancel" in request.POST:
+            return HttpResponseRedirect(reverse('home'))
+        else:
+            return super(DeleteUserView, self).post(request, *args, **kwargs)
