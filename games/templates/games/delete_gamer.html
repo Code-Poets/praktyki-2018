@@ -14,9 +14,16 @@
     <br/>
     <p>Are you sure you want to proceed?</p>
     <br/>
-    <input type="submit" value="Yes">
-</form>
-<form method="get" action="{% url 'games:gamer' gamer.id %}">
-    <button type="submit">No</button>
+    <table align="center">
+        <tr>
+            <td>
+                <input type="submit" class="btn btn-success" value="Yes">
+            </td>
+            <td width="20px"></td>
+            <td>
+                <input type="submit" name="cancel" class="btn btn-danger" value="No">
+            </td>
+        </tr>
+    </table>
 </form>
 {% endblock %}

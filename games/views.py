@@ -357,6 +357,12 @@ class DeleteGamerView(generic.DeleteView):
         request.session['gamer_id'] = None
         return super(DeleteGamerView, self).delete(request, *args, **kwargs)
 
+    def post(self, request, *args, **kwargs):
+        if "cancel" in request.POST:
+            return HttpResponseRedirect(reverse('games:gamer', args=(self.get_object().id,)))
+        else:
+            return super(DeleteGamerView, self).post(request, *args, **kwargs)
+
 
 class KickGamerView(generic.DeleteView):
     model = Gamer
