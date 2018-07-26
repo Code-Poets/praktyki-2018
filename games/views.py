@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse, reverse_lazy
@@ -257,6 +257,7 @@ def join_game(request, gamepass, nick):                     # View for assigning
     return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
 """
 
+
 def generate_game_code():
 
     code = ''
@@ -289,6 +290,11 @@ class CreateGameView(generic.CreateView):
     template_name = 'games/game_create.html'
     # success_url =
 
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            return redirect('login')
+        return super(CreateGameView, self).dispatch(request, *args, **kwargs)
+
     def get_context_data(self, **kwargs):
         data = super(CreateGameView, self).get_context_data(**kwargs)
         data['hosted_games'] = Game.objects.filter(host=self.request.user, finished_at=None)
@@ -302,12 +308,19 @@ class CreateGameView(generic.CreateView):
         return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
 
 
-
 class EditGameView(generic.UpdateView):
     model = Game
     fields = ['name', 'max_players', 'winning_level']
     template_name = 'games/game_edit.html'
     # success_url =
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+                raise Http404("No game found")
+        else:
+            if self.get_object().host != self.request.user:
+                raise Http404("No game found")
+        return super(EditGameView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return Game.objects
@@ -322,6 +335,24 @@ class DeleteGamerView(generic.DeleteView):
     template_name = 'games/delete_gamer.html'
     success_url = '/'
 
+    def dispatch(self, request, *args, **kwargs):
+        if self.get_object().game.finished_at is not None:
+            raise Http404("No gamer found")
+        else:
+            if self.request.user.is_authenticated:
+                if self.get_object().user != self.request.user:
+                    raise Http404("No gamer found")
+            else:
+                # if 'gamer_id' not in request.session:
+                gamer_id = request.session.get('gamer_id', None)
+                if gamer_id is None:
+                    raise Http404("No gamer found")
+                else:
+                    # gamer_id = request.session['gamer_id']
+                    if self.get_object().id != request.session['gamer_id']:
+                        raise Http404("No gamer found")
+        return super(DeleteGamerView, self).dispatch(request, *args, **kwargs)
+
     def delete(self, request, *args, **kwargs):
         request.session['gamer_id'] = None
         return super(DeleteGamerView, self).delete(request, *args, **kwargs)
@@ -330,6 +361,14 @@ class DeleteGamerView(generic.DeleteView):
 class KickGamerView(generic.DeleteView):
     model = Gamer
     template_name = 'games/kick_gamer.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            raise Http404("No gamer found")
+        else:
+            if self.get_object().game.host != self.request.user:
+                raise Http404("No gamer found")
+        return super(KickGamerView, self).dispatch(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
