@@ -7,6 +7,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
 
+<script type="text/javascript">
+function increment(incrementor, target){
+    var value = parseInt(document.getElementById(target).value);
+    value+=incrementor;
+    document.getElementById(target).value = value;
+};
+</script>
+
 <h1>{{ gamer.nick }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
@@ -15,6 +23,17 @@
     {% csrf_token %}
      <table align="center">
     {% for field in form %}
+         {% if field is form.level or field is form.bonus %}
+            <!-- integer fields -->
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>
+                    <i class="btn btn-danger btn-sm" onclick="increment(-1, '{{ field.auto_id }}')">-</i>
+                    {{ field }}
+                    <i class="btn btn-success btn-sm" onclick="increment(1, '{{ field.auto_id }}')">+</i>
+                </td>
+            </tr>
+         {% else %}
             {% if field is form.race_slot_2 %}
                 {% if form.race_slot_1.value != None or gamer.race_slot_1 != None %}
                     <!-- Race field -->
@@ -45,6 +64,7 @@
                     </tr>
                 {% endif %}
             {% endif %}
+         {% endif %}
 
 
         <tr>
