@@ -14,7 +14,7 @@
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 <div id="wrapper">
-    <div id="first">
+    <div {% if game.gamers.count > 0 %} id="first" {% endif %}>
           <form method="post">
             {% csrf_token %}
                 <table align="center">
@@ -109,7 +109,7 @@
 
     </div>
 
-
+    {% if game.gamers.count > 0 %}
     <div id="second">
         <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
             {% for gamer in game.gamers.all %}
@@ -118,5 +118,6 @@
             {% endfor %}
         </table>
     </div>
+    {% endif %}
 </div>
 {% endblock %}
