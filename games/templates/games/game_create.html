@@ -14,53 +14,53 @@
 </form>
 -->
 
-  <form method="post">
+<form method="post">
     {% csrf_token %}
         <table align="center">
     {% for field in form %}
         <tr>
-        <td>{{ field.label_tag }}</td>
-        <td>{{ field }}</td>
-
+            <td align="right">{{ field.label_tag }}</td>
+            <td>{{ field }}</td>
         </tr>
         <tr>
-        {% if field.help_text %}
-            <td colspan="2" align="center"><small style="color: #5c8af9 ">{{ field.help_text }}</small></td>
-        {% endif %}
+            {% if field.help_text %}
+                <td colspan="2" align="center"><small style="color: #5c8af9 ">{{ field.help_text }}</small></td>
+            {% endif %}
         </tr>
         <tr>
-        {% for error in field.errors %}
-            <tr>
-          <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
-            </tr>
-        {% endfor %}
+            {% for error in field.errors %}
+                <tr>
+                    <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
+                </tr>
+            {% endfor %}
         </tr>
 
     {% endfor %}
         </table>
-    <input type="submit" value="Join"/>
-  </form>
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
 
 <br/>
 {% if hosted_games %}
-<p>Games you are currently hosting:</p>
-<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
-    <tr>
-        <th> Game name </th>
-        <th> Game code </th>
-        <th> Players </th>
-        <th> Game created at</th>
-    </tr>
-    {% for game in hosted_games %}
-    <tr>
-        <td><a href="{% url 'games:game_panel' game.id %}">{{ game.name }}</a></td>
-        <td>{{ game.game_code }}</td>
-        <td>{{ game.gamers.count }}/{{ game.max_players }}</td>
-        <td>{{ game.created_at }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <h2>Games you are currently hosting:</h2>
+    <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
+        <tr>
+            <th> Game name </th>
+            <th> Game code </th>
+            <th> Players </th>
+            <th> Game created at</th>
+        </tr>
+        {% for game in hosted_games %}
+            <tr>
+                <td><a href="{% url 'games:game_panel' game.id %}">{{ game.name }}</a></td>
+                <td>{{ game.game_code }}</td>
+                <td>{{ game.gamers.count }}/{{ game.max_players }}</td>
+                <td>{{ game.created_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 {% else %}
-<p>You are not hosting any games.</p>
+    <p>You are not hosting any games.</p>
 {% endif %}
 {% endblock %}
