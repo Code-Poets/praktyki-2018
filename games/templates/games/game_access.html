@@ -14,16 +14,15 @@
     </table>
 -->
 
-  <form method="post">
+<form method="post">
     {% csrf_token %}
-        <table align="center">
-    {% for field in form %}
-        <tr>
-        <td>{{ field.label_tag }}</td>
-        <td>{{ field }}</td>
-
-        </tr>
-    {% endfor %}
+    <table align="center">
+        {% for field in form %}
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+            </tr>
+        {% endfor %}
         <tr>
             {% if form.errors %}
                 {% for field in form %}
@@ -40,43 +39,43 @@
                 {% endfor %}
             {% endif %}
         </tr>
-        </table>
+    </table>
     <input type="submit" value="Join"/>
-  </form>
+</form>
 
 <br/>
 {% if gamer_cookie != None or gamers %}
-<p>Recently played games:</p>
-<table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
-    <tr>
-        <th> Game name </th>
-        <th> Nick </th>
-        <th> Level </th>
-        <th> Game started at</th>
-    </tr>
-{% if request.user.is_authenticated %}
-    {% for gamer in gamers %}
-    {% if not gamer.game.is_finished %}
-    <tr>
-        <td><a href="{% url 'games:gamer' gamer.id%}">{{ gamer.game.name }}</a></td>
-        <td>{{ gamer.nick }}</td>
-        <td>{{ gamer.level }}</td>
-        <td>{{ gamer.game.created_at }}</td>
-    </tr>
-    {% endif %}
-    {% endfor %}
+    <p>Recently played games:</p>
+    <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
+        <tr>
+            <th> Game name </th>
+            <th> Nick </th>
+            <th> Level </th>
+            <th> Game started at</th>
+        </tr>
+        {% if request.user.is_authenticated %}
+            {% for gamer in gamers %}
+                {% if not gamer.game.is_finished %}
+                    <tr>
+                        <td><a href="{% url 'games:gamer' gamer.id%}">{{ gamer.game.name }}</a></td>
+                        <td>{{ gamer.nick }}</td>
+                        <td>{{ gamer.level }}</td>
+                        <td>{{ gamer.game.created_at }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% if gamer_cookie != None %}
+                <tr>
+                    <td><a href="{% url 'games:gamer' unregistered_gamer.id %}">{{ unregistered_gamer.game.name }}</a></td>
+                    <td>{{ unregistered_gamer.nick }}</td>
+                    <td>{{ unregistered_gamer.level }}</td>
+                    <td>{{ unregistered_gamer.game.created_at }}</td>
+                </tr>
+            {% endif %}
+        {% endif %}
+    </table>
 {% else %}
-    {% if gamer_cookie != None %}
-    <tr>
-        <td><a href="{% url 'games:gamer' unregistered_gamer.id %}">{{ unregistered_gamer.game.name }}</a></td>
-        <td>{{ unregistered_gamer.nick }}</td>
-        <td>{{ unregistered_gamer.level }}</td>
-        <td>{{ unregistered_gamer.game.created_at }}</td>
-    </tr>
-    {% endif %}
-{% endif %}
-</table>
-{% else %}
-<p>No recently played games.</p>
+    <p>No recently played games.</p>
 {% endif %}
 {% endblock %}
