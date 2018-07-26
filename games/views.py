@@ -13,7 +13,7 @@ from django.utils import timezone
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
-        fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2']
+        fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2', 'order']
     status = forms.CharField(label='Status', required=False)
     level = forms.IntegerField(label='Level', initial=1, min_value=1)
     bonus = forms.IntegerField(label='Bonus', initial=0)
@@ -41,6 +41,7 @@ class GamerForm(forms.ModelForm):
             cleaned_data['race_slot_2'] = None
 
         return cleaned_data
+    order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
 """
 class AjaxableResponseMixin:
@@ -438,7 +439,7 @@ class GamePanelView(generic.DetailView):
 
 def game_panel_view(request, pk):
         game = Game.objects.get(pk=pk)
-        gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('id')
+        gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('order','id')
         context = {'gamers': gamers, 'game': game}
 
         return render(request, 'games/game_panel.html', context)
