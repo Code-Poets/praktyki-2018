@@ -43,7 +43,7 @@
 </form>
 <br/>
 <form action="{% url 'games:delete_gamer' gamer.id %}">
-    <input type="submit" value="Leave game" />
+    <input type="submit" value="Withdraw from game" />
 </form>
 
     {% for gamer in gamer.game.gamers.all %}
