@@ -52,7 +52,7 @@ class DeleteUserView(generic.DeleteView):
 
     def post(self, request, *args, **kwargs):
         if "cancel" in request.POST:
-            return HttpResponseRedirect(reverse('home'))
+            return HttpResponseRedirect(reverse('change_password'))
         else:
             return super(DeleteUserView, self).post(request, *args, **kwargs)
 
