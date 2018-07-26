@@ -15,12 +15,36 @@
     {% csrf_token %}
      <table align="center">
     {% for field in form %}
+            {% if field is form.race_slot_2 %}
+                {% if form.race_slot_1.value != None or gamer.race_slot_1 != None %}
+                    <!-- Race field -->
+                    <tr>
+                        <td></td>
+                        <td>
+                            {{ field }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% else %}
+                {% if field is form.class_slot_2 %}
+                    {% if form.class_slot_1.value != None or gamer.class_slot_1 != None %}
+                        <!-- Class field -->
+                        <tr>
+                            <td></td>
+                            <td>
+                                {{ field }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% else %}
                     <tr>
                         <td>{{ field.label_tag }}</td>
                         <td>
                             {{ field }}
                         </td>
                     </tr>
+                {% endif %}
+            {% endif %}
 
 
         <tr>
