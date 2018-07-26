@@ -13,11 +13,37 @@
 
 <form method="post"> <!--action="" method="post">-->
     {% csrf_token %}
-    {{ form.as_p }}
+     <table align="center">
+    {% for field in form %}
+                    <tr>
+                        <td>{{ field.label_tag }}</td>
+                        <td>
+                            {{ field }}
+                        </td>
+                    </tr>
+
+
+        <tr>
+        {% if field.help_text %}
+            <td colspan="2" align="center"><small style="color: LightGray ">{{ field.help_text }}</small></td>
+        {% endif %}
+        </tr>
+
+        <tr>
+        {% for error in field.errors %}
+            <tr>
+          <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
+            </tr>
+        {% endfor %}
+        </tr>
+    {% endfor %}
+        </table>
+    <br/>
     <input type="submit" value="Update" />
 </form>
+<br/>
 <form action="{% url 'games:delete_gamer' gamer.id %}">
-    <input type="submit" value="Leave game" />
+    <input type="submit" value="Withdraw from game" />
 </form>
 
     {% for gamer in gamer.game.gamers.all %}
