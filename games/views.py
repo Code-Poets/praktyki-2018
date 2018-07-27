@@ -115,10 +115,13 @@ class JoinForm(forms.Form):
     #    self.user = user
 
     def get_game_pass(self):
-        return self.data['game_pass']
+        return self.cleaned_data['game_pass']
 
     def get_nick(self):
-        return self.data['nick']
+        return self.cleaned_data['nick']
+
+    def clean_game_pass(self):
+       return self.cleaned_data['game_pass'].upper()
 
     def clean(self):
         cleaned_data = super(JoinForm, self).clean()
