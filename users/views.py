@@ -54,6 +54,14 @@ class DeleteUserView(generic.DeleteView):
     template_name = 'users/delete_user.html'
     success_url = '/'
 
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            raise Http404("No user found")
+        else:
+            if self.get_object() != self.request.user:
+                raise Http404("No user found")
+        return super(DeleteUserView, self).dispatch(request, *args, **kwargs)
+
     def delete(self, request, *args, **kwargs):
         request.session['user_id'] = None
         return super(DeleteUserView, self).delete(request, *args, **kwargs)
