@@ -29,6 +29,7 @@
                      {% endif %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'user_stats' user.id %}">Stats</a></td>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'change_password' %}">Account</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">Help</a></td>
         </tr>
         </table>
 
@@ -42,6 +43,7 @@
                      {% if request.get_full_path != "/" %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">Home</a></td>
                      {% endif %}
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">Help</a></td>
         </tr>
         </table>
 

@@ -463,12 +463,14 @@ def update_stats(request, pk):
     game.save()
     return HttpResponseRedirect(reverse('home'))
 
+
 class StatsGameView(generic.DetailView):
     model = Game
     template_name = 'games/game_stats.html'
 
     def get_queryset(self):
         return Game.objects
+
 
 def encyclopedia_view(request):
         list_race = CharacterRace.objects.all()
@@ -478,3 +480,6 @@ def encyclopedia_view(request):
 
         return render(request, 'games/encyclopedia.html', context)
 
+
+def help_view(request):
+    return render(request, 'games/instruction_manual.html')
