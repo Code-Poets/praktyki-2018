@@ -8,17 +8,6 @@
     {% endif %}
 
   <h2>Login</h2>
-<!--
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-!--
-    <button type="submit">Log me in now!</button>
---    
-    <input type="submit" value="Log me in now!"/>
-  </form>
--->
-
   <form method="post">
     {% csrf_token %}
         <table align="center">
@@ -46,6 +35,6 @@
             {% endif %}
         </tr>
         </table>
-    <input type="submit" value="Join"/>
+    <input type="submit" value="Login"/>
   </form>
 {% endblock %}

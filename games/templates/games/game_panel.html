@@ -8,9 +8,11 @@
   <meta name="author" content="John Doe">
   <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
-
 <style>
+    body{
+        background: #FCD697
+    }
+
 .button1 {
     background-color: #ffe5ba;
     border-radius: 8px;
@@ -27,6 +29,8 @@
     padding: 6px 15px;
 }
 </style>
+
+<link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
 
 <SCRIPT LANGUAGE="JavaScript">
     function getCookie(name)
@@ -114,7 +118,7 @@
   } );
   </script>
  </head>
-<body background="/home/ruda/Praktyki/src/e_munchkin/games/static/games/images/background-image.jpg">
+<body>
 
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
@@ -175,7 +179,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.0.nick }}</td></tr>
-        {% if gamers.0.status is not None %}
+        {% if gamers.0.status is not None and gamers.0.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.0.status }}"</font></td></tr>
         {% else %}
         <tr><td id="status" colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -221,7 +225,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.6.nick }}</td></tr>
-        {% if gamers.6.status is not None %}
+        {% if gamers.6.status is not None and gamers.6.status != ""%}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.6.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -267,7 +271,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.2.nick }}</td></tr>
-        {% if gamers.2.status is not None %}
+        {% if gamers.2.status is not None and gamers.2.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.2.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -316,7 +320,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.5.nick }}</td></tr>
-        {% if gamers.5.status is not None %}
+        {% if gamers.5.status is not None and gamers.5.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.5.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -365,7 +369,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.4.nick }}</td></tr>
-        {% if gamers.4.status is not None %}
+        {% if gamers.4.status is not None and gamers.4.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.4.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -414,7 +418,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.3.nick }}</td></tr>
-        {% if gamers.3.status is not None %}
+        {% if gamers.3.status is not None and gamers.3.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.3.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -460,7 +464,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.7.nick }}</td></tr>
-        {% if gamers.7.status is not None %}
+        {% if gamers.7.status is not None and gamers.7.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.7.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
@@ -506,7 +510,7 @@ $("div#dialog").dialog ({
       <table>
         <tr><td><font color="DimGray">Nick: </font></td>
         <td>{{ gamers.1.nick }}</td></tr>
-        {% if gamers.1.status is not None %}
+        {% if gamers.1.status is not None and gamers.1.status != "" %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="#cc7e00" size="1">"{{ gamers.1.status }}"</font></td></tr>
         {% else %}
         <tr><td colspan="2" style="word-wrap:break-word"><font color="ffe5ba" size="1">Status</font></td></tr>
