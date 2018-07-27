@@ -5,7 +5,7 @@ from .forms import CustomUserCreationForm
 from .models import CustomUser
 from games.models import Game, Gamer
 from django.db.models import Q
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 
 from django.contrib import messages
@@ -28,6 +28,14 @@ class SignUp(generic.CreateView):
 class UserStats(generic.DetailView):
     model = CustomUser
     template_name = 'users/user_stats.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        if not self.request.user.is_authenticated:
+            raise Http404("No user found")
+        else:
+            if self.get_object() != self.request.user:
+                raise Http404("No user found")
+        return super(UserStats, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return CustomUser.objects
