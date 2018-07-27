@@ -470,3 +470,11 @@ class StatsGameView(generic.DetailView):
     def get_queryset(self):
         return Game.objects
 
+def encyclopedia_view(request):
+        list_race = CharacterRace.objects.all()
+        list_class = CharacterClass.objects.all()
+        path = request.path
+        context = {'list_race': list_race, 'list_class': list_class, 'path': path}
+
+        return render(request, 'games/encyclopedia.html', context)
+
