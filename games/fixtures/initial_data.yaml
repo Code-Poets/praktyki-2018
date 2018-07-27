@@ -28,6 +28,18 @@
     name: Hobbit
     description: 'Raz w trakcie swojej tury możesz sprzedać jeden przedmiot za podwójną cenę (pozostałe przedmioty są warte tyle co zwykle). Jeśli nie uda ci się pierwszy rzut na ucieczkę, możesz odrzucić kartę i spróbować raz jeszcze.'
 
+- model: games.characterrace
+  pk: 4
+  fields:
+    name: Orc
+    description: 'Ork, który jest celem Klątwy, może ją zignorować, tracąc w zamian 1 Poziom - chyba, że jest Poziomu 1. Jeśli Okr walczy sam i pokona potwora różnicą co najmniej 10 Poziomów, zyskuje 1 dodatkowy poziom.'
+
+- model: games.characterrace
+  pk: 5
+  fields:
+    name: Gnome
+    description: '-1 do Ucieczki. Jeśli walczysz sam, możesz zagrać jednego Potwora z ręki jako Iluzję; inne karty mogą wpływać na tego iluzorycznego Potwora normalnie. Dodaj jego poziomy do swoich na czas tej jednej walki, potem Potwór znika. Potwory traktują cię jak Niziołka; są zbyt głupie by dostrzec różnicę. Wyjątek: Lewitujący Nochal oraz Cień Nochala nie będą cię gonić.'
+
 - model: games.characterclass
   pk: 1
   fields:
@@ -57,6 +69,12 @@
   fields:
     name: Pirate
     description: 'Liczy się SkARRRb: Raz na turę, w swojej turze, zanim otworzysz Drzwi, możesz wymienić 1 Poziom na jeden zakryty Skarb. Zakopany Skarb: Zamiast przeszukiwania pokoju, możesz wziąć wierzchnią kartę ze stosu Skarbów, albo ze stosu odrzuconych Skarbów.'
+
+- model: games.characterclass
+  pk: 6
+  fields:
+    name: Bard
+    description: 'Oczarowanie: Podczas walki z Potworem możesz odrzucić 3 karty i wybrać rywala. Każdy z was rzuca kością, jeśli wyrzucisz wynik równy lub wyższy niż on, musi ci pomóc w walce i nie może prosić o nagrodę. Bardowe Szczęście: Jeśli wygrasz walkę w swojej turze, sam lub z pomocą, dobierz jeden dodatkowy Skarb. Przejrzyj wszystkie dobrane przed chwilą skarby i odrzuć jeden, wybrany przez siebie.'
 
 - model: games.gamer
   pk: 1
