@@ -30,5 +30,7 @@ urlpatterns = [
     # ex: /games/gamer/5/lave
     path('gamer/<int:pk>/leave/', views.DeleteGamerView.as_view(), name='delete_gamer'),
     # ex: /games/gamer/5/kick
-    path('gamer/<int:pk>/kick/', views.KickGamerView.as_view(), name='kick_gamer')
+    path('gamer/<int:pk>/kick/', views.KickGamerView.as_view(), name='kick_gamer'),
+    # ex: /games/help/
+    path('help/', views.help_view, name='help')
 ]
