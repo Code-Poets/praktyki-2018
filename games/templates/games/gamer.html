@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+<style>
+.button {
+    background-color: #ffe5ba;
+    border-radius: 50%;
+    color: #4d5f8c;
+    border: 2px solid #b2b2b2;
+}
+</style>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -14,8 +22,16 @@ function increment(incrementor, target){
     document.getElementById(target).value = value;
 };
 </script>
-
-<h1>{{ gamer.nick }}</h1>
+<table align="center">
+    <tr>
+        <td><h1>{{ gamer.nick }} </h1></td>
+        <td>
+            <form action="{% url 'games:encyclopedia' %}">
+                <input type="submit" value="?" class="button"/>
+            </form>
+        </td>
+    </tr>
+</table>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
