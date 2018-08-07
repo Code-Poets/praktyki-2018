@@ -25,4 +25,4 @@ class GamePanel(TestCase):
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'games/game_panel.html')
-        self.assertContains(response, 'Welcome to: </font>NewGameTest')
+        self.assertContains(response, '<b> NewGameTest </b>')
