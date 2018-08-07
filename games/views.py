@@ -75,29 +75,21 @@ class GamerView(generic.UpdateView):                        # GUI for player's s
 
     def dispatch(self, request, *args, **kwargs):
         if self.get_object().game.finished_at is not None:
-            raise Http404("No gamer found")
+            raise Http404("Game is finished")
         else:
             if self.request.user.is_authenticated:
                 if self.get_object().user != self.request.user:
-                    raise Http404("No gamer found")
+                    raise Http404("Gamer not belong to this user")
             else:
                 # if 'gamer_id' not in request.session:
                 gamer_id = request.session.get('gamer_id', None)
                 if gamer_id is None:
-                    raise Http404("No gamer found")
+                    raise Http404("No cookie fond")
                 else:
                     # gamer_id = request.session['gamer_id']
                     if self.get_object().id != request.session['gamer_id']:
-                        raise Http404("No gamer found")
+                        raise Http404("Cookie for other gamer")
 
-        '''
-        gamer_id = request.session.get('gamer_id', None)
-        if gamer_id is not None:
-            if self.get_object().id != gamer_id:
-                raise Http404("No gamer found matching the query")
-        else:
-            return HttpResponseRedirect(reverse('games:game_access'))
-        '''
         return super(GamerView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
@@ -105,7 +97,7 @@ class GamerView(generic.UpdateView):                        # GUI for player's s
 
     def form_valid(self, form):
         self.object = form.save()
-        return HttpResponseRedirect(reverse('games:gamer', args=(self.get_object().id,)))#self.render_to_response(self.get_context_data(form=form))
+        return HttpResponseRedirect(reverse('games:gamer', args=(self.get_object().id,)))
 
 
 class JoinForm(forms.Form):
@@ -156,42 +148,16 @@ class JoinForm(forms.Form):
         return cleaned_data
 
 
-
-'''
-    # Number of visits to this view, as counted in the session variable.
-    num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits+1
-
-    # Render the HTML template index.html with the data in the context variable.
-    return render(
-        request,
-        'home.html',
-        context={
-            'num_visits': num_visits},  # num_visits appended
-    )
-'''
-
-
 class GameAccessView(generic.FormView):                     # GUI for joining existing game
     template_name = 'games/game_access.html'
     form_class = JoinForm
-
-    '''
-    def dispatch(self, request, *args, **kwargs):
-        # redirect(request)
-        gamer_id = request.session.get('gamer_id', None)
-        if gamer_id is not None:
-            return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
-        return super(GameAccessView, self).dispatch(request, *args, **kwargs)
-    '''
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         if self.request.user.is_authenticated:
             data['gamers'] = Gamer.objects.filter(user=self.request.user)
 
-        #from ipdb import set_trace;set_trace()
-        gamer_cookie = self.request.session.get('gamer_id', None)                 #COOKIE USED
+        gamer_cookie = self.request.session.get('gamer_id', None)                 # COOKIE USED
         if gamer_cookie is not None:
             try:
                 data['unregistered_gamer'] = Gamer.objects.get(pk=gamer_cookie)
@@ -199,13 +165,10 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
                 self.request.session['gamer_id'] = None
                 gamer_cookie = None
         data['gamer_cookie'] = gamer_cookie
-
         return data
 
     def get_initial(self):
-
         initial = super(GameAccessView, self).get_initial()
-
         if self.request.user.is_authenticated:
             initial['nick'] = self.request.user.nick
             initial['user'] = self.request.user.id
@@ -227,60 +190,12 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
             nick=nick
         )
         gamer.order = gamer.id % 8 + 1
-        # request.session.get('gamer_id', gamer.id)
-        # request.session['gamer_id']
         self.request.session['gamer_id'] = gamer.id  # Add gamer id to actual session
         if self.request.user.is_authenticated:
             gamer.user = self.request.user
         gamer.save()
 
-        return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,))) #join_game(self.request, game_pass, nick) # HttpResponseRedirect(reverse('games:join_game', args=(game_pass, nick)))
-
-"""
-def join_game(request, gamepass, nick):                     # View for assigning player to game
-    try:
-        game = Game.objects.get(game_code=gamepass)          # Find game by code
-    except Game.DoesNotExist:
-        return render(request, 'games/game_access.html', {
-                      'form': GameAccessView().form_class,
-                      'error_message': "WHOOPS! No such game could be found!",
-                      })#HttpResponse('WHOOPS! No such game could be found!')
-    try:
-        # from ipdb import set_trace; set_trace()
-        gamer = game.gamers.get(nick=nick)                  # Find player by nickname in existing players
-        if gamer.user is None or gamer.user.id is not request.user.id:
-            return render(request, 'games/game_access.html', {
-                      'form': GameAccessView().form_class,
-                      'error_message': "This nickname has already been taken. :-(",
-                      })# HttpResponse('This nickname has already been taken. :-(')
-    except Gamer.DoesNotExist:
-        if game.is_available():
-            if not game.is_finished():
-                gamer = Gamer.objects.create(                   # Create player and add to game if possible
-                    game=game,
-                    nick=nick
-                )
-                # request.session.get('gamer_id', gamer.id)
-                # request.session['gamer_id']
-                request.session['gamer_id'] = gamer.id          # Add gamer id to actual session
-                if request.user.is_authenticated:
-                    gamer.user = request.user
-                gamer.save()
-            else:
-                return render(request, 'games/game_access.html', {
-                    'form': GameAccessView().form_class,
-                    'error_message': "Sorry, this game has already finished.",
-                })
-                # return HttpResponse('Sorry, this game has already finished.')
-        else:
-            return render(request, 'games/game_access.html', {
-                'form': GameAccessView().form_class,
-                'error_message': "Sorry, no more places available. :-(",
-            })
-            # return HttpResponse('Sorry, no more places available. :-(')
-
-    return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
-"""
+        return HttpResponseRedirect(reverse('games:gamer', args=(gamer.id,)))
 
 
 def generate_game_code():
@@ -313,7 +228,6 @@ class CreateGameView(generic.CreateView):
     model = Game
     fields = ['name', 'max_players', 'winning_level']
     template_name = 'games/game_create.html'
-    # success_url =
 
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
@@ -323,7 +237,6 @@ class CreateGameView(generic.CreateView):
     def get_context_data(self, **kwargs):
         data = super(CreateGameView, self).get_context_data(**kwargs)
         data['hosted_games'] = Game.objects.filter(host=self.request.user, finished_at=None)
-
         return data
 
     def form_valid(self, form):
@@ -337,7 +250,6 @@ class EditGameView(generic.UpdateView):
     model = Game
     fields = ['name', 'max_players', 'winning_level']
     template_name = 'games/game_edit.html'
-    # success_url =
 
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
@@ -414,20 +326,6 @@ class KickGamerView(generic.DeleteView):
             return super(KickGamerView, self).post(request, *args, **kwargs)
 
 
-"""
-def update_stats(request, gamer_id):
-    gamer = get_object_or_404(Gamer, pk=gamer_id)
-
-    gamer.level = request.POST['level']
-
-    gamer.bonus = request.POST['bonus']
-
-    gamer.gender = request.POST['gender']
-
-    gamer.save()
-
-    return HttpResponseRedirect(reverse('games:gamer', args=(gamer_id,)))
-"""
 """
 
 class GamePanelView(generic.DetailView):
