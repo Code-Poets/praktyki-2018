@@ -14,6 +14,8 @@ from django.contrib.auth.forms import PasswordChangeForm
 
 from django.shortcuts import render
 
+from django.utils.translation import gettext as _
+
 
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
@@ -89,17 +91,17 @@ def change_password(request):
     })
 
 
-def CustomUser_update(request,pk):
+def CustomUser_update(request):
     if request.method == 'POST':
-        user_form = CustomUserChangeForm(request.POST, instance=request.user)
-        if user_form.is_valid():
-            user_form.save()
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
             messages.success(request, _('Your profile was successfully updated!'))
-            return redirect('user_details')
+            return redirect('edit_profile')
         else:
             messages.error(request, _('Please correct the error below.'))
     else:
-        user_form = CustomUserChangeForm(instance=request.user)
-    return render(request, 'users/user_details.html', {
-        'user_form': user_form,
+        form = CustomUserChangeForm(instance=request.user)
+    return render(request, 'users/edit_profile.html', {
+        'user_form': form,
     })
