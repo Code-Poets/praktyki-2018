@@ -69,7 +69,7 @@ class DeleteUserView(generic.DeleteView):
 
     def post(self, request, *args, **kwargs):
         if "cancel" in request.POST:
-            return HttpResponseRedirect(reverse('change_password'))
+            return HttpResponseRedirect(reverse('edit_profile'))
         else:
             return super(DeleteUserView, self).post(request, *args, **kwargs)
 
@@ -80,10 +80,7 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
             return redirect('change_password')
-        else:
-            messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'users/change_password.html', {
@@ -96,10 +93,7 @@ def CustomUser_update(request):
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            messages.success(request, _('Your profile was successfully updated!'))
             return redirect('edit_profile')
-        else:
-            messages.error(request, _('Please correct the error below.'))
     else:
         form = CustomUserChangeForm(instance=request.user)
     return render(request, 'users/edit_profile.html', {

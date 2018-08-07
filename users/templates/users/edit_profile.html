@@ -7,10 +7,11 @@
     </script>
 {% endif %}
 
-<h1> Change profile details</h1>
+<h1> Change account details</h1>
 
 <br />
 
+<h3> Change profile details</h3>
   <form method="post">
     {% csrf_token %}
         <table align="center">
@@ -30,5 +31,21 @@
         </table>  
     <input type="submit" value="Save changes"/>
   </form>
+<hr>
+
+<table>
+    <tr>
+    <td>
+        <form action="{% url 'change_password' %}">
+            <input type="submit" value="Change password"/>
+        </form>
+    </td>
+    <td>
+        <form action="{% url 'delete_user' user.id %}">
+            <input type="submit" value="Delete account"/>
+        </form>
+    </td>
+    </tr>
+</table>
 
 {% endblock %}
