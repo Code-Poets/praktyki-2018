@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
-<h1>Create new game</h1>
+<h1>{% trans 'Create new game' %}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <!--
@@ -38,18 +39,18 @@
     {% endfor %}
         </table>
     <br/>
-    <input type="submit" value="Create"/>
+    <input type="submit" value="{% trans 'Create' %}"/>
 </form>
 
 <br/>
 {% if hosted_games %}
-    <h2>Games you are currently hosting:</h2>
+    <h2>{% trans 'Games you are currently hosting' %}:</h2>
     <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1">
         <tr>
-            <th> Game name </th>
-            <th> Game code </th>
-            <th> Players </th>
-            <th> Game created at</th>
+            <th> {% trans 'Game name' %} </th>
+            <th> {% trans 'Game code' %} </th>
+            <th> {% trans 'Players' %} </th>
+            <th> {% trans 'Game created at' %}</th>
         </tr>
         {% for game in hosted_games %}
             <tr>
@@ -61,6 +62,6 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>You are not hosting any games.</p>
+    <p>{% trans 'You are not hosting any games' %}.</p>
 {% endif %}
 {% endblock %}
