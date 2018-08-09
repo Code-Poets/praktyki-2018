@@ -133,3 +133,31 @@ msgstr "Usuń konto"
 #: users/templates/users/change_password.html:41
 msgid "Delete"
 msgstr "Usuń"
+
+#: users/templates/users/delete_user.html:8
+msgid "Do you want to leave us"
+msgstr "Chcesz nas opuścić"
+
+#: users/templates/users/delete_user.html:10
+msgid "Are you sure you want to delete your account?"
+msgstr "Czy jesteś pewien/pewna, że chcesz usunąć to konto?"
+
+#: users/templates/users/delete_user.html:12
+msgid "This will irreversibly remove your hosted games and gamers"
+msgstr "Spowoduje to nieodwracalne usunięcie prowadzonych gier i graczy"
+
+#: users/templates/users/delete_user.html:14
+msgid "All of your current stats will be lost"
+msgstr "Wszystkie bieżące statystyki zostaną utracone"
+
+#: users/templates/users/delete_user.html:16
+msgid "Are you sure you want to proceed"
+msgstr "Czy na pewno chcesz kontynuować"
+
+#: users/templates/users/delete_user.html:21
+msgid "Yes"
+msgstr "Tak"
+
+#: users/templates/users/delete_user.html:25
+msgid "No"
+msgstr "Nie"
