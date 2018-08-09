@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 15:33+0200\n"
+"POT-Creation-Date: 2018-08-09 15:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,18 +47,21 @@ msgstr ""
 "zostaną utracone"
 
 #: games/templates/games/delete_gamer.html:16
+#: games/templates/games/kick_gamer.html:14
 #: users/templates/users/delete_user.html:16
 msgid "Are you sure you want to proceed"
 msgstr "Czy na pewno chcesz kontynuować"
 
 #: games/templates/games/delete_gamer.html:21
 #: games/templates/games/game_edit.html:59
+#: games/templates/games/kick_gamer.html:19
 #: users/templates/users/delete_user.html:21
 msgid "Yes"
 msgstr "Tak"
 
 #: games/templates/games/delete_gamer.html:25
 #: games/templates/games/game_edit.html:63
+#: games/templates/games/kick_gamer.html:23
 #: users/templates/users/delete_user.html:25
 msgid "No"
 msgstr "Nie"
@@ -314,6 +317,19 @@ msgstr "Wydaje mi się, że mamy zwycięzcę"
 #: games/templates/games/gamer.html:113
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
+
+#: games/templates/games/kick_gamer.html:8
+msgid "Kick player"
+msgstr "Wyrzuć gracza"
+
+#: games/templates/games/kick_gamer.html:10
+msgid "Are you sure you want to kick this player"
+msgstr "Czy na pewno chcesz wyrzucić tego gracza"
+
+#: games/templates/games/kick_gamer.html:12
+msgid ""
+"This will irreversibly remove the player and all his progress from the game"
+msgstr "Spowoduje to nieodwracalne usunięcie gracza wraz z jego postępem w grze"
 
 #: templates/base.html:31
 msgid "Logout"
