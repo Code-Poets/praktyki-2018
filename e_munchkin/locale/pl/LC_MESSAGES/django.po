@@ -92,3 +92,24 @@ msgstr "raz"
 #: templates/home.html:30
 msgid "times"
 msgstr "razy"
+
+#: users/models.py:8
+msgid "username"
+msgstr "nazwa użytkownika"
+
+#: users/models.py:9
+msgid ""
+"Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
+msgstr "Wymagane. 30 znaków lub więcej. Litery, cyfry i znaki @/./+/-/_"
+
+#: users/models.py:11
+msgid "nick name"
+msgstr "nick"
+
+#: users/models.py:12
+msgid "email address"
+msgstr "adres email"
+
+#: users/models.py:13
+msgid "date joined"
+msgstr "data dołączenia"
