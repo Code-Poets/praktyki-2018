@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 
     {% if user.is_authenticated %}
         <script>
@@ -7,7 +8,7 @@
         </script>
     {% endif %}
 
-  <h2>Login</h2>
+  <h2>{% trans 'Login' %}</h2>
   <form method="post">
     {% csrf_token %}
         <table align="center">
@@ -35,6 +36,6 @@
             {% endif %}
         </tr>
         </table>
-    <input type="submit" value="Login"/>
+    <input type="submit" value="{% trans 'Login' %}"/>
   </form>
 {% endblock %}

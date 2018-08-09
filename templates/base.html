@@ -2,6 +2,7 @@
 <html>
 <head>
     {% load static %}
+    {% load i18n %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <meta charset="utf-8">
@@ -27,13 +28,13 @@
         <table align="center">
         <tr><br /></tr>
         <tr>
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'logout' %}">Logout</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></td>
                      {% if request.get_full_path != "/" %}
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">Home</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">{% trans 'Home' %}</a></td>
                      {% endif %}
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'user_stats' user.id %}">Stats</a></td>
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'edit_profile' %}">Account</a></td>
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">Help</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'user_stats' user.id %}">{% trans 'Stats' %}</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'change_password' %}">{% trans 'Account' %}</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">{% trans 'Help' %}</a></td>
         </tr>
         </table>
 
@@ -42,12 +43,12 @@
         <table align="center">
         <tr><br /></tr>
         <tr>
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'login' %}">Login</a></td>
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'signup' %}">SignUp</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'login' %}">{% trans 'Login' %}</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'signup' %}">{% trans 'SignUp' %}</a></td>
                      {% if request.get_full_path != "/" %}
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">Home</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">{% trans 'Home' %}</a></td>
                      {% endif %}
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">Help</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">{% trans 'Help' %}</a></td>
         </tr>
         </table>
 

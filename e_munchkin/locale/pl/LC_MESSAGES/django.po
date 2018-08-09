@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-09 14:12+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: e_munchkin/settings/defaults.py:143
+msgid "English"
+msgstr "Angielski"
+
+#: e_munchkin/settings/defaults.py:144
+msgid "Polish"
+msgstr "Polski"
+
+#: templates/base.html:31
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: templates/base.html:33 templates/base.html:49
+msgid "Home"
+msgstr "Start"
+
+#: templates/base.html:35
+msgid "Stats"
+msgstr "Statystyki"
+
+#: templates/base.html:36
+msgid "Account"
+msgstr "Konto"
+
+#: templates/base.html:37 templates/base.html:51
+msgid "Help"
+msgstr "Pomoc"
+
+#: templates/base.html:46 users/templates/registration/login.html:11
+#: users/templates/registration/login.html:39
+msgid "Login"
+msgstr "Zaloguj"
+
+#: templates/base.html:47
+msgid "SignUp"
+msgstr "Zarejestruj się"
