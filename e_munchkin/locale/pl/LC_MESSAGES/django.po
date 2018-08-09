@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 14:12+0200\n"
+"POT-Creation-Date: 2018-08-09 14:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,38 @@ msgstr "Angielski"
 msgid "Polish"
 msgstr "Polski"
 
+#: games/templates/games/delete_gamer.html:8
+msgid "Withdraw"
+msgstr "Wycofaj się"
+
+#: games/templates/games/delete_gamer.html:10
+msgid "Are you sure you want to withdraw from the game"
+msgstr "Czy jesteś pewien/pewna, że chcesz wycofać się z gry"
+
+#: games/templates/games/delete_gamer.html:12
+msgid "This will irreversibly remove you from this game"
+msgstr "Spowoduje to nieodwracalne usunięcie cię z tej gry"
+
+#: games/templates/games/delete_gamer.html:14
+msgid "You can join the game again, but all of your current stats will be lost"
+msgstr ""
+"Możesz ponownie dołączyć do gry, ale wszystkie twoje bieżące statystyki "
+"zostaną utracone"
+
+#: games/templates/games/delete_gamer.html:16
+#: users/templates/users/delete_user.html:16
+msgid "Are you sure you want to proceed"
+msgstr "Czy na pewno chcesz kontynuować"
+
+#: games/templates/games/delete_gamer.html:21
+#: users/templates/users/delete_user.html:21
+msgid "Yes"
+msgstr "Tak"
+
+#: games/templates/games/delete_gamer.html:25
+#: users/templates/users/delete_user.html:25
+msgid "No"
+msgstr "Nie"
 #: templates/base.html:31
 msgid "Logout"
 msgstr "Wyloguj"
