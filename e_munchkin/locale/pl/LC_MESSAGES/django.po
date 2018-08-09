@@ -161,3 +161,7 @@ msgstr "Tak"
 #: users/templates/users/delete_user.html:25
 msgid "No"
 msgstr "Nie"
+
+#: users/templates/users/signup.html:5 users/templates/users/signup.html:33
+msgid "Sign up"
+msgstr "Zarejestruj się"
