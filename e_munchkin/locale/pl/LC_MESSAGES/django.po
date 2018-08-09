@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 14:44+0200\n"
+"POT-Creation-Date: 2018-08-09 14:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -81,6 +81,44 @@ msgstr "Klasy"
 #: games/templates/games/encyclopedia.html:97
 msgid "Back"
 msgstr "Powrót"
+
+#: games/templates/games/game_access.html:8
+msgid "Join game"
+msgstr "Dołącz do gry"
+
+#: games/templates/games/game_access.html:44
+msgid "Join"
+msgstr "Dołącz"
+
+#: games/templates/games/game_access.html:49
+msgid "Recently played games"
+msgstr "Ostatnio grane gry"
+
+#: games/templates/games/game_access.html:52
+#: users/templates/users/user_stats.html:11
+#: users/templates/users/user_stats.html:35
+#: users/templates/users/user_stats.html:68
+#: users/templates/users/user_stats.html:96
+msgid "Game name"
+msgstr "Nazwa gry"
+
+#: games/templates/games/game_access.html:53
+#: users/templates/users/user_stats.html:67
+#: users/templates/users/user_stats.html:95
+msgid "Nick"
+msgstr "Nick"
+
+#: games/templates/games/game_access.html:54
+msgid "Level"
+msgstr "Poziom"
+
+#: games/templates/games/game_access.html:55
+msgid "Game started at"
+msgstr "Gra rozpoczęta dnia"
+
+#: games/templates/games/game_access.html:80
+msgid "No recently played games"
+msgstr "Brak ostatnio granych gier"
 
 #: templates/base.html:31
 msgid "Logout"
@@ -224,13 +262,6 @@ msgstr "Prowadzone gry"
 msgid "Games you are currently hosting"
 msgstr "Gry, które aktualnie prowadzisz"
 
-#: users/templates/users/user_stats.html:11
-#: users/templates/users/user_stats.html:35
-#: users/templates/users/user_stats.html:68
-#: users/templates/users/user_stats.html:96
-msgid "Game name"
-msgstr "Nazwa gry"
-
 #: users/templates/users/user_stats.html:12
 #: users/templates/users/user_stats.html:69
 msgid "Game code"
@@ -278,11 +309,6 @@ msgstr "Gry, w których grałeś/aś"
 #: users/templates/users/user_stats.html:64
 msgid "You are playing as"
 msgstr "Grasz jako"
-
-#: users/templates/users/user_stats.html:67
-#: users/templates/users/user_stats.html:95
-msgid "Nick"
-msgstr "Nick"
 
 #: users/templates/users/user_stats.html:70
 #: users/templates/users/user_stats.html:97
