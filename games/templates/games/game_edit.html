@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 <head>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -35,7 +36,7 @@
     </style>
 </head>
 
-<h1>Edit your game</h1>
+<h1>{% trans 'Edit your game' %}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
@@ -64,10 +65,10 @@
                 {% endfor %}
                 <tr>
                     <td> </td>
-                    <td><input type="submit" value="Save" class="green"/></td>
+                    <td><input type="submit" value="{% trans 'Save' %}" class="green"/></td>
                     <td>
                         <form action="{% url 'games:game_panel' game.id%}">
-                           <input type="submit" value="Back" class="grey"/>
+                           <input type="submit" value="{% trans 'Back' %}" class="grey"/>
                         </form>
                     </td>
                 </tr>
@@ -81,11 +82,11 @@
                     modal: true,
                     autoOpen: false,
                     buttons : {
-                        "Yes" : function ()
+                        "{% trans 'Yes' %}" : function ()
                         {
                             window.location.href = "{% url 'games:end_game' game.id%}";
                         },
-                        "No" : function ()
+                        "{% trans 'No' %}" : function ()
                         {
                             $(this).dialog('close');
                         }
@@ -98,12 +99,12 @@
             });
         </script>
         <br />
+        
+        <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red"/>
 
-        <input type="button" id="DialogShow" value="End game" class="red"/>
-
-        <div id="dialog" title="Are you sure?" align="center">
-            Do you want to end <b> {{ game.name }} </b> <br />
-            and save all gamers stats?
+        <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
+            {% trans 'Do you want to end' %} <b> {{ game.name }} </b> <br />
+            {% trans 'and save all gamers stats' %}?
         </div>
 
     </div>
@@ -114,7 +115,7 @@
                 {% for gamer in game.gamers.all %}
                 <tr>
                     <td>{{ gamer.nick }}</td>
-                    <td><a href="{% url 'games:kick_gamer' gamer.id%}">Kick</a></td>
+                    <td><a href="{% url 'games:kick_gamer' gamer.id%}">{% trans 'Kick' %}</a></td>
                 </tr>
                 {% endfor %}
             </table>
