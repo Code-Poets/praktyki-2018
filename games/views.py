@@ -41,6 +41,7 @@ class GamerForm(forms.ModelForm):
             cleaned_data['race_slot_2'] = None
 
         return cleaned_data
+
     order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
 """
@@ -225,6 +226,7 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
             game=game,
             nick=nick
         )
+        gamer.order = gamer.id % 8 + 1
         # request.session.get('gamer_id', gamer.id)
         # request.session['gamer_id']
         self.request.session['gamer_id'] = gamer.id  # Add gamer id to actual session
