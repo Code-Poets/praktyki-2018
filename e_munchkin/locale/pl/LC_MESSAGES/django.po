@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 15:04+0200\n"
+"POT-Creation-Date: 2018-08-09 15:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -107,12 +107,14 @@ msgid "Game name"
 msgstr "Nazwa gry"
 
 #: games/templates/games/game_access.html:53
+#: games/templates/games/game_end.html:22
 #: users/templates/users/user_stats.html:67
 #: users/templates/users/user_stats.html:95
 msgid "Nick"
 msgstr "Nick"
 
 #: games/templates/games/game_access.html:54
+#: games/templates/games/game_end.html:27
 msgid "Level"
 msgstr "Poziom"
 
@@ -191,6 +193,46 @@ msgstr "i zapisać jej wszystkie statystyki"
 #: games/templates/games/game_edit.html:92
 msgid "Kick"
 msgstr "Wyrzuć"
+
+#: games/templates/games/game_end.html:13
+msgid "This is the end of the"
+msgstr "Oto jest koniec gry"
+
+#: games/templates/games/game_end.html:17
+#, fuzzy
+#| msgid "Stats"
+msgid "Statistics"
+msgstr "Statystyki"
+
+#: games/templates/games/game_end.html:19
+msgid "Gamer"
+msgstr "Gracz"
+
+#: games/templates/games/game_end.html:32
+msgid "Bonus"
+msgstr "Bonus"
+
+#: games/templates/games/game_end.html:37
+msgid "Gender"
+msgstr "Płeć"
+
+#: games/templates/games/game_end.html:42
+#: games/templates/games/game_end.html:51
+msgid "Race"
+msgstr "Rasa"
+
+#: games/templates/games/game_end.html:60
+#: games/templates/games/game_end.html:69
+msgid "Class"
+msgstr "Klasa"
+
+#: games/templates/games/game_end.html:79
+msgid "Status"
+msgstr "Status"
+
+#: games/templates/games/game_end.html:93
+msgid "That's right"
+msgstr "Zgadza się"
 
 #: templates/base.html:31
 msgid "Logout"
