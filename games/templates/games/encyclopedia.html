@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 
 <style>
 .button1 {
@@ -102,11 +103,11 @@
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<h1>Encyclopedia</h1>
+<h1>{% trans 'Encyclopedia' %}</h1>
 <hr>
 
 <table align="center" width="30%">
-    <tr><td align="center"><h4><b>Races</b></h4></td></tr>
+    <tr><td align="center"><h4><b>{% trans 'Races' %}</b></h4></td></tr>
     {% for charakterRace in list_race %}
     <tr>
         <td align="center">
@@ -130,7 +131,7 @@
             </script>
             <input type="button" id=dRace{{charakterRace.pk}} class="button2" value={{charakterRace.name}} />
             <div id={{charakterRace.name}}  title={{charakterRace.name}} align="center">
-            Description: {{charakterRace.description }}
+            {% trans 'Description' %}: {{charakterRace.description }}
             </div>
         </td>
     </tr>
@@ -138,7 +139,7 @@
 </table>
 <br/>
 <table align="center" width="30%">
-    <tr><td align="center"><h4><b>Classes</b></h4></td></tr>
+    <tr><td align="center"><h4><b>{% trans 'Classes' %}</b></h4></td></tr>
     {% for charakterClass in list_class %}
     <tr>
         <td align="center">
@@ -162,7 +163,7 @@
             </script>
             <input type="button" id=dClass{{charakterClass.pk}} class="button1" value={{charakterClass.name}} />
             <div id={{charakterClass.name}}  title={{charakterClass.name}} align="center">
-            Description: {{charakterClass.description }}
+            {% trans 'Description' %}: {{charakterClass.description }}
             </div>
         </td>
     </tr>
@@ -205,7 +206,7 @@ span.onclick = function() {
 </script>
 
 <hr>
-<input action="action" onclick="window.history.go(-1); return false;" type="button" value="Back" />
+<input action="action" onclick="window.history.go(-1); return false;" type="button" value="{% trans 'Back' %}" />
 
 
 {% endblock %}

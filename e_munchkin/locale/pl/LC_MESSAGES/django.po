@@ -60,6 +60,28 @@ msgstr "Tak"
 #: users/templates/users/delete_user.html:25
 msgid "No"
 msgstr "Nie"
+
+#: games/templates/games/encyclopedia.html:28
+msgid "Encyclopedia"
+msgstr "Encyklopedia"
+
+#: games/templates/games/encyclopedia.html:32
+msgid "Races"
+msgstr "Rasy"
+
+#: games/templates/games/encyclopedia.html:56
+#: games/templates/games/encyclopedia.html:88
+msgid "Description"
+msgstr "Opis"
+
+#: games/templates/games/encyclopedia.html:64
+msgid "Classes"
+msgstr "Klasy"
+
+#: games/templates/games/encyclopedia.html:97
+msgid "Back"
+msgstr "Powrót"
+
 #: templates/base.html:31
 msgid "Logout"
 msgstr "Wyloguj"
@@ -180,19 +202,7 @@ msgstr "Spowoduje to nieodwracalne usunięcie prowadzonych gier i graczy"
 
 #: users/templates/users/delete_user.html:14
 msgid "All of your current stats will be lost"
-msgstr "Wszystkie bieżące statystyki zostaną utracone"
-
-#: users/templates/users/delete_user.html:16
-msgid "Are you sure you want to proceed"
-msgstr "Czy na pewno chcesz kontynuować"
-
-#: users/templates/users/delete_user.html:21
-msgid "Yes"
-msgstr "Tak"
-
-#: users/templates/users/delete_user.html:25
-msgid "No"
-msgstr "Nie"
+msgstr "Wszystkie twoje bieżące statystyki zostaną utracone"
 
 #: users/templates/users/signup.html:5 users/templates/users/signup.html:33
 msgid "Sign up"
