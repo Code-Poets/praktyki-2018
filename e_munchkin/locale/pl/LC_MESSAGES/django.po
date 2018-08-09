@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 15:08+0200\n"
+"POT-Creation-Date: 2018-08-09 15:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,6 +108,7 @@ msgstr "Nazwa gry"
 
 #: games/templates/games/game_access.html:53
 #: games/templates/games/game_end.html:22
+#: games/templates/games/game_stats.html:22
 #: users/templates/users/user_stats.html:67
 #: users/templates/users/user_stats.html:95
 msgid "Nick"
@@ -115,6 +116,7 @@ msgstr "Nick"
 
 #: games/templates/games/game_access.html:54
 #: games/templates/games/game_end.html:27
+#: games/templates/games/game_stats.html:27
 msgid "Level"
 msgstr "Poziom"
 
@@ -199,34 +201,41 @@ msgid "This is the end of the"
 msgstr "Oto jest koniec gry"
 
 #: games/templates/games/game_end.html:17
-#, fuzzy
-#| msgid "Stats"
+#: games/templates/games/game_stats.html:17
 msgid "Statistics"
 msgstr "Statystyki"
 
 #: games/templates/games/game_end.html:19
+#: games/templates/games/game_stats.html:19
 msgid "Gamer"
 msgstr "Gracz"
 
 #: games/templates/games/game_end.html:32
+#: games/templates/games/game_stats.html:32
 msgid "Bonus"
 msgstr "Bonus"
 
 #: games/templates/games/game_end.html:37
+#: games/templates/games/game_stats.html:37
 msgid "Gender"
 msgstr "Płeć"
 
 #: games/templates/games/game_end.html:42
 #: games/templates/games/game_end.html:51
+#: games/templates/games/game_stats.html:42
+#: games/templates/games/game_stats.html:51
 msgid "Race"
 msgstr "Rasa"
 
 #: games/templates/games/game_end.html:60
 #: games/templates/games/game_end.html:69
+#: games/templates/games/game_stats.html:60
+#: games/templates/games/game_stats.html:69
 msgid "Class"
 msgstr "Klasa"
 
 #: games/templates/games/game_end.html:79
+#: games/templates/games/game_stats.html:79
 msgid "Status"
 msgstr "Status"
 
@@ -236,7 +245,7 @@ msgstr "Zgadza się"
 
 #: games/templates/games/game_panel.html:127
 msgid "Do we have a winner"
-msgstr "Czy mamy zwyciężcę"
+msgstr "Czy mamy zwycięzcę"
 
 #: games/templates/games/game_panel.html:128
 msgid "Is that the end of a game"
@@ -278,6 +287,14 @@ msgstr "Edytuj"
 msgid "Free place for gamer"
 msgstr "Wolne miejsce dla gracza"
 
+#: games/templates/games/game_stats.html:13
+msgid "These are all statistics for"
+msgstr "To są wszystkie statystyki dla"
+
+#: games/templates/games/game_stats.html:82
+msgid "Winner"
+msgstr "Zwycięzca"
+
 #: games/templates/games/gamer.html:103
 msgid "Update"
 msgstr "Aktualizuj"
@@ -292,7 +309,7 @@ msgstr "Zaczekaj..."
 
 #: games/templates/games/gamer.html:113
 msgid "I think we have a winner"
-msgstr "Wydaje mi się, że mamy zwyciężcę"
+msgstr "Wydaje mi się, że mamy zwycięzcę"
 
 #: games/templates/games/gamer.html:113
 msgid "But wait for game-master decision"
@@ -443,7 +460,7 @@ msgstr "Gra ukończona dnia"
 
 #: users/templates/users/user_stats.html:39
 msgid "Game winner"
-msgstr "Zwyciężca gry"
+msgstr "Zwycięzca gry"
 
 #: users/templates/users/user_stats.html:58
 msgid "You not have been hosting any finished games"
