@@ -278,6 +278,26 @@ msgstr "Edytuj"
 msgid "Free place for gamer"
 msgstr "Wolne miejsce dla gracza"
 
+#: games/templates/games/gamer.html:103
+msgid "Update"
+msgstr "Aktualizuj"
+
+#: games/templates/games/gamer.html:107
+msgid "Withdraw from game"
+msgstr "Wycofaj się"
+
+#: games/templates/games/gamer.html:112
+msgid "Wait, wait, wait..."
+msgstr "Zaczekaj..."
+
+#: games/templates/games/gamer.html:113
+msgid "I think we have a winner"
+msgstr "Wydaje mi się, że mamy zwyciężcę"
+
+#: games/templates/games/gamer.html:113
+msgid "But wait for game-master decision"
+msgstr "Ale zaczekaj na decyzję mistrza gry"
+
 #: templates/base.html:31
 msgid "Logout"
 msgstr "Wyloguj"
