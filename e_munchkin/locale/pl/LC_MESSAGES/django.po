@@ -113,3 +113,23 @@ msgstr "adres email"
 #: users/models.py:13
 msgid "date joined"
 msgstr "data dołączenia"
+
+#: users/templates/users/change_password.html:11
+msgid "Change account details"
+msgstr "Zmien dane konta"
+
+#: users/templates/users/change_password.html:15
+msgid "Change password"
+msgstr "Zmień hasło"
+
+#: users/templates/users/change_password.html:33
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+#: users/templates/users/change_password.html:39
+msgid "Delete account"
+msgstr "Usuń konto"
+
+#: users/templates/users/change_password.html:41
+msgid "Delete"
+msgstr "Usuń"
