@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1> Hey <font color="orange">{{ user.username }}</font>, that's all yours! </h1>
+{% load i18n %}
+<h1> {% trans 'Hey' %} <font color="orange">{{ user.username }}</font>, {% trans "that's all yours" %}! </h1>
 <hr>
-<h4> Hosted games </h4>
+<h4> {% trans 'Hosted games' %} </h4>
 {% if hosted_games %}
-    <p>Games you are currently hosting:</p>
+    <p>{% trans 'Games you are currently hosting' %}:</p>
     <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
         <tr>
-            <th> Game name </th>
-            <th> Game code </th>
-            <th> Players </th>
-            <th> Game created at</th>
+            <th> {% trans 'Game name' %} </th>
+            <th> {% trans 'Game code' %} </th>
+            <th> {% trans 'Players' %} </th>
+            <th> {% trans 'Game created at' %}</th>
         </tr>
         {% for game in hosted_games %}
             <tr>
@@ -22,20 +23,20 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>You are not hosting any finished games.</p>
+    <p>{% trans 'You are not hosting any games' %}.</p>
 {% endif %}
 
 <br />
 
 {% if hosted_end_games %}
-    <p>Games you have been hosting:</p>
+    <p>{% trans 'Games you have been hosting' %}:</p>
     <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
         <tr>
-            <th> Game name </th>
-            <th> Players </th>
-            <th> Game created at</th>
-            <th> Game finished at</th>
-            <th> Game winner </th>
+            <th> {% trans 'Game name' %} </th>
+            <th> {% trans 'Players' %} </th>
+            <th> {% trans 'Game created at' %}</th>
+            <th> {% trans 'Game finished at' %}</th>
+            <th> {% trans 'Game winner' %} </th>
         </tr>
         {% for game in hosted_end_games %}
             <tr>
@@ -54,21 +55,21 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>You not have been hosting any finished games.</p>
+    <p>{% trans 'You not have been hosting any finished games' %}.</p>
 {% endif %}
 
 <hr>
-<h4> Played games </h4>
+<h4> {% trans 'Played games' %} </h4>
 {% if gamers %}
-    <p>You are playing as:</p>
+    <p>{% trans 'You are playing as' %}:</p>
     <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
         <tr>
-            <th> Nick </th>
-            <th> Game name </th>
-            <th> Game code </th>
-            <th> Game host </th>
-            <th> Players </th>
-            <th> Game created at</th>
+            <th> {% trans 'Nick' %} </th>
+            <th> {% trans 'Game name' %} </th>
+            <th> {% trans 'Game code' %} </th>
+            <th> {% trans 'Game host' %} </th>
+            <th> {% trans 'Players' %} </th>
+            <th> {% trans 'Game created at' %}</th>
         </tr>
         {% for gamer in gamers %}
             <tr>
@@ -82,21 +83,21 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>You are not playing any games as gamer.</p>
+    <p>{% trans 'You are not playing any games as gamer' %}.</p>
 {% endif %}
 
 <br />
 
 {% if gamers_end %}
-    <p>You have been playing as:</p>
+    <p>{% trans 'You have been playing as' %}:</p>
     <table width="50%" height="100%" border="1" cellpadding="2" cellspacing="1" bgcolor="white">
         <tr>
-            <th> Nick </th>
-            <th> Game name </th>
-            <th> Game host </th>
-            <th> Players </th>
-            <th> Game created at</th>
-            <th> Game finished at</th>
+            <th> {% trans 'Nick' %} </th>
+            <th> {% trans 'Game name' %} </th>
+            <th> {% trans 'Game host' %} </th>
+            <th> {% trans 'Players' %} </th>
+            <th> {% trans 'Game created at' %}</th>
+            <th> {% trans 'Game finished at' %}</th>
         </tr>
         {% for gamer in gamers_end %}
             <tr>
@@ -110,6 +111,6 @@
         {% endfor %}
     </table>
 {% else %}
-    <p>You not have been playing any finished games as gamer.</p>
+    <p>{% trans 'You not have been playing any finished games as gamer' %}.</p>
 {% endif %}
 {% endblock %}

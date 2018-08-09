@@ -165,3 +165,96 @@ msgstr "Nie"
 #: users/templates/users/signup.html:5 users/templates/users/signup.html:33
 msgid "Sign up"
 msgstr "Zarejestruj się"
+
+#: users/templates/users/user_stats.html:4
+msgid "Hey"
+msgstr "Hej"
+
+#: users/templates/users/user_stats.html:4
+msgid "that's all yours"
+msgstr "to wszystko twoje"
+
+#: users/templates/users/user_stats.html:6
+msgid "Hosted games"
+msgstr "Prowadzone gry"
+
+#: users/templates/users/user_stats.html:8
+msgid "Games you are currently hosting"
+msgstr "Gry, które aktualnie prowadzisz"
+
+#: users/templates/users/user_stats.html:11
+#: users/templates/users/user_stats.html:35
+#: users/templates/users/user_stats.html:68
+#: users/templates/users/user_stats.html:96
+msgid "Game name"
+msgstr "Nazwa gry"
+
+#: users/templates/users/user_stats.html:12
+#: users/templates/users/user_stats.html:69
+msgid "Game code"
+msgstr "Kod gry"
+
+#: users/templates/users/user_stats.html:13
+#: users/templates/users/user_stats.html:36
+#: users/templates/users/user_stats.html:71
+#: users/templates/users/user_stats.html:98
+msgid "Players"
+msgstr "Gracze"
+
+#: users/templates/users/user_stats.html:14
+#: users/templates/users/user_stats.html:37
+#: users/templates/users/user_stats.html:72
+#: users/templates/users/user_stats.html:99
+msgid "Game created at"
+msgstr "Gra utworzona dnia"
+
+#: users/templates/users/user_stats.html:26
+msgid "You are not hosting any games"
+msgstr "Nie prowadzisz żadnych gier"
+
+#: users/templates/users/user_stats.html:32
+msgid "Games you have been hosting"
+msgstr "Gry, które prowadziłeś/aś"
+
+#: users/templates/users/user_stats.html:38
+#: users/templates/users/user_stats.html:100
+msgid "Game finished at"
+msgstr "Gra ukończona dnia"
+
+#: users/templates/users/user_stats.html:39
+msgid "Game winner"
+msgstr "Zwyciężca gry"
+
+#: users/templates/users/user_stats.html:58
+msgid "You not have been hosting any finished games"
+msgstr "Nie prowadziłeś żadnych zakończonych gier"
+
+#: users/templates/users/user_stats.html:62
+msgid "Played games"
+msgstr "Gry, w których grałeś/aś"
+
+#: users/templates/users/user_stats.html:64
+msgid "You are playing as"
+msgstr "Grasz jako"
+
+#: users/templates/users/user_stats.html:67
+#: users/templates/users/user_stats.html:95
+msgid "Nick"
+msgstr "Nick"
+
+#: users/templates/users/user_stats.html:70
+#: users/templates/users/user_stats.html:97
+msgid "Game host"
+msgstr "Prowadzący grę"
+
+#: users/templates/users/user_stats.html:86
+msgid "You are not playing any games as gamer"
+msgstr "Nie grasz w żadną grę"
+
+#: users/templates/users/user_stats.html:92
+msgid "You have been playing as"
+msgstr "Grałeś jako"
+
+#: users/templates/users/user_stats.html:114
+msgid "You not have been playing any finished games as gamer"
+msgstr "Nie grałeś/aś w żadną zakończoną grę"
