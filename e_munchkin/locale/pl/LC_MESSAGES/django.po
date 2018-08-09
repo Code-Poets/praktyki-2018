@@ -234,13 +234,53 @@ msgstr "Status"
 msgid "That's right"
 msgstr "Zgadza się"
 
+#: games/templates/games/game_panel.html:127
+msgid "Do we have a winner"
+msgstr "Czy mamy zwyciężcę"
+
+#: games/templates/games/game_panel.html:128
+msgid "Is that the end of a game"
+msgstr "Czy to już koniec gry"
+
+#: games/templates/games/game_panel.html:128
+msgid "Oh no"
+msgstr "O nie"
+
+#: games/templates/games/game_panel.html:138
+msgid "Yes, that's right"
+msgstr "Tak, zgadza się"
+
+#: games/templates/games/game_panel.html:142
+msgid "No, we change rules"
+msgstr "Nie, zmieniamy zasady"
+
+#: games/templates/games/game_panel.html:155 templates/base.html:33
+#: templates/base.html:49
+msgid "Home"
+msgstr "Start"
+
+#: games/templates/games/game_panel.html:160
+msgid "made by"
+msgstr "utworzona przez"
+
+#: games/templates/games/game_panel.html:164
+msgid "Edit"
+msgstr "Edytuj"
+
+#: games/templates/games/game_panel.html:176
+#: games/templates/games/game_panel.html:222
+#: games/templates/games/game_panel.html:268
+#: games/templates/games/game_panel.html:317
+#: games/templates/games/game_panel.html:366
+#: games/templates/games/game_panel.html:415
+#: games/templates/games/game_panel.html:461
+#: games/templates/games/game_panel.html:507
+msgid "Free place for gamer"
+msgstr "Wolne miejsce dla gracza"
+
 #: templates/base.html:31
 msgid "Logout"
 msgstr "Wyloguj"
-
-#: templates/base.html:33 templates/base.html:49
-msgid "Home"
-msgstr "Start"
 
 #: templates/base.html:35
 msgid "Stats"
@@ -413,3 +453,6 @@ msgstr "Grałeś jako"
 #: users/templates/users/user_stats.html:114
 msgid "You not have been playing any finished games as gamer"
 msgstr "Nie grałeś/aś w żadną zakończoną grę"
+
+#~ msgid "Yes, that"
+#~ msgstr "Tak"
