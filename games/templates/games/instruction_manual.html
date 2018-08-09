@@ -1,82 +1,84 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
+
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 </head>
-    <h1>Instruction manual</h1>
+    <h1>{% trans 'Instruction manual' %}</h1>
     <p>
-        This application was designed to provide support during your regular Munchkin game.
-        The application provides an interface which displays current stats of all players in the game,
-        such as level, bonus points, gender, class and race. The host of the game should sign in and create
-        it's panel on the website. After the panel is created, an access code for it will be generated.
-        The host should make this code available to other players. The players are then expected to use their mobile devices
-        to create their nicknames and access the game with given code.
+        {% trans 'This application was designed to provide support during your regular Munchkin game' %}.
+        {% trans 'The application provides an interface which displays current stats of all players in the game' %},
+        {% trans 'such as level, bonus points, gender, class and race. The host of the game should sign in and create' %}
+        {% trans "it's panel on the website. After the panel is created, an access code for it will be generated" %}.
+        {% trans 'The host should make this code available to other players. The players are then expected to use their mobile devices' %}
+        {% trans 'to create their nicknames and access the game with given code' %}.
     </p>
     <p>
-        And that's it! All you have to do for now on is remember to update your stats whenever they change during your game.
-        Once any player achieves the winning level, a blockade will be set for other players and appropriate notification
-        will be displayed on main game panel. The host can then decide to finish the game or alter it's rules,
-        so the fun could go on. :)
+        {% trans "And that's it" %}! {% trans 'All you have to do for now on is remember to update your stats whenever they change during your game' %}.
+        {% trans 'Once any player achieves the winning level, a blockade will be set for other players and appropriate notification' %}
+        {% trans "will be displayed on main game panel. The host can then decide to finish the game or alter it's rules" %},
+        {% trans 'so the fun could go on' %}. :)
     </p>
     <br/>
     <h3>
-        Here's some additional information on the most important panels:
+        {% trans "Here's some additional information on the most important panels" %}:
     </h3>
     <br/>
     <h2>
-        Homepage
+        {% trans 'Homepage' %}
     </h2>
     <p>
-        From here you can got to game access view to provide your nickname and code for the game you wish to join.
-        Logged users are additionally able to go to game hosting view to create and host a game.
+        {% trans 'From here you can got to game access view to provide your nickname and code for the game you wish to join' %}.
+        {% trans 'Logged users are additionally able to go to game hosting view to create and host a game' %}.
     </p>
     <br/>
     <h2>
-        Host game
+        {% trans 'Host game' %}
     </h2>
     <p>
-        Create new game by providing necessary information. You will be able to edit later if you wish. If you are already
-        hosting any ongoing games, corresponding links will be displayed at the bottom of the page.
+        {% trans 'Create new game by providing necessary information' %}. {% trans 'You will be able to edit later if you wish' %}. 
+        {% trans 'If you are already hosting any ongoing games' %}, {% trans 'corresponding links will be displayed at the bottom of the page' %}.
     </p>
 <br/>
     <h2>
-        Game panel
+        {% trans 'Game panel' %}
     </h2>
     <p>
-        An interface representing your game. It shows a table with all of the active players and their current stats.
-        The page updates automatically. On top-right corner game's winning level is displayed next to the "Edit" button.
-        On top-left corner a 4-character access code is displayed next to homepage redirect button.
-        After any of the players achieves a winning level, an appropriate message will  be displayed
-        and you will be asked to either finish the game or alter it's rules in the settings view.
-        You can access the settings at any time by choosing the "Edit" button. From there, you can change game's settings,
-        kick players out or finish the game prematurely.
+        {% trans 'An interface representing your game' %}. {% trans 'It shows a table with all of the active players and their current stats' %}.
+        {% trans 'The page updates automatically' %}. {% trans "On top-right corner game's winning level is displayed next to the ''Edit'' button" %}.
+        {% trans 'On top-left corner a 4-character access code is displayed next to homepage redirect button' %}.
+        {% trans 'After any of the players achieves a winning level, an appropriate message will  be displayed' %}
+        {% trans "and you will be asked to either finish the game or alter it's rules in the settings view" %}.
+        {% trans "You can access the settings at any time by choosing the ''Edit'' button" %}. {% trans "From there, you can change game's settings" %},
+        {% trans 'kick players out or finish the game prematurely' %}.
     </p>
     <p>
-        <strong>WARNING:</strong> Once the game is finished, nobody will be able to access it again.
+        <strong>{% trans 'WARNING' %}:</strong> {% trans 'Once the game is finished, nobody will be able to access it again' %}.
     </p>
 <br/>
     <h2>
-        Join game
+        {% trans 'Join game' %}
     </h2>
     <p>
-        Type in your desired nickname and game's access code. If you're already participating in any ongoing games,
-        corresponding links will be displayed at the bottom of the page.
+        {% trans "Type in your desired nickname and game's access code" %}. {% trans "If you're already participating in any ongoing games" %},
+        {% trans 'corresponding links will be displayed at the bottom of the page' %}.
     </p>
     <p>
-        <strong>WARNING:</strong> Unregistered players can join only one active game at the time. If you access a new game, you will loose
-        access to the previous one. Nicknames have to be unique in the game. You cannot join the game which is already
-        holding your avatar (you have already joined before).
+        <strong>{% trans 'WARNING' %}:</strong> {% trans 'Unregistered players can join only one active game at the time' %}. 
+        {% trans 'If you access a new game, you will lose access to the previous one' %}. {% trans 'Nicknames have to be unique in the game' %}. 
+        {% trans 'You cannot join the game which is already holding your avatar (you have already joined before)' %}.
     </p>
 <br/>
     <h2>
-        Gamer panel
+        {% trans 'Gamer panel' %}
     </h2>
     <p>
-        Change the stats of your character in the displayed form and then hit update to save your current stats
-        to display them on the game panel.
-        From here you can also choose to withdraw from game. You will be able to join the game again from the join view,
-        but all of your progress will be permanently erased.
+        {% trans 'Change the stats of your character in the displayed form' %} 
+        {% trans 'and then hit update to save your current stats to display them on the game panel' %}.
+        {% trans 'From here you can also choose to withdraw from game' %} . {% trans 'You will be able to join the game again from the join view' %} ,
+        {% trans 'but all of your progress will be permanently erased' %} .
     </p>
 <br/>
 
