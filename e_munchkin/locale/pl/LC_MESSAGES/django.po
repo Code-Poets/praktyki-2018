@@ -56,3 +56,39 @@ msgstr "Zaloguj"
 #: templates/base.html:47
 msgid "SignUp"
 msgstr "Zarejestruj się"
+
+#: templates/home.html:8
+msgid "Web application e_munchkin"
+msgstr "Aplikacja internetowa e_munchkin"
+
+#: templates/home.html:12 templates/home.html:20
+msgid "Welcome"
+msgstr "Witaj"
+
+#: templates/home.html:13 templates/home.html:21
+msgid "Join us and play with us"
+msgstr "Dołącz do nas i zagraj z nami"
+
+#: templates/home.html:17
+msgid "Host game"
+msgstr "Prowadź grę"
+
+#: templates/home.html:20
+msgid "mysterious stranger"
+msgstr "tajemniczy nieznajomy"
+
+#: templates/home.html:26
+msgid "Join an existing game"
+msgstr "Dołącz do istniejącej gry"
+
+#: templates/home.html:30
+msgid "You have visited this page"
+msgstr "Odwiedziłeś/aś tę stronę "
+
+#: templates/home.html:30
+msgid "time"
+msgstr "raz"
+
+#: templates/home.html:30
+msgid "times"
+msgstr "razy"
