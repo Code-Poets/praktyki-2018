@@ -2,6 +2,7 @@
 <html>
 <head>
     {% load static %}
+    {% load i18n %}
 
   <meta name="description" content="Free Web tutorials">
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
@@ -130,8 +131,8 @@
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
 
-        <div id="dialog" title="Do we have a winner?" align="center">
-            <p>Is that the end of a game? <br />Oh no!</p>
+        <div id="dialog" title="{% trans 'Do we have a winner' %}?" align="center">
+            <p>{% trans 'Is that the end of a game' %}? <br />{% trans 'Oh no' %}!</p>
         </div>
         {% endif %}
     {% endfor %}
@@ -140,11 +141,11 @@
     $("div#dialog").dialog ({
         modal: true,
         buttons : {
-            "Yes, that's right!" : function ()
+            '{% trans "Yes, that's right" %}!' : function ()
             {
                 window.location.href = "{% url 'games:end_game' game.id%}";
             },
-            "No, we change rules" : function ()
+            "{% trans 'No, we change rules' %}" : function ()
             {
                 window.location.href = "{% url 'games:edit_game' game.id%}";
             }
@@ -156,16 +157,16 @@
       <tr>
         <td align="center"> 
             <form action="{% url 'home' %}">
-               <input type="submit" value="Home" style="font-size:15px" class="button2"/>
+               <input type="submit" value="{% trans 'Home' %}" style="font-size:15px" class="button2"/>
             </form>
         </td>
         <td align="center" style="padding:0 5px 0 5px;"> <font size="6"><b> {{ game.game_code }} </b></font> </td>
         <td align="center" style="padding:0 5px 0 30px;"> <font size="7"><b> {{ game.name }} </b></font> </td>
-        <td align="center" style="padding:0 5px 0 5px;"> <font size="2">made by: </font><font size="3"> <b>{{ game.host.username }} </b></font></td>
+        <td align="center" style="padding:0 5px 0 5px;"> <font size="2">{% trans 'made by' %}: </font><font size="3"> <b>{{ game.host.username }} </b></font></td>
         <td align="center" style="padding:0 5px 0 5px;"> </font><font size="3"> <b>{{ game.winning_level }}</b></font></td>
         <td align="center"> 
             <form action="{% url 'games:edit_game' game.id%}">
-               <input type="submit" value="Edit" style="font-size:15px" class="button1"/>
+               <input type="submit" value="{% trans 'Edit' %}" style="font-size:15px" class="button1"/>
             </form>
         </td>
       </tr>
@@ -176,7 +177,7 @@
         <td><font color="DimGray">X</font></td>
             {% if gamers.0 == NULL %}
                 <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
                 <td width="20%" bgcolor="ffe5ba">
     <!-- 1. gamer -->
@@ -210,8 +211,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -219,7 +220,7 @@
                             {% if gamers.0.race_slot_1 != None %}
                                 {{ gamers.0.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -227,7 +228,7 @@
                             {% if gamers.0.class_slot_1 != None %}
                                 {{ gamers.0.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -237,7 +238,7 @@
                             {% if gamers.0.race_slot_2 != None %}
                                 {{ gamers.0.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -245,7 +246,7 @@
                             {% if gamers.0.class_slot_2 != None %}
                                 {{ gamers.0.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -255,7 +256,7 @@
         </td>
             {% if gamers.6 == NULL %}
                 <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
                 <td width="20%" bgcolor="ffe5ba">
     <!-- 7. gamer -->
@@ -289,8 +290,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -298,7 +299,7 @@
                             {% if gamers.6.race_slot_1 != None %}
                                 {{ gamers.6.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -306,7 +307,7 @@
                             {% if gamers.6.class_slot_1 != None %}
                                 {{ gamers.6.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -316,7 +317,7 @@
                             {% if gamers.6.race_slot_2 != None %}
                                 {{ gamers.6.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -324,7 +325,7 @@
                             {% if gamers.6.class_slot_2 != None %}
                                 {{ gamers.6.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -333,7 +334,7 @@
         </td>
             {% if gamers.2 == NULL %}
                 <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
                 <td width="20%" bgcolor="ffe5ba">
     <!-- 3. gamer -->
@@ -367,8 +368,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -376,7 +377,7 @@
                             {% if gamers.2.race_slot_1 != None %}
                                 {{ gamers.2.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -384,7 +385,7 @@
                             {% if gamers.2.class_slot_1 != None %}
                                 {{ gamers.2.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -394,7 +395,7 @@
                             {% if gamers.2.race_slot_2 != None %}
                                 {{ gamers.2.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -402,7 +403,7 @@
                             {% if gamers.2.class_slot_2 != None %}
                                 {{ gamers.2.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -414,7 +415,7 @@
       <tr align="center" height="33%">
             {% if gamers.5 == NULL %}
                 <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
                 <td width="20%" bgcolor="ffe5ba">
     <!-- 6. gamer -->
@@ -448,8 +449,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -457,7 +458,7 @@
                             {% if gamers.5.race_slot_1 != None %}
                                 {{ gamers.5.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -465,7 +466,7 @@
                             {% if gamers.5.class_slot_1 != None %}
                                 {{ gamers.5.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -475,7 +476,7 @@
                             {% if gamers.5.race_slot_2 != None %}
                                 {{ gamers.5.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -483,7 +484,7 @@
                             {% if gamers.5.class_slot_2 != None %}
                                 {{ gamers.5.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -495,7 +496,7 @@
         <td width="20%"><font color="DimGray">X</font></td>
             {% if gamers.4 == NULL %}
         <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
         <td width="20%" bgcolor="ffe5ba">
     <!-- 5. gamer -->
@@ -529,8 +530,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -538,7 +539,7 @@
                             {% if gamers.4.race_slot_1 != None %}
                                 {{ gamers.4.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -546,7 +547,7 @@
                             {% if gamers.4.class_slot_1 != None %}
                                 {{ gamers.4.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -556,7 +557,7 @@
                             {% if gamers.4.race_slot_2 != None %}
                                 {{ gamers.4.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -564,7 +565,7 @@
                             {% if gamers.4.class_slot_2 != None %}
                                 {{ gamers.4.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -576,7 +577,7 @@
         <td width="20%"><font color="DimGray">X</font></td>
             {% if gamers.3 == NULL %}
         <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
         <td width="20%" bgcolor="ffe5ba">
     <!-- 4. gamer -->
@@ -610,8 +611,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -619,7 +620,7 @@
                             {% if gamers.3.race_slot_1 != None %}
                                 {{ gamers.3.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -627,7 +628,7 @@
                             {% if gamers.3.class_slot_1 != None %}
                                 {{ gamers.3.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -637,7 +638,7 @@
                             {% if gamers.3.race_slot_2 != None %}
                                 {{ gamers.3.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -645,7 +646,7 @@
                             {% if gamers.3.class_slot_2 != None %}
                                 {{ gamers.3.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -654,7 +655,7 @@
         </td>
             {% if gamers.7 == NULL %}
         <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
         <td width="20%" bgcolor="ffe5ba">
     <!-- 8. gamer -->
@@ -688,8 +689,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -697,7 +698,7 @@
                             {% if gamers.7.race_slot_1 != None %}
                                 {{ gamers.7.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -705,7 +706,7 @@
                             {% if gamers.7.class_slot_1 != None %}
                                 {{ gamers.7.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -715,7 +716,7 @@
                             {% if gamers.7.race_slot_2 != None %}
                                 {{ gamers.7.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -723,7 +724,7 @@
                             {% if gamers.7.class_slot_2 != None %}
                                 {{ gamers.7.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -732,7 +733,7 @@
         </td>
             {% if gamers.1 == NULL %}
         <td width="20%">
-                <font color="DimGray">Free place for gamer</font>
+                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
             {% else %}
         <td width="20%" bgcolor="ffe5ba">
     <!-- 2. gamer -->
@@ -766,8 +767,8 @@
                     </tr>
 
                     <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">Race: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">Class: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
+                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
                     </tr>
 
                     <tr align="center">
@@ -775,7 +776,7 @@
                             {% if gamers.1.race_slot_1 != None %}
                                 {{ gamers.1.race_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Race: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}: </font>
                             {% endif %}
                                 </td>
 
@@ -783,7 +784,7 @@
                             {% if gamers.1.class_slot_1 != None %}
                                 {{ gamers.1.class_slot_1 }}
                             {% else %}
-                                <font color="ffe5ba">Class: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}: </font>
                             {% endif %}
                                 </td>
                     </tr>
@@ -793,7 +794,7 @@
                             {% if gamers.1.race_slot_2 != None %}
                                 {{ gamers.1.race_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Race2: </font>
+                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
                             {% endif %}
                                 </td>
 
@@ -801,7 +802,7 @@
                             {% if gamers.1.class_slot_2 != None %}
                                 {{ gamers.1.class_slot_2 }}
                             {% else %}
-                                <font color="ffe5ba">Class2: </font>
+                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
                             {% endif %}
                                 </td>
                     </tr>
