@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-09 16:42+0200\n"
+"POT-Creation-Date: 2018-08-13 18:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,38 +53,38 @@ msgid "Are you sure you want to proceed"
 msgstr "Czy na pewno chcesz kontynuować"
 
 #: games/templates/games/delete_gamer.html:21
-#: games/templates/games/game_edit.html:59
+#: games/templates/games/game_edit.html:85
 #: games/templates/games/kick_gamer.html:19
 #: users/templates/users/delete_user.html:21
 msgid "Yes"
 msgstr "Tak"
 
 #: games/templates/games/delete_gamer.html:25
-#: games/templates/games/game_edit.html:63
+#: games/templates/games/game_edit.html:89
 #: games/templates/games/kick_gamer.html:23
 #: users/templates/users/delete_user.html:25
 msgid "No"
 msgstr "Nie"
 
-#: games/templates/games/encyclopedia.html:28
+#: games/templates/games/encyclopedia.html:106
 msgid "Encyclopedia"
 msgstr "Encyklopedia"
 
-#: games/templates/games/encyclopedia.html:32
+#: games/templates/games/encyclopedia.html:110
 msgid "Races"
 msgstr "Rasy"
 
-#: games/templates/games/encyclopedia.html:56
-#: games/templates/games/encyclopedia.html:88
+#: games/templates/games/encyclopedia.html:134
+#: games/templates/games/encyclopedia.html:166
 msgid "Description"
 msgstr "Opis"
 
-#: games/templates/games/encyclopedia.html:64
+#: games/templates/games/encyclopedia.html:142
 msgid "Classes"
 msgstr "Klasy"
 
-#: games/templates/games/encyclopedia.html:97
-#: games/templates/games/game_edit.html:45
+#: games/templates/games/encyclopedia.html:209
+#: games/templates/games/game_edit.html:71
 msgid "Back"
 msgstr "Powrót"
 
@@ -172,31 +172,31 @@ msgstr "Gra utworzona dnia"
 msgid "You are not hosting any games"
 msgstr "Nie prowadzisz żadnych gier"
 
-#: games/templates/games/game_edit.html:13
+#: games/templates/games/game_edit.html:39
 msgid "Edit your game"
 msgstr "Edytuj grę"
 
-#: games/templates/games/game_edit.html:42
+#: games/templates/games/game_edit.html:68
 msgid "Save"
 msgstr "Zapisz"
 
-#: games/templates/games/game_edit.html:77
+#: games/templates/games/game_edit.html:103
 msgid "End game"
 msgstr "Zakończ grę"
 
-#: games/templates/games/game_edit.html:79
+#: games/templates/games/game_edit.html:105
 msgid "Are you sure"
 msgstr "Czy jesteś pewien/pewna"
 
-#: games/templates/games/game_edit.html:80
+#: games/templates/games/game_edit.html:106
 msgid "Do you want to end"
 msgstr "Czy chcesz zakończyć grę"
 
-#: games/templates/games/game_edit.html:81
+#: games/templates/games/game_edit.html:107
 msgid "and save all gamers stats"
 msgstr "i zapisać jej wszystkie statystyki"
 
-#: games/templates/games/game_edit.html:92
+#: games/templates/games/game_edit.html:118
 msgid "Kick"
 msgstr "Wyrzuć"
 
@@ -247,50 +247,6 @@ msgstr "Status"
 msgid "That's right"
 msgstr "Zgadza się"
 
-#: games/templates/games/game_panel.html:127
-msgid "Do we have a winner"
-msgstr "Czy mamy zwycięzcę"
-
-#: games/templates/games/game_panel.html:128
-msgid "Is that the end of a game"
-msgstr "Czy to już koniec gry"
-
-#: games/templates/games/game_panel.html:128
-msgid "Oh no"
-msgstr "O nie"
-
-#: games/templates/games/game_panel.html:138
-msgid "Yes, that's right"
-msgstr "Tak, zgadza się"
-
-#: games/templates/games/game_panel.html:142
-msgid "No, we change rules"
-msgstr "Nie, zmieniamy zasady"
-
-#: games/templates/games/game_panel.html:155 templates/base.html:33
-#: templates/base.html:49
-msgid "Home"
-msgstr "Start"
-
-#: games/templates/games/game_panel.html:160
-msgid "made by"
-msgstr "utworzona przez"
-
-#: games/templates/games/game_panel.html:164
-msgid "Edit"
-msgstr "Edytuj"
-
-#: games/templates/games/game_panel.html:176
-#: games/templates/games/game_panel.html:222
-#: games/templates/games/game_panel.html:268
-#: games/templates/games/game_panel.html:317
-#: games/templates/games/game_panel.html:366
-#: games/templates/games/game_panel.html:415
-#: games/templates/games/game_panel.html:461
-#: games/templates/games/game_panel.html:507
-msgid "Free place for gamer"
-msgstr "Wolne miejsce dla gracza"
-
 #: games/templates/games/game_stats.html:13
 msgid "These are all statistics for"
 msgstr "To są wszystkie statystyki dla"
@@ -299,23 +255,23 @@ msgstr "To są wszystkie statystyki dla"
 msgid "Winner"
 msgstr "Zwycięzca"
 
-#: games/templates/games/gamer.html:103
+#: games/templates/games/gamer.html:123
 msgid "Update"
 msgstr "Aktualizuj"
 
-#: games/templates/games/gamer.html:107
+#: games/templates/games/gamer.html:127
 msgid "Withdraw from game"
 msgstr "Wycofaj się"
 
-#: games/templates/games/gamer.html:112
+#: games/templates/games/gamer.html:132
 msgid "Wait, wait, wait..."
 msgstr "Zaczekaj..."
 
-#: games/templates/games/gamer.html:113
+#: games/templates/games/gamer.html:133
 msgid "I think we have a winner"
 msgstr "Wydaje mi się, że mamy zwycięzcę"
 
-#: games/templates/games/gamer.html:113
+#: games/templates/games/gamer.html:133
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
 
@@ -376,19 +332,25 @@ msgstr "I to wszystko"
 msgid ""
 "All you have to do for now on is remember to update your stats whenever they "
 "change during your game"
-msgstr "Wszystko, co musisz teraz zrobić, to pamiętać o aktualizowaniu statystyk za każdym razem, gdy ulegną one zmianie podczas gry"
+msgstr ""
+"Wszystko, co musisz teraz zrobić, to pamiętać o aktualizowaniu statystyk za "
+"każdym razem, gdy ulegną one zmianie podczas gry"
 
 #: games/templates/games/instruction_manual.html:20
 msgid ""
 "Once any player achieves the winning level, a blockade will be set for other "
 "players and appropriate notification"
-msgstr "Gdy dowolny gracz osiągnie poziom wygrywający, zostanie ustawiona blokada dla innych graczy i odpowiednie powiadomienie"
+msgstr ""
+"Gdy dowolny gracz osiągnie poziom wygrywający, zostanie ustawiona blokada "
+"dla innych graczy i odpowiednie powiadomienie"
 
 #: games/templates/games/instruction_manual.html:21
 msgid ""
 "will be displayed on main game panel. The host can then decide to finish the "
 "game or alter it's rules"
-msgstr "wyświetli się na głównym panelu gry. Prowadzący może następnie zdecydować o zakończeniu gry lub zmianie jej zasad"
+msgstr ""
+"wyświetli się na głównym panelu gry. Prowadzący może następnie zdecydować o "
+"zakończeniu gry lub zmianie jej zasad"
 
 #: games/templates/games/instruction_manual.html:22
 msgid "so the fun could go on"
@@ -589,6 +551,10 @@ msgstr ""
 msgid "Logout"
 msgstr "Wyloguj"
 
+#: templates/base.html:33 templates/base.html:49
+msgid "Home"
+msgstr "Start"
+
 #: templates/base.html:35
 msgid "Stats"
 msgstr "Statystyki"
@@ -664,24 +630,19 @@ msgid "date joined"
 msgstr "data dołączenia"
 
 #: users/templates/users/change_password.html:11
+#: users/templates/users/edit_profile.html:11
 msgid "Change account details"
-msgstr "Zmien dane konta"
+msgstr "Zmień dane konta"
 
 #: users/templates/users/change_password.html:15
+#: users/templates/users/edit_profile.html:41
 msgid "Change password"
 msgstr "Zmień hasło"
 
 #: users/templates/users/change_password.html:33
+#: users/templates/users/edit_profile.html:33
 msgid "Save changes"
 msgstr "Zapisz zmiany"
-
-#: users/templates/users/change_password.html:39
-msgid "Delete account"
-msgstr "Usuń konto"
-
-#: users/templates/users/change_password.html:41
-msgid "Delete"
-msgstr "Usuń"
 
 #: users/templates/users/delete_user.html:8
 msgid "Do you want to leave us"
@@ -698,6 +659,16 @@ msgstr "Spowoduje to nieodwracalne usunięcie prowadzonych gier i graczy"
 #: users/templates/users/delete_user.html:14
 msgid "All of your current stats will be lost"
 msgstr "Wszystkie twoje bieżące statystyki zostaną utracone"
+
+#: users/templates/users/edit_profile.html:15
+#, fuzzy
+#| msgid "Change account details"
+msgid "Change profile details"
+msgstr "Zmien dane konta"
+
+#: users/templates/users/edit_profile.html:46
+msgid "Delete account"
+msgstr "Usuń konto"
 
 #: users/templates/users/signup.html:5 users/templates/users/signup.html:33
 msgid "Sign up"
@@ -756,6 +727,3 @@ msgstr "Grałeś jako"
 #: users/templates/users/user_stats.html:114
 msgid "You not have been playing any finished games as gamer"
 msgstr "Nie grałeś/aś w żadną zakończoną grę"
-
-#~ msgid "Yes, that"
-#~ msgstr "Tak"
