@@ -1,0 +1,761 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-08-09 16:42+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+
+#: e_munchkin/settings/defaults.py:143
+msgid "English"
+msgstr "Angielski"
+
+#: e_munchkin/settings/defaults.py:144
+msgid "Polish"
+msgstr "Polski"
+
+#: games/templates/games/delete_gamer.html:8
+msgid "Withdraw"
+msgstr "Wycofaj się"
+
+#: games/templates/games/delete_gamer.html:10
+msgid "Are you sure you want to withdraw from the game"
+msgstr "Czy jesteś pewien/pewna, że chcesz wycofać się z gry"
+
+#: games/templates/games/delete_gamer.html:12
+msgid "This will irreversibly remove you from this game"
+msgstr "Spowoduje to nieodwracalne usunięcie cię z tej gry"
+
+#: games/templates/games/delete_gamer.html:14
+msgid "You can join the game again, but all of your current stats will be lost"
+msgstr ""
+"Możesz ponownie dołączyć do gry, ale wszystkie twoje bieżące statystyki "
+"zostaną utracone"
+
+#: games/templates/games/delete_gamer.html:16
+#: games/templates/games/kick_gamer.html:14
+#: users/templates/users/delete_user.html:16
+msgid "Are you sure you want to proceed"
+msgstr "Czy na pewno chcesz kontynuować"
+
+#: games/templates/games/delete_gamer.html:21
+#: games/templates/games/game_edit.html:59
+#: games/templates/games/kick_gamer.html:19
+#: users/templates/users/delete_user.html:21
+msgid "Yes"
+msgstr "Tak"
+
+#: games/templates/games/delete_gamer.html:25
+#: games/templates/games/game_edit.html:63
+#: games/templates/games/kick_gamer.html:23
+#: users/templates/users/delete_user.html:25
+msgid "No"
+msgstr "Nie"
+
+#: games/templates/games/encyclopedia.html:28
+msgid "Encyclopedia"
+msgstr "Encyklopedia"
+
+#: games/templates/games/encyclopedia.html:32
+msgid "Races"
+msgstr "Rasy"
+
+#: games/templates/games/encyclopedia.html:56
+#: games/templates/games/encyclopedia.html:88
+msgid "Description"
+msgstr "Opis"
+
+#: games/templates/games/encyclopedia.html:64
+msgid "Classes"
+msgstr "Klasy"
+
+#: games/templates/games/encyclopedia.html:97
+#: games/templates/games/game_edit.html:45
+msgid "Back"
+msgstr "Powrót"
+
+#: games/templates/games/game_access.html:8
+#: games/templates/games/instruction_manual.html:62
+msgid "Join game"
+msgstr "Dołącz do gry"
+
+#: games/templates/games/game_access.html:44
+msgid "Join"
+msgstr "Dołącz"
+
+#: games/templates/games/game_access.html:49
+msgid "Recently played games"
+msgstr "Ostatnio grane gry"
+
+#: games/templates/games/game_access.html:52
+#: games/templates/games/game_create.html:50
+#: users/templates/users/user_stats.html:11
+#: users/templates/users/user_stats.html:35
+#: users/templates/users/user_stats.html:68
+#: users/templates/users/user_stats.html:96
+msgid "Game name"
+msgstr "Nazwa gry"
+
+#: games/templates/games/game_access.html:53
+#: games/templates/games/game_end.html:22
+#: games/templates/games/game_stats.html:22
+#: users/templates/users/user_stats.html:67
+#: users/templates/users/user_stats.html:95
+msgid "Nick"
+msgstr "Pseudonim"
+
+#: games/templates/games/game_access.html:54
+#: games/templates/games/game_end.html:27
+#: games/templates/games/game_stats.html:27
+msgid "Level"
+msgstr "Poziom"
+
+#: games/templates/games/game_access.html:55
+msgid "Game started at"
+msgstr "Gra rozpoczęta dnia"
+
+#: games/templates/games/game_access.html:80
+msgid "No recently played games"
+msgstr "Brak ostatnio granych gier"
+
+#: games/templates/games/game_create.html:8
+msgid "Create new game"
+msgstr "Utwórz nową grę"
+
+#: games/templates/games/game_create.html:42
+msgid "Create"
+msgstr "Utwórz"
+
+#: games/templates/games/game_create.html:47
+#: users/templates/users/user_stats.html:8
+msgid "Games you are currently hosting"
+msgstr "Gry, które aktualnie prowadzisz"
+
+#: games/templates/games/game_create.html:51
+#: users/templates/users/user_stats.html:12
+#: users/templates/users/user_stats.html:69
+msgid "Game code"
+msgstr "Kod gry"
+
+#: games/templates/games/game_create.html:52
+#: users/templates/users/user_stats.html:13
+#: users/templates/users/user_stats.html:36
+#: users/templates/users/user_stats.html:71
+#: users/templates/users/user_stats.html:98
+msgid "Players"
+msgstr "Gracze"
+
+#: games/templates/games/game_create.html:53
+#: users/templates/users/user_stats.html:14
+#: users/templates/users/user_stats.html:37
+#: users/templates/users/user_stats.html:72
+#: users/templates/users/user_stats.html:99
+msgid "Game created at"
+msgstr "Gra utworzona dnia"
+
+#: games/templates/games/game_create.html:65
+#: users/templates/users/user_stats.html:26
+msgid "You are not hosting any games"
+msgstr "Nie prowadzisz żadnych gier"
+
+#: games/templates/games/game_edit.html:13
+msgid "Edit your game"
+msgstr "Edytuj grę"
+
+#: games/templates/games/game_edit.html:42
+msgid "Save"
+msgstr "Zapisz"
+
+#: games/templates/games/game_edit.html:77
+msgid "End game"
+msgstr "Zakończ grę"
+
+#: games/templates/games/game_edit.html:79
+msgid "Are you sure"
+msgstr "Czy jesteś pewien/pewna"
+
+#: games/templates/games/game_edit.html:80
+msgid "Do you want to end"
+msgstr "Czy chcesz zakończyć grę"
+
+#: games/templates/games/game_edit.html:81
+msgid "and save all gamers stats"
+msgstr "i zapisać jej wszystkie statystyki"
+
+#: games/templates/games/game_edit.html:92
+msgid "Kick"
+msgstr "Wyrzuć"
+
+#: games/templates/games/game_end.html:13
+msgid "This is the end of the"
+msgstr "Oto jest koniec gry"
+
+#: games/templates/games/game_end.html:17
+#: games/templates/games/game_stats.html:17
+msgid "Statistics"
+msgstr "Statystyki"
+
+#: games/templates/games/game_end.html:19
+#: games/templates/games/game_stats.html:19
+msgid "Gamer"
+msgstr "Gracz"
+
+#: games/templates/games/game_end.html:32
+#: games/templates/games/game_stats.html:32
+msgid "Bonus"
+msgstr "Bonus"
+
+#: games/templates/games/game_end.html:37
+#: games/templates/games/game_stats.html:37
+msgid "Gender"
+msgstr "Płeć"
+
+#: games/templates/games/game_end.html:42
+#: games/templates/games/game_end.html:51
+#: games/templates/games/game_stats.html:42
+#: games/templates/games/game_stats.html:51
+msgid "Race"
+msgstr "Rasa"
+
+#: games/templates/games/game_end.html:60
+#: games/templates/games/game_end.html:69
+#: games/templates/games/game_stats.html:60
+#: games/templates/games/game_stats.html:69
+msgid "Class"
+msgstr "Klasa"
+
+#: games/templates/games/game_end.html:79
+#: games/templates/games/game_stats.html:79
+msgid "Status"
+msgstr "Status"
+
+#: games/templates/games/game_end.html:93
+msgid "That's right"
+msgstr "Zgadza się"
+
+#: games/templates/games/game_panel.html:127
+msgid "Do we have a winner"
+msgstr "Czy mamy zwycięzcę"
+
+#: games/templates/games/game_panel.html:128
+msgid "Is that the end of a game"
+msgstr "Czy to już koniec gry"
+
+#: games/templates/games/game_panel.html:128
+msgid "Oh no"
+msgstr "O nie"
+
+#: games/templates/games/game_panel.html:138
+msgid "Yes, that's right"
+msgstr "Tak, zgadza się"
+
+#: games/templates/games/game_panel.html:142
+msgid "No, we change rules"
+msgstr "Nie, zmieniamy zasady"
+
+#: games/templates/games/game_panel.html:155 templates/base.html:33
+#: templates/base.html:49
+msgid "Home"
+msgstr "Start"
+
+#: games/templates/games/game_panel.html:160
+msgid "made by"
+msgstr "utworzona przez"
+
+#: games/templates/games/game_panel.html:164
+msgid "Edit"
+msgstr "Edytuj"
+
+#: games/templates/games/game_panel.html:176
+#: games/templates/games/game_panel.html:222
+#: games/templates/games/game_panel.html:268
+#: games/templates/games/game_panel.html:317
+#: games/templates/games/game_panel.html:366
+#: games/templates/games/game_panel.html:415
+#: games/templates/games/game_panel.html:461
+#: games/templates/games/game_panel.html:507
+msgid "Free place for gamer"
+msgstr "Wolne miejsce dla gracza"
+
+#: games/templates/games/game_stats.html:13
+msgid "These are all statistics for"
+msgstr "To są wszystkie statystyki dla"
+
+#: games/templates/games/game_stats.html:82
+msgid "Winner"
+msgstr "Zwycięzca"
+
+#: games/templates/games/gamer.html:103
+msgid "Update"
+msgstr "Aktualizuj"
+
+#: games/templates/games/gamer.html:107
+msgid "Withdraw from game"
+msgstr "Wycofaj się"
+
+#: games/templates/games/gamer.html:112
+msgid "Wait, wait, wait..."
+msgstr "Zaczekaj..."
+
+#: games/templates/games/gamer.html:113
+msgid "I think we have a winner"
+msgstr "Wydaje mi się, że mamy zwycięzcę"
+
+#: games/templates/games/gamer.html:113
+msgid "But wait for game-master decision"
+msgstr "Ale zaczekaj na decyzję mistrza gry"
+
+#: games/templates/games/instruction_manual.html:9
+msgid "Instruction manual"
+msgstr "Instrukcja obsługi"
+
+#: games/templates/games/instruction_manual.html:11
+msgid ""
+"This application was designed to provide support during your regular "
+"Munchkin game"
+msgstr ""
+"Ta aplikacja została zaprojektowana, aby zapewnić wsparcie podczas twojej "
+"gry Munchkin"
+
+#: games/templates/games/instruction_manual.html:12
+msgid ""
+"The application provides an interface which displays current stats of all "
+"players in the game"
+msgstr ""
+"Aplikacja zapewnia interfejs, który wyświetla aktualne statystyki wszystkich "
+"graczy w grze"
+
+#: games/templates/games/instruction_manual.html:13
+msgid ""
+"such as level, bonus points, gender, class and race. The host of the game "
+"should sign in and create"
+msgstr ""
+"takie jak poziom, punkty bonusowe, płeć, klasa i rasa. Porwadzący grę "
+"powinien się zalogować i utworzyć"
+
+#: games/templates/games/instruction_manual.html:14
+msgid ""
+"it's panel on the website. After the panel is created, an access code for it "
+"will be generated"
+msgstr ""
+"jej panel na stronie internetowej. Po utworzeniu panelu zostanie "
+"wygenerowany kod dostępu do niej"
+
+#: games/templates/games/instruction_manual.html:15
+msgid ""
+"The host should make this code available to other players. The players are "
+"then expected to use their mobile devices"
+msgstr ""
+"Prowadzący powinien udostępnić ten kod innym graczom. Od graczy oczekuje się "
+"korzystania z urządzeń mobilnych"
+
+#: games/templates/games/instruction_manual.html:16
+msgid "to create their nicknames and access the game with given code"
+msgstr ""
+", aby stworzyć swoje pseudonimy i uzyskać dostęp do gry z podanym kodem"
+
+#: games/templates/games/instruction_manual.html:19
+msgid "And that's it"
+msgstr "I to wszystko"
+
+#: games/templates/games/instruction_manual.html:19
+msgid ""
+"All you have to do for now on is remember to update your stats whenever they "
+"change during your game"
+msgstr "Wszystko, co musisz teraz zrobić, to pamiętać o aktualizowaniu statystyk za każdym razem, gdy ulegną one zmianie podczas gry"
+
+#: games/templates/games/instruction_manual.html:20
+msgid ""
+"Once any player achieves the winning level, a blockade will be set for other "
+"players and appropriate notification"
+msgstr "Gdy dowolny gracz osiągnie poziom wygrywający, zostanie ustawiona blokada dla innych graczy i odpowiednie powiadomienie"
+
+#: games/templates/games/instruction_manual.html:21
+msgid ""
+"will be displayed on main game panel. The host can then decide to finish the "
+"game or alter it's rules"
+msgstr "wyświetli się na głównym panelu gry. Prowadzący może następnie zdecydować o zakończeniu gry lub zmianie jej zasad"
+
+#: games/templates/games/instruction_manual.html:22
+msgid "so the fun could go on"
+msgstr ", aby zabawa mogła trwać dłużej"
+
+#: games/templates/games/instruction_manual.html:26
+msgid "Here's some additional information on the most important panels"
+msgstr "Oto kilka dodatkowych informacji na temat najważniejszych paneli"
+
+#: games/templates/games/instruction_manual.html:30
+msgid "Homepage"
+msgstr "Strona startowa"
+
+#: games/templates/games/instruction_manual.html:33
+msgid ""
+"From here you can got to game access view to provide your nickname and code "
+"for the game you wish to join"
+msgstr ""
+"Stąd możesz przejść do widoku dostępu do gry, aby podać swój pseudonim i kod "
+"do gry, do której chcesz dołączyć"
+
+#: games/templates/games/instruction_manual.html:34
+msgid ""
+"Logged users are additionally able to go to game hosting view to create and "
+"host a game"
+msgstr ""
+"Zalogowani użytkownicy mogą dodatkowo przejść do widoku prowadzenia gier, "
+"aby utworzyć i obsługiwać grę"
+
+#: games/templates/games/instruction_manual.html:38 templates/home.html:17
+msgid "Host game"
+msgstr "Prowadź grę"
+
+#: games/templates/games/instruction_manual.html:41
+msgid "Create new game by providing necessary information"
+msgstr "Utwórz nową grę, podając niezbędne informacje"
+
+#: games/templates/games/instruction_manual.html:41
+msgid "You will be able to edit later if you wish"
+msgstr "Będziesz mógł je edytować później, jeśli chcesz"
+
+#: games/templates/games/instruction_manual.html:42
+msgid "If you are already hosting any ongoing games"
+msgstr "Jeśli już prowadzisz jakiekolwiek trwające gry"
+
+#: games/templates/games/instruction_manual.html:42
+#: games/templates/games/instruction_manual.html:66
+msgid "corresponding links will be displayed at the bottom of the page"
+msgstr "odpowiednie linki będą wyświetlane u dołu strony"
+
+#: games/templates/games/instruction_manual.html:46
+msgid "Game panel"
+msgstr "Panel gry"
+
+#: games/templates/games/instruction_manual.html:49
+msgid "An interface representing your game"
+msgstr "Interfejs reprezentujący twoją grę"
+
+#: games/templates/games/instruction_manual.html:49
+msgid "It shows a table with all of the active players and their current stats"
+msgstr ""
+"Pokazuje tabelę z wszystkimi aktywnymi graczami i ich aktualnymi "
+"statystykami."
+
+#: games/templates/games/instruction_manual.html:50
+msgid "The page updates automatically"
+msgstr "Strona aktualizuje się automatycznie"
+
+#: games/templates/games/instruction_manual.html:50
+msgid ""
+"On top-right corner game's winning level is displayed next to the ''Edit'' "
+"button"
+msgstr ""
+"W prawym górnym rogu, obok przycisku ''Edytuj'', jest wyświetlany poziom "
+"wygrywający grę"
+
+#: games/templates/games/instruction_manual.html:51
+msgid ""
+"On top-left corner a 4-character access code is displayed next to homepage "
+"redirect button"
+msgstr ""
+"W lewym górnym rogu, obok przycisku przekierowania do strony głównej, "
+"wyświetlany jest 4-znakowy kod dostępu"
+
+#: games/templates/games/instruction_manual.html:52
+msgid ""
+"After any of the players achieves a winning level, an appropriate message "
+"will  be displayed"
+msgstr ""
+"Gdy którykolwiek z graczy osiągnie poziom wygrywający, zostanie wyświetlona "
+"odpowiednia wiadomość"
+
+#: games/templates/games/instruction_manual.html:53
+msgid ""
+"and you will be asked to either finish the game or alter it's rules in the "
+"settings view"
+msgstr ""
+"a użytkownik zostanie poproszony o zakończenie gry lub zmianę reguł w widoku "
+"ustawień"
+
+#: games/templates/games/instruction_manual.html:54
+msgid "You can access the settings at any time by choosing the ''Edit'' button"
+msgstr ""
+"Możesz uzyskać dostęp do ustawień w dowolnym momencie, wybierając przycisk "
+"''Edytuj''"
+
+#: games/templates/games/instruction_manual.html:54
+msgid "From there, you can change game's settings"
+msgstr "Stamtąd możesz zmienić ustawienia gry"
+
+#: games/templates/games/instruction_manual.html:55
+msgid "kick players out or finish the game prematurely"
+msgstr "kopać graczy lub zakończyć grę przedwcześnie"
+
+#: games/templates/games/instruction_manual.html:58
+#: games/templates/games/instruction_manual.html:69
+msgid "WARNING"
+msgstr "OSTRZEŻENIE"
+
+#: games/templates/games/instruction_manual.html:58
+msgid "Once the game is finished, nobody will be able to access it again"
+msgstr ""
+"Po zakończeniu gry nikt nie będzie mógł uzyskać do niej dostępu ponownie"
+
+#: games/templates/games/instruction_manual.html:65
+msgid "Type in your desired nickname and game's access code"
+msgstr "Wpisz wybrany pseudonim i kod dostępu do gry"
+
+#: games/templates/games/instruction_manual.html:65
+msgid "If you're already participating in any ongoing games"
+msgstr "Jeśli już uczestniczysz w jakichkolwiek trwających grach"
+
+#: games/templates/games/instruction_manual.html:69
+msgid "Unregistered players can join only one active game at the time"
+msgstr ""
+"Niezarejestrowani gracze mogą dołączyć tylko do jednej aktywnej gry w tym "
+"samym czasie"
+
+#: games/templates/games/instruction_manual.html:70
+msgid "If you access a new game, you will lose access to the previous one"
+msgstr "Jeśli uzyskasz dostęp do nowej gry, utracisz dostęp do poprzedniej"
+
+#: games/templates/games/instruction_manual.html:70
+msgid "Nicknames have to be unique in the game"
+msgstr "Pseudonimy muszą być unikalne w grze"
+
+#: games/templates/games/instruction_manual.html:71
+msgid ""
+"You cannot join the game which is already holding your avatar (you have "
+"already joined before)"
+msgstr ""
+"Nie możesz dołączyć do gry, która już trzyma twój awatar (do której już "
+"dołączyłeś)"
+
+#: games/templates/games/instruction_manual.html:75
+msgid "Gamer panel"
+msgstr "Panel gracza"
+
+#: games/templates/games/instruction_manual.html:78
+msgid "Change the stats of your character in the displayed form"
+msgstr "Zmień statystyki swojej postaci w wyświetlanym formularzu"
+
+#: games/templates/games/instruction_manual.html:79
+msgid ""
+"and then hit update to save your current stats to display them on the game "
+"panel"
+msgstr ""
+"a następnie naciśnij przycisk aktualizacji, aby zapisać aktualne statystyki "
+"i wyświetlić je w panelu gry"
+
+#: games/templates/games/instruction_manual.html:80
+msgid "From here you can also choose to withdraw from game"
+msgstr "Stąd możesz również wycofać się z gry"
+
+#: games/templates/games/instruction_manual.html:80
+msgid "You will be able to join the game again from the join view"
+msgstr "Będziesz mógł ponownie dołączyć do gry z widoku dołączania"
+
+#: games/templates/games/instruction_manual.html:81
+msgid "but all of your progress will be permanently erased"
+msgstr "ale wszystkie twoje postępy zostaną trwale usunięte"
+
+#: games/templates/games/kick_gamer.html:8
+msgid "Kick player"
+msgstr "Wyrzuć gracza"
+
+#: games/templates/games/kick_gamer.html:10
+msgid "Are you sure you want to kick this player"
+msgstr "Czy na pewno chcesz wyrzucić tego gracza"
+
+#: games/templates/games/kick_gamer.html:12
+msgid ""
+"This will irreversibly remove the player and all his progress from the game"
+msgstr ""
+"Spowoduje to nieodwracalne usunięcie gracza wraz z jego postępem w grze"
+
+#: templates/base.html:31
+msgid "Logout"
+msgstr "Wyloguj"
+
+#: templates/base.html:35
+msgid "Stats"
+msgstr "Statystyki"
+
+#: templates/base.html:36
+msgid "Account"
+msgstr "Konto"
+
+#: templates/base.html:37 templates/base.html:51
+msgid "Help"
+msgstr "Pomoc"
+
+#: templates/base.html:46 users/templates/registration/login.html:11
+#: users/templates/registration/login.html:39
+msgid "Login"
+msgstr "Zaloguj"
+
+#: templates/base.html:47
+msgid "SignUp"
+msgstr "Zarejestruj się"
+
+#: templates/home.html:8
+msgid "Web application e_munchkin"
+msgstr "Aplikacja internetowa e_munchkin"
+
+#: templates/home.html:12 templates/home.html:20
+msgid "Welcome"
+msgstr "Witaj"
+
+#: templates/home.html:13 templates/home.html:21
+msgid "Join us and play with us"
+msgstr "Dołącz do nas i zagraj z nami"
+
+#: templates/home.html:20
+msgid "mysterious stranger"
+msgstr "tajemniczy nieznajomy"
+
+#: templates/home.html:26
+msgid "Join an existing game"
+msgstr "Dołącz do istniejącej gry"
+
+#: templates/home.html:30
+msgid "You have visited this page"
+msgstr "Odwiedziłeś/aś tę stronę "
+
+#: templates/home.html:30
+msgid "time"
+msgstr "raz"
+
+#: templates/home.html:30
+msgid "times"
+msgstr "razy"
+
+#: users/models.py:8
+msgid "username"
+msgstr "nazwa użytkownika"
+
+#: users/models.py:9
+msgid ""
+"Required. 30 characters or fewer. Letters, numbers and @/./+/-/_ characters"
+msgstr "Wymagane. 30 znaków lub więcej. Litery, cyfry i znaki @/./+/-/_"
+
+#: users/models.py:11
+msgid "nick name"
+msgstr "pseudonim"
+
+#: users/models.py:12
+msgid "email address"
+msgstr "adres email"
+
+#: users/models.py:13
+msgid "date joined"
+msgstr "data dołączenia"
+
+#: users/templates/users/change_password.html:11
+msgid "Change account details"
+msgstr "Zmien dane konta"
+
+#: users/templates/users/change_password.html:15
+msgid "Change password"
+msgstr "Zmień hasło"
+
+#: users/templates/users/change_password.html:33
+msgid "Save changes"
+msgstr "Zapisz zmiany"
+
+#: users/templates/users/change_password.html:39
+msgid "Delete account"
+msgstr "Usuń konto"
+
+#: users/templates/users/change_password.html:41
+msgid "Delete"
+msgstr "Usuń"
+
+#: users/templates/users/delete_user.html:8
+msgid "Do you want to leave us"
+msgstr "Chcesz nas opuścić"
+
+#: users/templates/users/delete_user.html:10
+msgid "Are you sure you want to delete your account?"
+msgstr "Czy jesteś pewien/pewna, że chcesz usunąć to konto?"
+
+#: users/templates/users/delete_user.html:12
+msgid "This will irreversibly remove your hosted games and gamers"
+msgstr "Spowoduje to nieodwracalne usunięcie prowadzonych gier i graczy"
+
+#: users/templates/users/delete_user.html:14
+msgid "All of your current stats will be lost"
+msgstr "Wszystkie twoje bieżące statystyki zostaną utracone"
+
+#: users/templates/users/signup.html:5 users/templates/users/signup.html:33
+msgid "Sign up"
+msgstr "Zarejestruj się"
+
+#: users/templates/users/user_stats.html:4
+msgid "Hey"
+msgstr "Hej"
+
+#: users/templates/users/user_stats.html:4
+msgid "that's all yours"
+msgstr "to wszystko twoje"
+
+#: users/templates/users/user_stats.html:6
+msgid "Hosted games"
+msgstr "Prowadzone gry"
+
+#: users/templates/users/user_stats.html:32
+msgid "Games you have been hosting"
+msgstr "Gry, które prowadziłeś/aś"
+
+#: users/templates/users/user_stats.html:38
+#: users/templates/users/user_stats.html:100
+msgid "Game finished at"
+msgstr "Gra ukończona dnia"
+
+#: users/templates/users/user_stats.html:39
+msgid "Game winner"
+msgstr "Zwycięzca gry"
+
+#: users/templates/users/user_stats.html:58
+msgid "You not have been hosting any finished games"
+msgstr "Nie prowadziłeś żadnych zakończonych gier"
+
+#: users/templates/users/user_stats.html:62
+msgid "Played games"
+msgstr "Gry, w których grałeś/aś"
+
+#: users/templates/users/user_stats.html:64
+msgid "You are playing as"
+msgstr "Grasz jako"
+
+#: users/templates/users/user_stats.html:70
+#: users/templates/users/user_stats.html:97
+msgid "Game host"
+msgstr "Prowadzący grę"
+
+#: users/templates/users/user_stats.html:86
+msgid "You are not playing any games as gamer"
+msgstr "Nie grasz w żadną grę"
+
+#: users/templates/users/user_stats.html:92
+msgid "You have been playing as"
+msgstr "Grałeś jako"
+
+#: users/templates/users/user_stats.html:114
+msgid "You not have been playing any finished games as gamer"
+msgstr "Nie grałeś/aś w żadną zakończoną grę"
+
+#~ msgid "Yes, that"
+#~ msgstr "Tak"

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load i18n %}
 <head>
 
     <script>
@@ -9,36 +10,36 @@ window.setTimeout(function () {
     </script>
 </head>
 
-<h1>These are all statistics for {{ game.name }} </h1>
+<h1>{% trans 'These are all statistics for' %} {{ game.name }} </h1>
 
 <table id="game_stats_table" width="80%" height="100%" border="3" cellpadding="5" cellspacing="4" align="center" bgcolor="white">
     <tr>
-        <th> Statistics </th>
+        <th> {% trans 'Statistics' %} </th>
     {% for gamer in game.gamers.all %}
-        <th>Gamer {{ forloop.counter }}</th>
+        <th>{% trans 'Gamer' %} {{ forloop.counter }}</th>
     {% endfor %}
     </tr>
-    <tr>         <th>Nick</th>
+    <tr>         <th>{% trans 'Nick' %}</th>
     {% for gamer in game.gamers.all %}
         <td>{{ gamer.nick }}</td>
     {% endfor %}
     </tr>
-    <tr>         <th>Level</th>
+    <tr>         <th>{% trans 'Level' %}</th>
     {% for gamer in game.gamers.all %}
         <td>{{ gamer.level }}</td>
     {% endfor %}
     </tr>
-    <tr>         <th>Bonus</th>
+    <tr>         <th>{% trans 'Bonus' %}</th>
     {% for gamer in game.gamers.all %}
         <td>{{ gamer.bonus }}</td>
     {% endfor %}
     </tr>
-    <tr>         <th>Gender</th>
+    <tr>         <th>{% trans 'Gender' %}</th>
     {% for gamer in game.gamers.all %}
         <td>{{ gamer.gender }}</td>
     {% endfor %}
     </tr>
-    <tr>         <th>Race</th>
+    <tr>         <th>{% trans 'Race' %}</th>
     {% for gamer in game.gamers.all %}
         {% if gamer.race_slot_1 != None %}
         <td>{{ gamer.race_slot_1 }}</td>
@@ -47,7 +48,7 @@ window.setTimeout(function () {
         {% endif %}
     {% endfor %}
     </tr>
-    <tr>         <th>Race 2</th>
+    <tr>         <th>{% trans 'Race' %} 2</th>
     {% for gamer in game.gamers.all %}
         {% if gamer.race_slot_2 != None %}
         <td>{{ gamer.race_slot_2 }}</td>
@@ -56,7 +57,7 @@ window.setTimeout(function () {
         {% endif %}
     {% endfor %}
     </tr>
-    <tr>         <th>Class</th>
+    <tr>         <th>{% trans 'Class' %}</th>
     {% for gamer in game.gamers.all %}
         {% if gamer.class_slot_1 != None %}
         <td>{{ gamer.class_slot_1 }}</td>
@@ -65,7 +66,7 @@ window.setTimeout(function () {
         {% endif %}
     {% endfor %}
     </tr>
-    <tr>         <th>Class 2</th>
+    <tr>         <th>{% trans 'Class' %} 2</th>
     {% for gamer in game.gamers.all %}
         {% if gamer.class_slot_2 != None %}
         <td>{{ gamer.class_slot_2 }}</td>
@@ -75,10 +76,10 @@ window.setTimeout(function () {
     {% endfor %}
     </tr>
     <tr>
-        <th> Status </th>
+        <th> {% trans 'Status' %} </th>
     {% for gamer in game.gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
-        <td> <font color="red">Winner</font> </td>
+        <td> <font color="red">{% trans 'Winner' %}</font> </td>
         {% else %}
         <td> </td>
         {% endif %}

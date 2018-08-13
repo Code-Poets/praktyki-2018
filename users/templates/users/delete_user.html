@@ -1,27 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static %}
+{% load i18n %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
-<h1>Do you want to leave us?!</h1>
+<h1>{% trans 'Do you want to leave us' %}?!</h1>
 <form method="post">{% csrf_token %}
-    <p><strong>Are you sure you want to delete your account?</strong></p>
+    <p><strong>{% trans 'Are you sure you want to delete your account?' %}</strong></p>
     <br/>
-    <p>This will irreversibly remove your hosted games and gamers.</p>
+    <p>{% trans 'This will irreversibly remove your hosted games and gamers' %}.</p>
     <br/>
-    <p>All of your current stats will be lost.</p>
+    <p>{% trans 'All of your current stats will be lost' %}.</p>
     <br/>
-    <p>Are you sure you want to proceed?</p>
+    <p>{% trans 'Are you sure you want to proceed' %}?</p>
     <br/>
     <table align="center">
         <tr>
             <td>
-                <input type="submit" class="btn btn-success" value="Yes">
+                <input type="submit" class="btn btn-success" value="{% trans 'Yes' %}">
             </td>
             <td width="20px"></td>
             <td>
-                <input type="submit" name="cancel" class="btn btn-danger" value="No">
+                <input type="submit" name="cancel" class="btn btn-danger" value="{% trans 'No' %}">
             </td>
         </tr>
     </table>
