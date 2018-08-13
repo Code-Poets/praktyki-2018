@@ -2,12 +2,28 @@
 {% block content %}
 {% load static %}
 <style>
-.button {
-    background-color: #ffe5ba;
-    border-radius: 50%;
-    color: #4d5f8c;
-    border: 2px solid #b2b2b2;
-}
+    .button {
+        background-color: #ffe5ba;
+        border-radius: 50%;
+        color: #4d5f8c;
+        border: 2px solid #b2b2b2;
+    }
+
+    .green {
+        background-color: #ffe5ba;
+        border-radius: 8px;
+        color: #0d8e08;
+        border: 2px solid #09c902;
+        padding: 6px 12px;
+    }
+
+    .red {
+        background-color: #ffe5ba;
+        border-radius: 8px;
+        color: #f93109;
+        border: 2px solid #ff8d47;
+        padding: 6px 15px;
+    }
 </style>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -30,6 +46,10 @@ function increment(incrementor, target){
                 <input type="submit" value="?" class="button"/>
             </form>
         </td>
+    </tr>
+    <tr style="border-bottom: 1px solid #000;">  </tr>
+    <tr>
+        <td colspan="2" align="center"><font color=#b32d00><h2>{{ gamer.game.name}}</h2></font><td>
     </tr>
 </table>
 
@@ -99,11 +119,11 @@ function increment(incrementor, target){
     {% endfor %}
         </table>
     <br/>
-    <input type="submit" value="Update" />
+    <input type="submit" value="Update" class="green"/>
 </form>
 <br/>
 <form action="{% url 'games:delete_gamer' gamer.id %}">
-    <input type="submit" value="Withdraw from game" />
+    <input type="submit" value="Withdraw from game" class="red"/>
 </form>
 
     {% for gamer in gamer.game.gamers.all %}

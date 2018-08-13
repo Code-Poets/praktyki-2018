@@ -7,6 +7,32 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
+
+    <style>
+        .green {
+            background-color: #ffe5ba;
+            border-radius: 8px;
+            color: #0d8e08;
+            border: 2px solid #09c902;
+            padding: 6px 12px;
+        }
+
+        .red {
+            background-color: #ffe5ba;
+            border-radius: 8px;
+            color: #f93109;
+            border: 2px solid #ff8d47;
+            padding: 6px 15px;
+        }
+
+        .grey {
+            background-color: #ffe5ba;
+            border-radius: 8px;
+            color: #30302f;
+            border: 2px solid #777777;
+            padding: 6px 15px;
+        }
+    </style>
 </head>
 
 <h1>Edit your game</h1>
@@ -38,10 +64,10 @@
                 {% endfor %}
                 <tr>
                     <td> </td>
-                    <td><input type="submit" value="Save"/></td>
+                    <td><input type="submit" value="Save" class="green"/></td>
                     <td>
                         <form action="{% url 'games:game_panel' game.id%}">
-                           <input type="submit" value="Back"/>
+                           <input type="submit" value="Back" class="grey"/>
                         </form>
                     </td>
                 </tr>
@@ -73,7 +99,7 @@
         </script>
         <br />
 
-        <input type="button" id="DialogShow" value="End game" />
+        <input type="button" id="DialogShow" value="End game" class="red"/>
 
         <div id="dialog" title="Are you sure?" align="center">
             Do you want to end <b> {{ game.name }} </b> <br />
