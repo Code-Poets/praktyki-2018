@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
 from games.models import Game, Gamer
 from django.db.models import Q
@@ -11,7 +11,10 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+
 from django.shortcuts import render
+
+from django.utils.translation import gettext as _
 
 
 class SignUp(generic.CreateView):
@@ -37,8 +40,6 @@ class UserStats(generic.DetailView):
                 raise Http404("No user found")
         return super(UserStats, self).dispatch(request, *args, **kwargs)
 
-    def get_queryset(self):
-        return CustomUser.objects
 
     def get_context_data(self, **kwargs):
         data = super(UserStats, self).get_context_data(**kwargs)
@@ -68,7 +69,7 @@ class DeleteUserView(generic.DeleteView):
 
     def post(self, request, *args, **kwargs):
         if "cancel" in request.POST:
-            return HttpResponseRedirect(reverse('change_password'))
+            return HttpResponseRedirect(reverse('edit_profile'))
         else:
             return super(DeleteUserView, self).post(request, *args, **kwargs)
 
@@ -79,12 +80,22 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
             return redirect('change_password')
-        else:
-            messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'users/change_password.html', {
         'form': form
+    })
+
+
+def CustomUser_update(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('edit_profile')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    return render(request, 'users/edit_profile.html', {
+        'user_form': form,
     })
