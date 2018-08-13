@@ -33,7 +33,7 @@
              <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">{% trans 'Home' %}</a></td>
                      {% endif %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'user_stats' user.id %}">{% trans 'Stats' %}</a></td>
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'change_password' %}">{% trans 'Account' %}</a></td>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'edit_profile' %}">{% trans 'Account' %}</a></td>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">{% trans 'Help' %}</a></td>
         </tr>
         </table>
