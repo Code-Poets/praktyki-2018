@@ -41,16 +41,18 @@ function increment(incrementor, target){
 </script>
 <table align="center">
     <tr>
-        <td><h1>{{ gamer.nick }} </h1></td>
-        <td>
-            <form action="{% url 'games:encyclopedia' %}">
-                <input type="submit" value="?" class="button"/>
-            </form>
-        </td>
+      <form action="{% url 'games:encyclopedia' %}">
+        <table>
+          <tr><td>
+            <h1>{{ gamer.nick }} </h1>
+          </td><td>
+            <input type="submit" value="?" class="button"/>
+          </td></tr>
+        </table>
+      </form>
     </tr>
-    <tr style="border-bottom: 1px solid #000;">  </tr>
     <tr>
-        <td colspan="2" align="center"><font color=#b32d00><h2>{{ gamer.game.name}}</h2></font><td>
+      <td align="center"><font color=#b32d00><h2>{{ gamer.game.name}}</h2></font><td>
     </tr>
 </table>
 
