@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 12:03+0200\n"
+"POT-Creation-Date: 2018-08-21 12:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -258,6 +258,10 @@ msgstr "Zgadza się"
 #: games/templates/games/game_panel.html:216
 msgid "Free place for gamer"
 msgstr "Wolne miejsce dla gracza"
+
+#: games/templates/games/game_panel.html:217
+msgid "Chair number"
+msgstr "Numer krzesła"
 
 #: games/templates/games/game_panel.html:228
 msgid "Do we have a winner"
