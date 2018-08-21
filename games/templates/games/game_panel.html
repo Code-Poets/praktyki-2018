@@ -125,6 +125,33 @@
       } );
       </script>
 
+      <script type="text/javascript">
+      //<script type="text/javascript" src="{% static 'games/game_panel.js' %}">
+      function myFunction(id) {
+          var count = 0;
+          document.write("<p>Gamer order="+id+"</p>");
+          /*
+          {% for gamer in gamers.all %}
+            if ( {{ gamer.order }} == id){
+              document.write('<table bgcolor="ffe5ba"><tr><td>{{ gamer.nick }}</td><td>{{ gamer.order }}</td></tr></table>');
+              if ( {{ gamer.gender }} == "None"){
+                document.write("None");
+              }
+
+              count = count + 1;
+            }
+          {% endfor %}
+          if (count == 0){
+            document.write("{% trans 'Free place for gamer' %}");
+          }
+          */
+          document.write("<p>{{ gamers.0.nick }}</p>");
+          if ( "{{ gamers.0.gender }}" == "Female"){
+            document.write('<img src="{% static "games/images/female.png" %}" alt="Female" style="width:10%;">');
+          }
+        }
+      </script>
+
 </head>
 <body>
 
@@ -155,7 +182,7 @@
 
     <table width="100%" align="center">
       <tr>
-        <td align="center"> 
+        <td align="center">
             <form action="{% url 'home' %}">
                <input type="submit" value="{% trans 'Home' %}" style="font-size:15px" class="button2"/>
             </form>
@@ -164,7 +191,7 @@
         <td align="center" style="padding:0 5px 0 30px;"> <font size="7"><b> {{ game.name }} </b></font> </td>
         <td align="center" style="padding:0 5px 0 5px;"> <font size="2">{% trans 'made by' %}: </font><font size="3"> <b>{{ game.host.username }} </b></font></td>
         <td align="center" style="padding:0 5px 0 5px;"> </font><font size="3"> <b>{{ game.winning_level }}</b></font></td>
-        <td align="center"> 
+        <td align="center">
             <form action="{% url 'games:edit_game' game.id%}">
                <input type="submit" value="{% trans 'Edit' %}" style="font-size:15px" class="button1"/>
             </form>
@@ -174,7 +201,11 @@
 
     <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
       <tr align="center" height="33%">
-        <td><font color="DimGray">X</font></td>
+        <td><font color="DimGray">X</font>
+        <script type="text/javascript">
+          myFunction(10);
+          </script>
+        </td>
             {% if gamers.0 == NULL %}
                 <td width="20%">
                 <font color="DimGray">{% trans 'Free place for gamer' %}</font>
@@ -196,7 +227,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.0.status is not None and gamers.0.status != "" %}
@@ -250,7 +281,7 @@
                             {% endif %}
                                 </td>
                     </tr>
-                </table> 
+                </table>
             {% endif %}
 
         </td>
@@ -275,7 +306,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.6.status is not None and gamers.6.status != "" %}
@@ -353,7 +384,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.2.status is not None and gamers.2.status != "" %}
@@ -434,7 +465,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.5.status is not None and gamers.5.status != "" %}
@@ -515,7 +546,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.4.status is not None and gamers.4.status != "" %}
@@ -596,7 +627,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.3.status is not None and gamers.3.status != "" %}
@@ -674,7 +705,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.7.status is not None and gamers.7.status != "" %}
@@ -752,7 +783,7 @@
                             <img src="{% static 'games/images/female.png' %}" alt="Female" >
                        {% else %}
                             <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %} 
+                       {% endif %}
                     </td></tr>
 
                     {% if gamers.1.status is not None and gamers.1.status != "" %}
@@ -824,7 +855,7 @@
         document.getElementById('game_panel_table').setAttribute('height', 0.85*window.innerHeight);
         document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
             if (window.innerHeight<window.innerWidth){
-                document.getElementById('game_panel_table').style.fontSize = "75%"; 
+                document.getElementById('game_panel_table').style.fontSize = "75%";
             }
             else document.getElementById('game_panel_table').style.fontSize = "90%";
         }
