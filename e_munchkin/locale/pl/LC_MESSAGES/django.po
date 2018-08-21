@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-20 12:14+0200\n"
+"POT-Creation-Date: 2018-08-21 12:03+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -227,30 +227,9 @@ msgstr "Płeć"
 
 #: games/templates/games/game_end.html:42
 #: games/templates/games/game_end.html:51
-#: games/templates/games/game_panel.html:214
-#: games/templates/games/game_panel.html:223
-#: games/templates/games/game_panel.html:241
-#: games/templates/games/game_panel.html:293
-#: games/templates/games/game_panel.html:302
-#: games/templates/games/game_panel.html:320
-#: games/templates/games/game_panel.html:371
-#: games/templates/games/game_panel.html:380
-#: games/templates/games/game_panel.html:398
-#: games/templates/games/game_panel.html:452
-#: games/templates/games/game_panel.html:461
-#: games/templates/games/game_panel.html:479
-#: games/templates/games/game_panel.html:533
-#: games/templates/games/game_panel.html:542
-#: games/templates/games/game_panel.html:560
-#: games/templates/games/game_panel.html:614
-#: games/templates/games/game_panel.html:623
-#: games/templates/games/game_panel.html:641
-#: games/templates/games/game_panel.html:692
-#: games/templates/games/game_panel.html:701
-#: games/templates/games/game_panel.html:719
-#: games/templates/games/game_panel.html:770
-#: games/templates/games/game_panel.html:779
-#: games/templates/games/game_panel.html:797
+#: games/templates/games/game_panel.html:179
+#: games/templates/games/game_panel.html:186
+#: games/templates/games/game_panel.html:200
 #: games/templates/games/game_stats.html:42
 #: games/templates/games/game_stats.html:51
 msgid "Race"
@@ -258,30 +237,9 @@ msgstr "Rasa"
 
 #: games/templates/games/game_end.html:60
 #: games/templates/games/game_end.html:69
-#: games/templates/games/game_panel.html:215
-#: games/templates/games/game_panel.html:231
-#: games/templates/games/game_panel.html:249
-#: games/templates/games/game_panel.html:294
-#: games/templates/games/game_panel.html:310
-#: games/templates/games/game_panel.html:328
-#: games/templates/games/game_panel.html:372
-#: games/templates/games/game_panel.html:388
-#: games/templates/games/game_panel.html:406
-#: games/templates/games/game_panel.html:453
-#: games/templates/games/game_panel.html:469
-#: games/templates/games/game_panel.html:487
-#: games/templates/games/game_panel.html:534
-#: games/templates/games/game_panel.html:550
-#: games/templates/games/game_panel.html:568
-#: games/templates/games/game_panel.html:615
-#: games/templates/games/game_panel.html:631
-#: games/templates/games/game_panel.html:649
-#: games/templates/games/game_panel.html:693
-#: games/templates/games/game_panel.html:709
-#: games/templates/games/game_panel.html:727
-#: games/templates/games/game_panel.html:771
-#: games/templates/games/game_panel.html:787
-#: games/templates/games/game_panel.html:805
+#: games/templates/games/game_panel.html:180
+#: games/templates/games/game_panel.html:192
+#: games/templates/games/game_panel.html:206
 #: games/templates/games/game_stats.html:60
 #: games/templates/games/game_stats.html:69
 msgid "Class"
@@ -296,51 +254,45 @@ msgstr "Status"
 msgid "That's right"
 msgstr "Zgadza się"
 
-#: games/templates/games/game_panel.html:134
+#: games/templates/games/game_panel.html:144
+#: games/templates/games/game_panel.html:216
+msgid "Free place for gamer"
+msgstr "Wolne miejsce dla gracza"
+
+#: games/templates/games/game_panel.html:228
 msgid "Do we have a winner"
 msgstr "Czy mamy zwycięzcę"
 
-#: games/templates/games/game_panel.html:135
+#: games/templates/games/game_panel.html:229
 msgid "Is that the end of a game"
 msgstr "Czy to już koniec gry"
 
-#: games/templates/games/game_panel.html:135
+#: games/templates/games/game_panel.html:229
 msgid "Oh no"
 msgstr "O nie"
 
-#: games/templates/games/game_panel.html:144
+#: games/templates/games/game_panel.html:238
 #, fuzzy
 #| msgid "That's right"
 msgid "Yes, that's right"
 msgstr "Zgadza się"
 
-#: games/templates/games/game_panel.html:148
+#: games/templates/games/game_panel.html:242
 msgid "No, we change rules"
 msgstr "Nie, zmieniamy zasady"
 
-#: games/templates/games/game_panel.html:160 templates/base.html:33
+#: games/templates/games/game_panel.html:254 templates/base.html:33
 #: templates/base.html:49
 msgid "Home"
 msgstr "Start"
 
-#: games/templates/games/game_panel.html:165
+#: games/templates/games/game_panel.html:259
 msgid "made by"
 msgstr "utworzona przez"
 
-#: games/templates/games/game_panel.html:169
+#: games/templates/games/game_panel.html:263
 msgid "Edit"
 msgstr "Edytuj"
-
-#: games/templates/games/game_panel.html:180
-#: games/templates/games/game_panel.html:259
-#: games/templates/games/game_panel.html:337
-#: games/templates/games/game_panel.html:418
-#: games/templates/games/game_panel.html:499
-#: games/templates/games/game_panel.html:580
-#: games/templates/games/game_panel.html:658
-#: games/templates/games/game_panel.html:736
-msgid "Free place for gamer"
-msgstr "Wolne miejsce dla gracza"
 
 #: games/templates/games/game_stats.html:13
 msgid "These are all statistics for"
@@ -350,23 +302,23 @@ msgstr "To są wszystkie statystyki dla"
 msgid "Winner"
 msgstr "Zwycięzca"
 
-#: games/templates/games/gamer.html:123
+#: games/templates/games/gamer.html:125
 msgid "Update"
 msgstr "Aktualizuj"
 
-#: games/templates/games/gamer.html:127
+#: games/templates/games/gamer.html:129
 msgid "Withdraw from game"
 msgstr "Wycofaj się"
 
-#: games/templates/games/gamer.html:132
+#: games/templates/games/gamer.html:134
 msgid "Wait, wait, wait..."
 msgstr "Zaczekaj..."
 
-#: games/templates/games/gamer.html:133
+#: games/templates/games/gamer.html:135
 msgid "I think we have a winner"
 msgstr "Wydaje mi się, że mamy zwycięzcę"
 
-#: games/templates/games/gamer.html:133
+#: games/templates/games/gamer.html:135
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
 
