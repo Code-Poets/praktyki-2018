@@ -129,7 +129,6 @@
       //<script type="text/javascript" src="{% static 'games/game_panel.js' %}">
       function myFunction(id) {
           var count = 0;
-          document.write("<p>Gamer order="+id+"</p>");
           /*
           {% for gamer in gamers.all %}
             if ( {{ gamer.order }} == id){
@@ -145,9 +144,76 @@
             document.write("{% trans 'Free place for gamer' %}");
           }
           */
+          /*
           document.write("<p>{{ gamers.0.nick }}</p>");
           if ( "{{ gamers.0.gender }}" == "Female"){
-            document.write('<img src="{% static "games/images/female.png" %}" alt="Female" style="width:10%;">');
+            document.write('<img src="{% static "games/images/female.png" %}" alt="Fema"le" style="width:10%;">');
+          }
+          */
+          {% for gamer in gamers.all %}
+            if ( {{ gamer.order }} == id){
+              document.write('<table bgcolor="ffe5ba"><col width="25%"><col width="25%"><col width="25%"><col width="25%">');
+              document.write('<tr align="center"><td style="border: 1px solid black;border-style: dotted;"><font size="1">Gamer order='+id+'</font></td>');
+              document.write('<td colspan="2"><font size="5%">{{ gamers.0.nick }}</font></td>');
+              document.write('<td align="left">');
+              if ("{{ gamer.gender }}" == "Female"){
+                document.write('<img src="{% static "games/images/female.png" %}" alt="Female" style="width:40%;">');
+              }
+              else if ("{{ gamer.gender }}" == "Male") {
+                document.write('<img src="{% static "games/images/male.png" %}" alt="Male" style="width:40%;">');
+              }
+              else{
+                document.write('<img src="{% static "games/images/none.png" %}" alt="None" style="width:40%;">');
+              }
+              document.write('</td></tr>');
+
+              {% if gamers.0.status is not None and gamers.0.status != "" %}
+                  document.write('<tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamer.status }}"</font></td></tr>');
+              {% else %}
+                  document.write('<tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>');
+              {% endif %}
+
+              document.write('<tr><td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamer.level }}</font</td>');
+              document.write('<td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamer.bonus }}</font></td></tr>');
+
+              document.write('<tr align="center"><td colspan="2"><font size="2%" color="DimGray">{% trans "Race" %}: </font></td>');
+              document.write('<td colspan="2"><font size="2%" color="DimGray">{% trans "Class" %}: </font></td></tr>');
+
+              document.write('<tr align="center"><td colspan="2">');
+              {% if gamer.race_slot_1 != None %}
+                document.write('{{ gamers.0.race_slot_1 }}');
+              {% else %}
+                document.write('<font color="ffe5ba">{% trans "Race" %}: </font>');
+              {% endif %}
+              document.write('</td><td colspan="2">');
+              {% if gamers.0.class_slot_1 != None %}
+                document.write('{{ gamer.class_slot_1 }}');
+              {% else %}
+                document.write('<font color="ffe5ba">{% trans "Class" %}: </font>');
+              {% endif %}
+              document.write('</td></tr>');
+
+              document.write('<tr align="center"><td colspan="2">');
+              {% if gamer.race_slot_2 != None %}
+                document.write('{{ gamer.race_slot_2 }}');
+              {% else %}
+                document.write('<font color="ffe5ba">{% trans "Race" %}2: </font>');
+              {% endif %}
+              document.write('</td><td colspan="2">');
+              {% if gamer.class_slot_2 != None %}
+                document.write('{{ gamer.class_slot_2 }}');
+              {% else %}
+                document.write('<font color="ffe5ba">{% trans "Class" %}2: </font>');
+              {% endif %}
+              document.write('</td></tr>');
+
+              document.write('</table>');
+
+              count = count + 1;
+            }
+          {% endfor %}
+          if (count == 0){
+            document.write('<font color="DimGray">{% trans "Free place for gamer" %}</font>');
           }
         }
       </script>
@@ -201,9 +267,12 @@
 
     <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
       <tr align="center" height="33%">
-        <td><font color="DimGray">X</font>
+        <td>
+        <!--
+          <font color="DimGray">X</font>
+          -->
         <script type="text/javascript">
-          myFunction(10);
+          myFunction(1);
           </script>
         </td>
             {% if gamers.0 == NULL %}
