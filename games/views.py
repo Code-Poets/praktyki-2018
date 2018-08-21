@@ -339,7 +339,7 @@ class GamePanelView(generic.DetailView):
 
 def game_panel_view(request, pk):
         game = Game.objects.get(pk=pk)
-        gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('order','id')
+        gamers = Gamer.objects.filter(game__game_code=game.game_code)
         context = {'gamers': gamers, 'game': game}
 
         return render(request, 'games/game_panel.html', context)
@@ -356,7 +356,7 @@ class EndGameView(generic.DetailView):
 def update_stats(request, pk):
     game = Game.objects.get(pk=pk)
     gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('level')
-    
+
     for gamer in gamers:
         if gamer.level >= game.winning_level:
             gamer.winner = True
