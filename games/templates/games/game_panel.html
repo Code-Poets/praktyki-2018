@@ -152,9 +152,9 @@
           */
           {% for gamer in gamers.all %}
             if ( {{ gamer.order }} == id){
-              document.write('<table bgcolor="ffe5ba"><col width="25%"><col width="25%"><col width="25%"><col width="25%">');
-              document.write('<tr align="center"><td style="border: 1px solid black;border-style: dotted;"><font size="1">Gamer order='+id+'</font></td>');
-              document.write('<td colspan="2"><font size="5%">{{ gamers.0.nick }}</font></td>');
+              document.write('<table id="gamer" bgcolor="ffe5ba"><col width="25%"><col width="25%"><col width="25%"><col width="25%">');
+              document.write('<tr align="center"><td style="border: 1px solid black;border-style: dotted;"><font color="DimGray" size="3">'+id+'</font></td>');
+              document.write('<td colspan="2"><font size="5%">{{ gamer.nick }}</font></td>');
               document.write('<td align="left">');
               if ("{{ gamer.gender }}" == "Female"){
                 document.write('<img src="{% static "games/images/female.png" %}" alt="Female" style="width:40%;">');
@@ -181,12 +181,12 @@
 
               document.write('<tr align="center"><td colspan="2">');
               {% if gamer.race_slot_1 != None %}
-                document.write('{{ gamers.0.race_slot_1 }}');
+                document.write('{{ gamer.race_slot_1 }}');
               {% else %}
                 document.write('<font color="ffe5ba">{% trans "Race" %}: </font>');
               {% endif %}
               document.write('</td><td colspan="2">');
-              {% if gamers.0.class_slot_1 != None %}
+              {% if gamer.class_slot_1 != None %}
                 document.write('{{ gamer.class_slot_1 }}');
               {% else %}
                 document.write('<font color="ffe5ba">{% trans "Class" %}: </font>');
@@ -213,7 +213,8 @@
             }
           {% endfor %}
           if (count == 0){
-            document.write('<font color="DimGray">{% trans "Free place for gamer" %}</font>');
+            document.write('<font color="DimGray">{% trans "Free place for gamer" %}');
+            document.write('<font size="2"><br>Chair number '+id+'</font>');
           }
         }
       </script>
@@ -267,647 +268,47 @@
 
     <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
       <tr align="center" height="33%">
-        <td>
-        <!--
-          <font color="DimGray">X</font>
-          -->
-        <script type="text/javascript">
-          myFunction(1);
-          </script>
-        </td>
-            {% if gamers.0 == NULL %}
-                <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-                <td width="20%" bgcolor="ffe5ba">
+        <td><font color="DimGray">X</font></td>
+        <td width="20%">
     <!-- 1. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.0.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.0.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.0.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.0.status is not None and gamers.0.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.0.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr>
-                        <td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamers.0.level }}</font</td>
-                        <td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamers.0.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.0.race_slot_1 != None %}
-                                {{ gamers.0.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.0.class_slot_1 != None %}
-                                {{ gamers.0.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.0.race_slot_2 != None %}
-                                {{ gamers.0.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.0.class_slot_2 != None %}
-                                {{ gamers.0.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
-
+            <script type="text/javascript">myFunction(1);</script>
         </td>
-            {% if gamers.6 == NULL %}
-                <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-                <td width="20%" bgcolor="ffe5ba">
+        <td width="20%">
     <!-- 7. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.6.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.6.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.6.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.6.status is not None and gamers.6.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.6.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr>
-                        <td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamers.6.level }}</font</td>
-                        <td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamers.6.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.6.race_slot_1 != None %}
-                                {{ gamers.6.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.6.class_slot_1 != None %}
-                                {{ gamers.6.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.6.race_slot_2 != None %}
-                                {{ gamers.6.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.6.class_slot_2 != None %}
-                                {{ gamers.6.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(7);</script>
         </td>
-            {% if gamers.2 == NULL %}
-                <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-                <td width="20%" bgcolor="ffe5ba">
+        <td width="20%">
     <!-- 3. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.2.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.2.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.2.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.2.status is not None and gamers.2.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.2.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr>
-                        <td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamers.2.level }}</font</td>
-                        <td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamers.2.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.2.race_slot_1 != None %}
-                                {{ gamers.2.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.2.class_slot_1 != None %}
-                                {{ gamers.2.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.2.race_slot_2 != None %}
-                                {{ gamers.2.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.2.class_slot_2 != None %}
-                                {{ gamers.2.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(3);</script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
       <tr align="center" height="33%">
-            {% if gamers.5 == NULL %}
-                <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-                <td width="20%" bgcolor="ffe5ba">
+        <td width="20%">
     <!-- 6. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.5.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.5.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.5.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.5.status is not None and gamers.5.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.5.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr>
-                        <td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamers.5.level }}</font</td>
-                        <td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamers.5.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.5.race_slot_1 != None %}
-                                {{ gamers.5.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.5.class_slot_1 != None %}
-                                {{ gamers.5.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.5.race_slot_2 != None %}
-                                {{ gamers.5.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.5.class_slot_2 != None %}
-                                {{ gamers.5.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(6);</script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
-            {% if gamers.4 == NULL %}
         <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-        <td width="20%" bgcolor="ffe5ba">
     <!-- 5. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.4.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.4.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.4.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.4.status is not None and gamers.4.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.4.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr>
-                        <td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamers.4.level }}</font</td>
-                        <td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamers.4.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.4.race_slot_1 != None %}
-                                {{ gamers.4.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.4.class_slot_1 != None %}
-                                {{ gamers.4.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.4.race_slot_2 != None %}
-                                {{ gamers.4.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.4.class_slot_2 != None %}
-                                {{ gamers.4.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(5);</script>
         </td>
       </tr>
       <tr align="center" height="33%">
         <td width="20%"><font color="DimGray">X</font></td>
-            {% if gamers.3 == NULL %}
         <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-        <td width="20%" bgcolor="ffe5ba">
     <!-- 4. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.3.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.3.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.3.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.3.status is not None and gamers.3.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.3.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr align="center">
-                        <td colspan="2"><font size="1%" color="DimGray">L: <font size="6%" color="red">{{ gamers.3.level }}</font</td>
-                        <td colspan="2"><font size="1%"color="DimGray">B: <font size="6%" color="green">{{ gamers.3.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.3.race_slot_1 != None %}
-                                {{ gamers.3.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.3.class_slot_1 != None %}
-                                {{ gamers.3.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.3.race_slot_2 != None %}
-                                {{ gamers.3.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.3.class_slot_2 != None %}
-                                {{ gamers.3.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(4);</script>
         </td>
-            {% if gamers.7 == NULL %}
         <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-        <td width="20%" bgcolor="ffe5ba">
     <!-- 8. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.7.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.7.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.7.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.7.status is not None and gamers.7.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.7.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr align="center">
-                        <td colspan="2"><font size="1%" color="DimGray">L: <font size="6%" color="red">{{ gamers.7.level }}</font</td>
-                        <td colspan="2"><font size="1%"color="DimGray">B: <font size="6%" color="green">{{ gamers.7.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.7.race_slot_1 != None %}
-                                {{ gamers.7.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.7.class_slot_1 != None %}
-                                {{ gamers.7.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.7.race_slot_2 != None %}
-                                {{ gamers.7.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.7.class_slot_2 != None %}
-                                {{ gamers.7.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(8);</script>
         </td>
-            {% if gamers.1 == NULL %}
         <td width="20%">
-                <font color="DimGray">{% trans 'Free place for gamer' %}</font>
-            {% else %}
-        <td width="20%" bgcolor="ffe5ba">
     <!-- 2. gamer -->
-                <table>
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <col width="25%">
-                    <tr align="center">
-                    <td> </td>
-                    <td colspan="2"><font size="5%">{{ gamers.1.nick }}</font></td>
-                    <td align="left">
-                       {% if gamers.1.gender == "Male" %}
-                            <img src="{% static 'games/images/male.png' %}" alt="Male" >
-                       {% elif gamers.1.gender == "Female" %}
-                            <img src="{% static 'games/images/female.png' %}" alt="Female" >
-                       {% else %}
-                            <img src="{% static 'games/images/none.png' %}" alt="None" >
-                       {% endif %}
-                    </td></tr>
-
-                    {% if gamers.1.status is not None and gamers.1.status != "" %}
-                        <tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamers.1.status }}"</font></td></tr>
-                    {% else %}
-                        <tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>
-                    {% endif %}
-
-                    <tr align="center">
-                        <td colspan="2"><font size="1%" color="DimGray">L: <font size="6%" color="red">{{ gamers.1.level }}</font</td>
-                        <td colspan="2"><font size="1%"color="DimGray">B: <font size="6%" color="green">{{ gamers.1.bonus }}</font></td>
-                    </tr>
-
-                    <tr align="center">
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Race' %}: </font></td>
-                        <td colspan="2"><font size="2%" color="DimGray">{% trans 'Class' %}: </font></td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.1.race_slot_1 != None %}
-                                {{ gamers.1.race_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.1.class_slot_1 != None %}
-                                {{ gamers.1.class_slot_1 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-
-                    <tr align="center">
-                                <td colspan="2">
-                            {% if gamers.1.race_slot_2 != None %}
-                                {{ gamers.1.race_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Race' %}2: </font>
-                            {% endif %}
-                                </td>
-
-                                <td colspan="2">
-                            {% if gamers.1.class_slot_2 != None %}
-                                {{ gamers.1.class_slot_2 }}
-                            {% else %}
-                                <font color="ffe5ba">{% trans 'Class' %}2: </font>
-                            {% endif %}
-                                </td>
-                    </tr>
-                </table>
-            {% endif %}
+            <script type="text/javascript">myFunction(2);</script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
