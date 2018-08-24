@@ -85,6 +85,16 @@ window.setTimeout(function () {
         {% endif %}
     {% endfor %}
     </tr>
+    <tr>
+        <th></th>
+    {% for gamer in game.gamers.all %}
+        <td align="center">
+          <form action="{% url 'games:edit_gamer' gamer.id%}">
+            <input type="submit" value="{% trans 'Edit' %}"/>
+          </form>
+        </td>
+    {% endfor %}
+    </tr>
 </table>
 
 <br />
