@@ -99,7 +99,7 @@
             });
         </script>
         <br />
-        
+
         <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red"/>
 
         <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
@@ -116,6 +116,12 @@
                 <tr>
                     <td>{{ gamer.nick }}</td>
                     <td><a href="{% url 'games:kick_gamer' gamer.id%}">{% trans 'Kick' %}</a></td>
+                    <td>{{ gamer.order }}</td>
+                    <td>
+                      <form action="{% url 'games:edit_gamer_order' gamer.id%}">
+                         <input type="submit" value="{% trans 'Edit' %}"/>
+                      </form>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>
