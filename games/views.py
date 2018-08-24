@@ -44,6 +44,7 @@ class GamerForm(forms.ModelForm):
 
     order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
+
 """
 class AjaxableResponseMixin:
     def form_invalid(self, form):
@@ -265,6 +266,19 @@ class EditGameView(generic.UpdateView):
     def form_valid(self, form):
         form.save()
         return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
+
+
+class EditGamerOrderView(generic.UpdateView):
+    model = Gamer
+    fields = ['order']
+    template_name = 'games/gamer_edit.html'
+
+    def get_queryset(self):
+        return Gamer.objects
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(reverse('games:edit_game', args=(form.instance.game.id,)))
 
 
 class DeleteGamerView(generic.DeleteView):
