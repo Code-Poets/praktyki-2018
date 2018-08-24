@@ -367,6 +367,19 @@ class EndGameView(generic.DetailView):
         return Game.objects
 
 
+class EditGamerView(generic.UpdateView):
+    model = Gamer
+    fields = ['level', 'bonus']
+    template_name = 'games/gamer_edit.html'
+
+    def get_queryset(self):
+        return Gamer.objects
+
+    def form_valid(self, form):
+        form.save()
+        return HttpResponseRedirect(reverse('games:end_game', args=(form.instance.game.id,)))
+
+
 def update_stats(request, pk):
     game = Game.objects.get(pk=pk)
     gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('level')
