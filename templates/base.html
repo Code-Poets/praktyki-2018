@@ -29,9 +29,7 @@
         <tr><br /></tr>
         <tr>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'logout' %}">{% trans 'Logout' %}</a></td>
-                     {% if request.get_full_path != "/" %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">{% trans 'Home' %}</a></td>
-                     {% endif %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'user_stats' user.id %}">{% trans 'Stats' %}</a></td>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'edit_profile' %}">{% trans 'Account' %}</a></td>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">{% trans 'Help' %}</a></td>
@@ -43,11 +41,9 @@
         <table align="center">
         <tr><br /></tr>
         <tr>
+             <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">{% trans 'Home' %}</a></td>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'login' %}">{% trans 'Login' %}</a></td>
              <td style="padding:0 15px 0 15px;"><a href="{% url 'signup' %}">{% trans 'SignUp' %}</a></td>
-                     {% if request.get_full_path != "/" %}
-             <td style="padding:0 15px 0 15px;"><a href="{% url 'home' %}">{% trans 'Home' %}</a></td>
-                     {% endif %}
              <td style="padding:0 15px 0 15px;"><a href="{% url 'games:help' %}">{% trans 'Help' %}</a></td>
         </tr>
         </table>
