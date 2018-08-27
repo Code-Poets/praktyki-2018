@@ -22,9 +22,13 @@ class GamerForm(forms.ModelForm):
     race_slot_2 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     class_slot_1 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False, label='Class')
     class_slot_2 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
+    order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
     def clean(self):
         cleaned_data = super(GamerForm, self).clean()
+
+        order = self.cleaned_data['order']
+
         race1 = cleaned_data['race_slot_1']
         race2 = cleaned_data['race_slot_2']
         class1 = cleaned_data['class_slot_1']
@@ -40,9 +44,14 @@ class GamerForm(forms.ModelForm):
             cleaned_data['race_slot_1'] = race2
             cleaned_data['race_slot_2'] = None
 
+        gamers = self.instance.game.gamers.all()
+        error = False
+        for gamer in gamers:
+            if gamer.order == order:
+                error = True
+        if error is True:
+            raise forms.ValidationError('This order has already been taken :(')
         return cleaned_data
-
-    order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
 
 """
