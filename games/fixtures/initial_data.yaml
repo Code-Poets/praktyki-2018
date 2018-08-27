@@ -83,6 +83,7 @@
     user: 2
     nick: Humbert
     winner: false
+    order: 1
     level: 2
     bonus: 4
     gender: Male
@@ -98,6 +99,7 @@
     user: 3
     nick: Jonathan
     winner: false
+    order: 2
     level: 1
     bonus: 0
     gender: Male
@@ -113,6 +115,7 @@
     user: null
     nick: Mike
     winner: false
+    order: 3
     level: 1
     bonus: 0
     gender: Female
@@ -128,6 +131,7 @@
     user: null
     nick: JohnDoe
     winner: false
+    order: 4
     level: 1
     bonus: 0
     gender: None
