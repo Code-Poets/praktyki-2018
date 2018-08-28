@@ -2,30 +2,6 @@
 {% block content %}
 {% load static %}
 {% load i18n %}
-<style>
-    .button {
-        background-color: #ffe5ba;
-        border-radius: 50%;
-        color: #4d5f8c;
-        border: 2px solid #b2b2b2;
-    }
-
-    .green {
-        background-color: #ffe5ba;
-        border-radius: 8px;
-        color: #0d8e08;
-        border: 2px solid #09c902;
-        padding: 6px 12px;
-    }
-
-    .red {
-        background-color: #ffe5ba;
-        border-radius: 8px;
-        color: #f93109;
-        border: 2px solid #ff8d47;
-        padding: 6px 15px;
-    }
-</style>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -46,7 +22,7 @@ function increment(incrementor, target){
           <tr><td>
             <h1>{{ gamer.nick }} </h1>
           </td><td>
-            <input type="submit" value="?" class="button"/>
+            <input type="submit" value="?" class="grey_small_button"/>
           </td></tr>
         </table>
       </form>
@@ -138,11 +114,11 @@ function increment(incrementor, target){
     </tr>
         </table>
     <br/>
-    <input type="submit" value="{% trans 'Update' %}" class="green"/>
+    <input type="submit" value="{% trans 'Update' %}" class="green_button"/>
 </form>
 <br/>
 <form action="{% url 'games:delete_gamer' gamer.id %}">
-    <input type="submit" value="{% trans 'Withdraw from game' %}" class="red"/>
+    <input type="submit" value="{% trans 'Withdraw from game' %}" class="red_button"/>
 </form>
 
     {% for gamer in gamer.game.gamers.all %}
