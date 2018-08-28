@@ -1,0 +1,24 @@
+/*Encyclopedia Class button*/
+.class_button {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #2162ff;
+    border: 2px solid #00a6ed;
+    padding: 6px 15px;
+}
+/*Encyclopedia Race button*/
+.race_button {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #f93109;
+    border: 2px solid #ff8d47;
+    padding: 6px 15px;
+}
+
+.back_button {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #30302f;
+    border: 2px solid #777777;
+    padding: 6px 15px;
+}
