@@ -22,3 +22,19 @@
     border: 2px solid #777777;
     padding: 6px 15px;
 }
+
+.green_button {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #0d8e08;
+    border: 2px solid #09c902;
+    padding: 6px 15px;
+}
+
+.red_button {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #f93109;
+    border: 2px solid #ff8d47;
+    padding: 6px 15px;
+}
