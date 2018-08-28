@@ -9,31 +9,6 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
-    <style>
-        .green {
-            background-color: #ffe5ba;
-            border-radius: 8px;
-            color: #0d8e08;
-            border: 2px solid #09c902;
-            padding: 6px 12px;
-        }
-
-        .red {
-            background-color: #ffe5ba;
-            border-radius: 8px;
-            color: #f93109;
-            border: 2px solid #ff8d47;
-            padding: 6px 15px;
-        }
-
-        .grey {
-            background-color: #ffe5ba;
-            border-radius: 8px;
-            color: #30302f;
-            border: 2px solid #777777;
-            padding: 6px 15px;
-        }
-    </style>
 </head>
 
 <h1>{% trans 'Edit your game' %}</h1>
@@ -65,10 +40,10 @@
                 {% endfor %}
                 <tr>
                     <td> </td>
-                    <td><input type="submit" value="{% trans 'Save' %}" class="green"/></td>
+                    <td><input type="submit" value="{% trans 'Save' %}" class="green_button"/></td>
                     <td>
                         <form action="{% url 'games:game_panel' game.id%}">
-                           <input type="submit" value="{% trans 'Back' %}" class="grey"/>
+                           <input type="submit" value="{% trans 'Back' %}" class="back_button"/>
                         </form>
                     </td>
                 </tr>
@@ -100,7 +75,7 @@
         </script>
         <br />
 
-        <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red"/>
+        <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red_button"/>
 
         <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
             {% trans 'Do you want to end' %} <b> {{ game.name }} </b> <br />
@@ -124,12 +99,12 @@
                     <td align="left" style="border: 1px solid;background-color:white;">{{ gamer.nick }}</td>
                     <td align="center">
                       <form action="{% url 'games:edit_gamer_order' gamer.id%}">
-                         <input type="submit" value="{% trans 'Edit' %}"/>
+                         <input type="submit" value="{% trans 'Edit' %}" class="blue_button"/>
                       </form>
                     </td>
                     <td align="center">
                       <form action="{% url 'games:kick_gamer' gamer.id%}" >
-                         <input type="submit" value="{% trans 'Kick' %}"/>
+                         <input type="submit" value="{% trans 'Kick' %}" class="red_button"/>
                       </form>
                     </td>
                 </tr>

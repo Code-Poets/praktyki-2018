@@ -38,3 +38,11 @@
     border: 2px solid #ff8d47;
     padding: 6px 15px;
 }
+
+.blue_button {
+    background-color: #ffe5ba;
+    border-radius: 8px;
+    color: #2162ff;
+    border: 2px solid #a3beff;
+    padding: 6px 15px;
+}
