@@ -18,6 +18,8 @@ urlpatterns = [
     path('<int:pk>/edit/gamer/order', views.EditGamerOrderView.as_view(), name='edit_gamer_order'),
     # ex: /games/1/end
     path('<int:pk>/end/', views.EndGameView.as_view(), name='end_game'),
+    # ex: /games/1/edit/gamer/
+    path('<int:pk>/edit/gamer/', views.EditGamerView.as_view(), name='edit_gamer'),
     # ex: /games/1/end/update
     path('<int:pk>/end/update/', views.update_stats, name='update_stats'),
     # ex: /games/1/stats
