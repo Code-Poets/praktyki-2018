@@ -14,6 +14,8 @@ urlpatterns = [
     path('<int:pk>/', views.game_panel_view, name='game_panel'),
     # ex: /games/1/edit
     path('<int:pk>/edit/', views.EditGameView.as_view(), name='edit_game'),
+    # ex: /games/1/edit/gamer/order
+    path('<int:pk>/edit/gamer/order', views.EditGamerOrderView.as_view(), name='edit_gamer_order'),
     # ex: /games/1/end
     path('<int:pk>/end/', views.EndGameView.as_view(), name='end_game'),
     # ex: /games/1/end/update
