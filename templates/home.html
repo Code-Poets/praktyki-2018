@@ -15,7 +15,7 @@
       <br />
 
       <form action="{% url 'games:create_game' %}">
-          <input type="submit" value="{% trans 'Host game' %}"/>
+          <input type="submit" value="{% trans 'Host game' %}" class="blue_button"/>
       </form>
       <br />
 
@@ -25,11 +25,11 @@
           <br /> {% trans 'Join us and play with us' %}.
       </h4>
       <br />
-      
+
     {% endif %}
 
      <form action="{% url 'games:game_access' %}">
-        <input type="submit" value="{% trans 'Join an existing game' %}"/>
+        <input type="submit" value="{% trans 'Join an existing game' %}" class="green_button"/>
      </form>
 
     <br />
