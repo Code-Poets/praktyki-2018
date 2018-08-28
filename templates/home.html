@@ -4,26 +4,30 @@
 {% block title %}e_munchkin{% endblock %}
 
 {% block content %}
- 
+
     <h1>{% trans 'Web application e_munchkin' %}</h1>
     <br />
 
     {% if user.is_authenticated %}
-    <h4>{% trans 'Welcome' %} <font color="orange">{{ user.username }}</font>! 
+    <h4>{% trans 'Welcome' %} <font color="orange">{{ user.username }}</font>!
         <br /> {% trans 'Join us and play with us' %}.
     </h4>
     <br />
 
-     <p> <a href="{% url 'games:create_game' %}">{% trans 'Host game' %}</a> </p>
-
+     <form action="{% url 'games:create_game' %}">
+        <input type="submit" value="{% trans 'Host game' %}"/>
+     </form>
+    <br />
     {% else %}
-    <h4>{% trans 'Welcome' %} <font color="orange"> {% trans 'mysterious stranger' %}</font>! 
+    <h4>{% trans 'Welcome' %} <font color="orange"> {% trans 'mysterious stranger' %}</font>!
         <br /> {% trans 'Join us and play with us' %}.
     </h4>
     <br />
     {% endif %}
 
-     <p> <a href="{% url 'games:game_access' %}">{% trans 'Join an existing game' %}</a> </p>
+     <form action="{% url 'games:game_access' %}">
+        <input type="submit" value="{% trans 'Join an existing game' %}"/>
+     </form>
 
     <br />
     <br />
