@@ -115,11 +115,15 @@
                 {% for gamer in game.gamers.all %}
                 <tr>
                     <td>{{ gamer.nick }}</td>
-                    <td><a href="{% url 'games:kick_gamer' gamer.id%}">{% trans 'Kick' %}</a></td>
                     <td>{{ gamer.order }}</td>
                     <td>
                       <form action="{% url 'games:edit_gamer_order' gamer.id%}">
                          <input type="submit" value="{% trans 'Edit' %}"/>
+                      </form>
+                    </td>
+                    <td>
+                      <form action="{% url 'games:kick_gamer' gamer.id%}">
+                         <input type="submit" value="{% trans 'Kick' %}"/>
                       </form>
                     </td>
                 </tr>
