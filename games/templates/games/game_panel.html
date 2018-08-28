@@ -3,7 +3,7 @@
 <head>
     {% load static %}
     {% load i18n %}
-
+  <title>{% block title %}{{ game.name }}{% endblock %}</title>
   <meta name="description" content="Free Web tutorials">
   <meta name="keywords" content="HTML,CSS,XML,JavaScript">
   <meta name="author" content="John Doe">
@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
     <link rel="stylesheet" type="text/css" href="{% static 'button.css' %}" />
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
 
     <SCRIPT LANGUAGE="JavaScript">
         function getCookie(name)
