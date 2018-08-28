@@ -29,8 +29,8 @@
         {% endfor %}
         </tr>
     {% endfor %}
-        </table>  
-    <input type="submit" value="{% trans 'Save changes' %}"/>
+        </table>
+    <input type="submit" value="{% trans 'Save changes' %}" class="green_button"/>
   </form>
 <hr>
 
@@ -38,12 +38,12 @@
     <tr>
     <td>
         <form action="{% url 'change_password' %}">
-            <input type="submit" value="{% trans 'Change password' %}"/>
+            <input type="submit" value="{% trans 'Change password' %}" class="blue_button"/>
         </form>
     </td>
     <td>
         <form action="{% url 'delete_user' user.id %}">
-            <input type="submit" value="{% trans 'Delete account' %}"/>
+            <input type="submit" value="{% trans 'Delete account' %}" class="red_button"/>
         </form>
     </td>
     </tr>
