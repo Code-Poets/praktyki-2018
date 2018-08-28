@@ -90,7 +90,7 @@ window.setTimeout(function () {
     {% for gamer in game.gamers.all %}
         <td align="center">
           <form action="{% url 'games:edit_gamer' gamer.id%}">
-            <input type="submit" value="{% trans 'Edit' %}"/>
+            <input type="submit" value="{% trans 'Edit' %}" class="blue_button"/>
           </form>
         </td>
     {% endfor %}
@@ -100,7 +100,7 @@ window.setTimeout(function () {
 <br />
 
 <form action="{% url 'games:update_stats' game.id %}">
-    <input type="submit" value="{% trans "That's right" %}" />
+    <input type="submit" value="{% trans "That's right" %}" class="green_button"/>
 </form>
 
 {% endblock %}

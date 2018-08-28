@@ -2,31 +2,6 @@
 {% block content %}
 {% load i18n %}
 <head>
-  <style>
-      .button {
-          background-color: #ffe5ba;
-          border-radius: 50%;
-          color: #4d5f8c;
-          border: 2px solid #b2b2b2;
-      }
-
-      .green {
-          background-color: #ffe5ba;
-          border-radius: 8px;
-          color: #0d8e08;
-          border: 2px solid #09c902;
-          padding: 6px 12px;
-      }
-
-      .grey {
-          background-color: #ffe5ba;
-          border-radius: 8px;
-          color: #30302f;
-          border: 2px solid #777777;
-          padding: 6px 15px;
-      }
-  </style>
-
   <script>
     function myFunction() {
       document.getElementById("demo1").innerHTML = document.referrer;
@@ -55,7 +30,7 @@
           <tr><td>
             <h1>{{ gamer.nick }} </h1>
           </td><td>
-            <input type="submit" value="?" class="button"/>
+            <input type="submit" value="?" class="grey_small_button"/>
           </td></tr>
         </table>
       </form>
@@ -112,7 +87,7 @@
     <table>
       <tr>
         <td>
-          <input type="submit" value="{% trans 'Update' %}" class="green"/>
+          <input type="submit" value="{% trans 'Update' %}" class="green_button"/>
         </td>
         <td>
           <!--

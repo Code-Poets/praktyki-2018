@@ -4,22 +4,6 @@
 {% load i18n %}
 
 <style>
-.button1 {
-    background-color: #ffe5ba;
-    border-radius: 8px;
-    color: #2162ff;
-    border: 2px solid #00a6ed;
-    padding: 6px 12px;
-}
-
-.button2 {
-    background-color: #ffe5ba;
-    border-radius: 8px;
-    color: #f93109;
-    border: 2px solid #ff8d47;
-    padding: 6px 15px;
-}
-
 /* The Modal (background) */
 .modal {
     display: none; /* Hidden by default */
@@ -56,7 +40,7 @@
 }
 
 /* Add Animation */
-.modal-content, #caption {    
+.modal-content, #caption {
     -webkit-animation-name: zoom;
     -webkit-animation-duration: 0.6s;
     animation-name: zoom;
@@ -64,12 +48,12 @@
 }
 
 @-webkit-keyframes zoom {
-    from {-webkit-transform:scale(0)} 
+    from {-webkit-transform:scale(0)}
     to {-webkit-transform:scale(1)}
 }
 
 @keyframes zoom {
-    from {transform:scale(0)} 
+    from {transform:scale(0)}
     to {transform:scale(1)}
 }
 
@@ -129,7 +113,7 @@
                     });
                 });
             </script>
-            <input type="button" id=dRace{{charakterRace.pk}} class="button2" value={{charakterRace.name}} />
+            <input type="button" id=dRace{{charakterRace.pk}} class="race_button" value={{charakterRace.name}} />
             <div id={{charakterRace.name}}  title={{charakterRace.name}} align="center">
             {% trans 'Description' %}: {{charakterRace.description }}
             </div>
@@ -161,7 +145,7 @@
                     });
                 });
             </script>
-            <input type="button" id=dClass{{charakterClass.pk}} class="button1" value={{charakterClass.name}} />
+            <input type="button" id=dClass{{charakterClass.pk}} class="class_button" value={{charakterClass.name}} />
             <div id={{charakterClass.name}}  title={{charakterClass.name}} align="center">
             {% trans 'Description' %}: {{charakterClass.description }}
             </div>
@@ -200,13 +184,13 @@ img.onclick = function(){
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() { 
+span.onclick = function() {
     modal.style.display = "none";
 }
 </script>
 
 <hr>
-<input action="action" onclick="window.history.go(-1); return false;" type="button" value="{% trans 'Back' %}" />
-
+<input action="action" onclick="window.history.go(-1); return false;" type="button" class="grey" value="{% trans 'Back' %}" />
+<p></p>
 
 {% endblock %}

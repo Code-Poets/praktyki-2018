@@ -14,29 +14,13 @@
             background: #FCD697
         }
 
-        .button1 {
-            background-color: #ffe5ba;
-            border-radius: 8px;
-            color: #2162ff;
-            border: 2px solid #a3beff;
-            padding: 6px 12px;
-        }
-
-        .button2 {
-            background-color: #ffe5ba;
-            border-radius: 8px;
-            color: #f93109;
-            border: 2px solid #ff8d47;
-            padding: 6px 15px;
-        }
-
         img {
             width:50%;
-
         }
     </style>
 
     <link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'button.css' %}" />
 
     <SCRIPT LANGUAGE="JavaScript">
         function getCookie(name)
@@ -251,7 +235,7 @@
       <tr>
         <td align="center">
             <form action="{% url 'home' %}">
-               <input type="submit" value="{% trans 'Home' %}" style="font-size:15px" class="button2"/>
+               <input type="submit" value="{% trans 'Home' %}" style="font-size:15px" class="red_button"/>
             </form>
         </td>
         <td align="center" style="padding:0 5px 0 5px;"> <font size="6"><b> {{ game.game_code }} </b></font> </td>
@@ -260,7 +244,7 @@
         <td align="center" style="padding:0 5px 0 5px;"> </font><font size="3"> <b>{{ game.winning_level }}</b></font></td>
         <td align="center">
             <form action="{% url 'games:edit_game' game.id%}">
-               <input type="submit" value="{% trans 'Edit' %}" style="font-size:15px" class="button1"/>
+               <input type="submit" value="{% trans 'Edit' %}" style="font-size:15px" class="blue_button"/>
             </form>
         </td>
       </tr>
