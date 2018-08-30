@@ -14,7 +14,7 @@ from django.core.exceptions import ObjectDoesNotExist
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
-        fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2', 'order']
+        fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2']
     status = forms.CharField(label='Status', required=False)
     level = forms.IntegerField(label='Level', initial=1, min_value=1)
     bonus = forms.IntegerField(label='Bonus', initial=0)
@@ -23,12 +23,9 @@ class GamerForm(forms.ModelForm):
     race_slot_2 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     class_slot_1 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False, label='Class')
     class_slot_2 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
-    order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
     def clean(self):
         cleaned_data = super(GamerForm, self).clean()
-
-        order = self.cleaned_data['order']
 
         race1 = cleaned_data['race_slot_1']
         race2 = cleaned_data['race_slot_2']
@@ -45,6 +42,19 @@ class GamerForm(forms.ModelForm):
             cleaned_data['race_slot_1'] = race2
             cleaned_data['race_slot_2'] = None
 
+        return cleaned_data
+
+
+class GamerOrderForm(forms.ModelForm):
+    class Meta:
+        model = Gamer
+        fields = ['order']
+    order = forms.IntegerField(label='Order', initial=1, min_value=1)
+
+    def clean(self):
+        cleaned_data = super(GamerOrderForm, self).clean()
+        order = self.cleaned_data['order']
+
         gamers = self.instance.game.gamers.all()
         error = False
         for gamer in gamers:
@@ -53,8 +63,6 @@ class GamerForm(forms.ModelForm):
         if error is True:
             raise forms.ValidationError('This order has already been taken :(')
         return cleaned_data
-
-
 """
 class AjaxableResponseMixin:
     def form_invalid(self, form):
@@ -287,7 +295,7 @@ class EditGameView(generic.UpdateView):
 
 class EditGamerOrderView(generic.UpdateView):
     model = Gamer
-    fields = ['order']
+    form_class = GamerOrderForm
     template_name = 'games/gamer_edit.html'
 
     def get_queryset(self):
