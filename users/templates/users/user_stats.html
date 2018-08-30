@@ -46,8 +46,14 @@
                 <td>{{ game.finished_at }}</td>
                 <td>
                 {% for gamer in game.gamers.all %}
-                    {% if gamer.winner == True %}
-                        <font size="2">{{ gamer.nick }}</font>
+                    {% if forloop.counter0 == 0 %}
+                      {% if gamer.winner == True %}
+                          <font size="2">{{ gamer.nick }}</font>
+                      {% endif %}
+                    {% else %}
+                      {% if gamer.winner == True %}
+                          <font size="2">, {{ gamer.nick }}</font>
+                      {% endif %}
                     {% endif %}
                 {% endfor %}
                 </td>
