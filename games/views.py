@@ -8,6 +8,7 @@ import random
 import string
 from django.utils import timezone
 # from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class GamerForm(forms.ModelForm):
@@ -199,7 +200,14 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
             game=game,
             nick=nick
         )
-        gamer.order = gamer.id % 8 + 1
+
+        for x in range(1,game.max_players+1):
+            try:
+                gamegamer = Gamer.objects.get(game__game_code=game_pass, order=x)
+            except Gamer.DoesNotExist:
+                gamegamer = None
+                gamer.order = x
+                break
         self.request.session['gamer_id'] = gamer.id  # Add gamer id to actual session
         if self.request.user.is_authenticated:
             gamer.user = self.request.user
