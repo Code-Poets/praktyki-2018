@@ -220,7 +220,7 @@
     $("div#dialog").dialog ({
         modal: true,
         buttons : {
-            '{% trans "Yes, that's right" %}!' : function ()
+            "{% trans "Yes, that's right" %}!" : function ()
             {
                 window.location.href = "{% url 'games:end_game' game.id%}";
             },

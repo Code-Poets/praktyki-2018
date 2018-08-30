@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-21 12:07+0200\n"
+"POT-Creation-Date: 2018-08-30 10:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,11 +20,11 @@ msgstr ""
 "%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
-#: e_munchkin/settings/defaults.py:143
+#: e_munchkin/settings/defaults.py:149
 msgid "English"
 msgstr "Angielski"
 
-#: e_munchkin/settings/defaults.py:144
+#: e_munchkin/settings/defaults.py:150
 msgid "Polish"
 msgstr "Polski"
 
@@ -53,38 +53,39 @@ msgid "Are you sure you want to proceed"
 msgstr "Czy na pewno chcesz kontynuować"
 
 #: games/templates/games/delete_gamer.html:21
-#: games/templates/games/game_edit.html:85
+#: games/templates/games/game_edit.html:60
 #: games/templates/games/kick_gamer.html:19
 #: users/templates/users/delete_user.html:21
 msgid "Yes"
 msgstr "Tak"
 
 #: games/templates/games/delete_gamer.html:25
-#: games/templates/games/game_edit.html:89
+#: games/templates/games/game_edit.html:64
 #: games/templates/games/kick_gamer.html:23
 #: users/templates/users/delete_user.html:25
 msgid "No"
 msgstr "Nie"
 
-#: games/templates/games/encyclopedia.html:106
+#: games/templates/games/encyclopedia.html:90
 msgid "Encyclopedia"
 msgstr "Encyklopedia"
 
-#: games/templates/games/encyclopedia.html:110
+#: games/templates/games/encyclopedia.html:94
 msgid "Races"
 msgstr "Rasy"
 
-#: games/templates/games/encyclopedia.html:134
-#: games/templates/games/encyclopedia.html:166
+#: games/templates/games/encyclopedia.html:118
+#: games/templates/games/encyclopedia.html:150
 msgid "Description"
 msgstr "Opis"
 
-#: games/templates/games/encyclopedia.html:142
+#: games/templates/games/encyclopedia.html:126
 msgid "Classes"
 msgstr "Klasy"
 
-#: games/templates/games/encyclopedia.html:209
-#: games/templates/games/game_edit.html:71
+#: games/templates/games/encyclopedia.html:193
+#: games/templates/games/game_edit.html:46
+#: games/templates/games/gamer_edit.html:94
 #: users/templates/users/change_password.html:39
 msgid "Back"
 msgstr "Powrót"
@@ -173,31 +174,37 @@ msgstr "Gra utworzona dnia"
 msgid "You are not hosting any games"
 msgstr "Nie prowadzisz żadnych gier"
 
-#: games/templates/games/game_edit.html:39
+#: games/templates/games/game_edit.html:14
 msgid "Edit your game"
 msgstr "Edytuj grę"
 
-#: games/templates/games/game_edit.html:68
+#: games/templates/games/game_edit.html:43
 msgid "Save"
 msgstr "Zapisz"
 
-#: games/templates/games/game_edit.html:103
+#: games/templates/games/game_edit.html:78
 msgid "End game"
 msgstr "Zakończ grę"
 
-#: games/templates/games/game_edit.html:105
+#: games/templates/games/game_edit.html:80
 msgid "Are you sure"
 msgstr "Czy jesteś pewien/pewna"
 
-#: games/templates/games/game_edit.html:106
+#: games/templates/games/game_edit.html:81
 msgid "Do you want to end"
 msgstr "Czy chcesz zakończyć grę"
 
-#: games/templates/games/game_edit.html:107
+#: games/templates/games/game_edit.html:82
 msgid "and save all gamers stats"
 msgstr "i zapisać jej wszystkie statystyki"
 
-#: games/templates/games/game_edit.html:118
+#: games/templates/games/game_edit.html:102
+#: games/templates/games/game_end.html:93
+#: games/templates/games/game_panel.html:248
+msgid "Edit"
+msgstr "Edytuj"
+
+#: games/templates/games/game_edit.html:107
 msgid "Kick"
 msgstr "Wyrzuć"
 
@@ -227,9 +234,9 @@ msgstr "Płeć"
 
 #: games/templates/games/game_end.html:42
 #: games/templates/games/game_end.html:51
-#: games/templates/games/game_panel.html:179
-#: games/templates/games/game_panel.html:186
-#: games/templates/games/game_panel.html:200
+#: games/templates/games/game_panel.html:164
+#: games/templates/games/game_panel.html:171
+#: games/templates/games/game_panel.html:185
 #: games/templates/games/game_stats.html:42
 #: games/templates/games/game_stats.html:51
 msgid "Race"
@@ -237,9 +244,9 @@ msgstr "Rasa"
 
 #: games/templates/games/game_end.html:60
 #: games/templates/games/game_end.html:69
-#: games/templates/games/game_panel.html:180
-#: games/templates/games/game_panel.html:192
-#: games/templates/games/game_panel.html:206
+#: games/templates/games/game_panel.html:165
+#: games/templates/games/game_panel.html:177
+#: games/templates/games/game_panel.html:191
 #: games/templates/games/game_stats.html:60
 #: games/templates/games/game_stats.html:69
 msgid "Class"
@@ -250,53 +257,47 @@ msgstr "Klasa"
 msgid "Status"
 msgstr "Status"
 
-#: games/templates/games/game_end.html:93
+#: games/templates/games/game_end.html:103
 msgid "That's right"
 msgstr "Zgadza się"
 
-#: games/templates/games/game_panel.html:144
-#: games/templates/games/game_panel.html:216
+#: games/templates/games/game_panel.html:129
+#: games/templates/games/game_panel.html:201
 msgid "Free place for gamer"
 msgstr "Wolne miejsce dla gracza"
 
-#: games/templates/games/game_panel.html:217
+#: games/templates/games/game_panel.html:202
 msgid "Chair number"
 msgstr "Numer krzesła"
 
-#: games/templates/games/game_panel.html:228
+#: games/templates/games/game_panel.html:213
 msgid "Do we have a winner"
 msgstr "Czy mamy zwycięzcę"
 
-#: games/templates/games/game_panel.html:229
+#: games/templates/games/game_panel.html:214
 msgid "Is that the end of a game"
 msgstr "Czy to już koniec gry"
 
-#: games/templates/games/game_panel.html:229
+#: games/templates/games/game_panel.html:214
 msgid "Oh no"
 msgstr "O nie"
 
-#: games/templates/games/game_panel.html:238
-#, fuzzy
-#| msgid "That's right"
+#: games/templates/games/game_panel.html:223
 msgid "Yes, that's right"
-msgstr "Zgadza się"
+msgstr "Tak, zgadza się"
 
-#: games/templates/games/game_panel.html:242
+#: games/templates/games/game_panel.html:227
 msgid "No, we change rules"
 msgstr "Nie, zmieniamy zasady"
 
-#: games/templates/games/game_panel.html:254 templates/base.html:33
-#: templates/base.html:49
+#: games/templates/games/game_panel.html:239 templates/base.html:36
+#: templates/base.html:48
 msgid "Home"
 msgstr "Start"
 
-#: games/templates/games/game_panel.html:259
+#: games/templates/games/game_panel.html:244
 msgid "made by"
 msgstr "utworzona przez"
-
-#: games/templates/games/game_panel.html:263
-msgid "Edit"
-msgstr "Edytuj"
 
 #: games/templates/games/game_stats.html:13
 msgid "These are all statistics for"
@@ -306,23 +307,24 @@ msgstr "To są wszystkie statystyki dla"
 msgid "Winner"
 msgstr "Zwycięzca"
 
-#: games/templates/games/gamer.html:125
+#: games/templates/games/gamer.html:117
+#: games/templates/games/gamer_edit.html:90
 msgid "Update"
 msgstr "Aktualizuj"
 
-#: games/templates/games/gamer.html:129
+#: games/templates/games/gamer.html:121
 msgid "Withdraw from game"
 msgstr "Wycofaj się"
 
-#: games/templates/games/gamer.html:134
+#: games/templates/games/gamer.html:126
 msgid "Wait, wait, wait..."
 msgstr "Zaczekaj..."
 
-#: games/templates/games/gamer.html:135
+#: games/templates/games/gamer.html:127
 msgid "I think we have a winner"
 msgstr "Wydaje mi się, że mamy zwycięzcę"
 
-#: games/templates/games/gamer.html:135
+#: games/templates/games/gamer.html:127
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
 
@@ -431,7 +433,7 @@ msgstr ""
 "Zalogowani użytkownicy mogą dodatkowo przejść do widoku prowadzenia gier, "
 "aby utworzyć i obsługiwać grę"
 
-#: games/templates/games/instruction_manual.html:38 templates/home.html:17
+#: games/templates/games/instruction_manual.html:38 templates/home.html:18
 msgid "Host game"
 msgstr "Prowadź grę"
 
@@ -598,28 +600,28 @@ msgid ""
 msgstr ""
 "Spowoduje to nieodwracalne usunięcie gracza wraz z jego postępem w grze"
 
-#: templates/base.html:31
+#: templates/base.html:35
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/base.html:35
+#: templates/base.html:37
 msgid "Stats"
 msgstr "Statystyki"
 
-#: templates/base.html:36
+#: templates/base.html:38
 msgid "Account"
 msgstr "Konto"
 
-#: templates/base.html:37 templates/base.html:51
+#: templates/base.html:39 templates/base.html:51
 msgid "Help"
 msgstr "Pomoc"
 
-#: templates/base.html:46 users/templates/registration/login.html:11
+#: templates/base.html:49 users/templates/registration/login.html:11
 #: users/templates/registration/login.html:39
 msgid "Login"
 msgstr "Zaloguj się"
 
-#: templates/base.html:47
+#: templates/base.html:50
 msgid "SignUp"
 msgstr "Zarejestruj się"
 
@@ -627,31 +629,31 @@ msgstr "Zarejestruj się"
 msgid "Web application e_munchkin"
 msgstr "Aplikacja internetowa e_munchkin"
 
-#: templates/home.html:12 templates/home.html:20
+#: templates/home.html:12 templates/home.html:24
 msgid "Welcome"
 msgstr "Witaj"
 
-#: templates/home.html:13 templates/home.html:21
+#: templates/home.html:13 templates/home.html:25
 msgid "Join us and play with us"
 msgstr "Dołącz do nas i zagraj z nami"
 
-#: templates/home.html:20
+#: templates/home.html:24
 msgid "mysterious stranger"
 msgstr "tajemniczy nieznajomy"
 
-#: templates/home.html:26
+#: templates/home.html:32
 msgid "Join an existing game"
 msgstr "Dołącz do istniejącej gry"
 
-#: templates/home.html:30
+#: templates/home.html:37
 msgid "You have visited this page"
 msgstr "Odwiedziłeś/aś tę stronę "
 
-#: templates/home.html:30
+#: templates/home.html:37
 msgid "time"
 msgstr "raz"
 
-#: templates/home.html:30
+#: templates/home.html:37
 msgid "times"
 msgstr "razy"
 
