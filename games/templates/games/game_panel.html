@@ -136,6 +136,7 @@
           }
           */
           {% for gamer in gamers.all %}
+            {% if gamer.order is not null %}
             if ( {{ gamer.order }} == id){
               document.write('<table id="gamer" bgcolor="ffe5ba"><col width="25%"><col width="25%"><col width="25%"><col width="25%">');
               document.write('<tr align="center"><td style="border: 1px solid black;border-style: dotted;"><font color="DimGray" size="3">'+id+'</font></td>');
@@ -196,6 +197,7 @@
 
               count = count + 1;
             }
+            {% endif %}
           {% endfor %}
           if (count == 0){
             document.write('<font color="DimGray">{% trans "Free place for gamer" %}');
