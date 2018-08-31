@@ -1,6 +1,6 @@
 from django.test import TestCase
 from django.urls import reverse
-from .models import CustomUser
+from users.models import CustomUser
 
 
 class LogInTest(TestCase):
