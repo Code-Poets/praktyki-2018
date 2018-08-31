@@ -94,25 +94,11 @@
                 <tr>
                     <td> </td>
                     <td><input type="submit" value="{% trans 'Save' %}" class="green_button"/></td>
-                    <td>
-                        <input type="button" id="AlertShow" value="{% trans 'Back' %}" class="back_button"/>
-
-                        <div id="alert" title="{% trans 'Watch out' %}!" align="center">
-                            {% trans 'Some gamer does not have his order' %}!
-                        </div>
-                    </td>
                 </tr>
             </table>
 
         </form>
         <br />
-
-        <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red_button"/>
-
-        <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
-            {% trans 'Do you want to end' %} <b> {{ game.name }} </b> <br />
-            {% trans 'and save all gamers stats' %}?
-        </div>
 
     </div>
 
@@ -145,4 +131,26 @@
         </div>
     {% endif %}
 </div>
+
+<br />
+
+<table cellpadding="30">
+  <tr>
+    <td>
+      <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red_button"/>
+
+      <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
+          {% trans 'Do you want to end' %} <b> {{ game.name }} </b> <br />
+          {% trans 'and save all gamers stats' %}?
+      </div>
+    </td>
+    <td>
+      <input type="button" id="AlertShow" value="{% trans 'Back' %}" class="back_button"/>
+
+      <div id="alert" title="{% trans 'Watch out' %}!" align="center">
+          {% trans 'Some gamer does not have his order' %}!
+      </div>
+    </td>
+</table>
+
 {% endblock %}
