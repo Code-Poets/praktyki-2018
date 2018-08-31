@@ -290,7 +290,7 @@ class EditGameView(generic.UpdateView):
 
     def form_valid(self, form):
         form.save()
-        return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
+        return HttpResponseRedirect(reverse('games:edit_game', args=(form.instance.id,)))
 
 
 class EditGamerOrderView(generic.UpdateView):
