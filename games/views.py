@@ -49,7 +49,7 @@ class GamerOrderForm(forms.ModelForm):
     class Meta:
         model = Gamer
         fields = ['order']
-    order = forms.IntegerField(label='Order', initial=1, min_value=1)
+    order = forms.IntegerField(label='Order', initial=1, min_value=1, required=False)
 
     def clean(self):
         cleaned_data = super(GamerOrderForm, self).clean()
