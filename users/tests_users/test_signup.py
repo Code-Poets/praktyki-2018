@@ -1,6 +1,6 @@
 from django.test import TestCase
-from .models import CustomUser
-from .forms import CustomUserCreationForm
+from users.models import CustomUser
+from users.forms import CustomUserCreationForm
 
 
 class SignUpFormTest(TestCase):

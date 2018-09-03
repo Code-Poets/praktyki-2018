@@ -1,7 +1,7 @@
 from django.test import TestCase
-from .models import CustomUser
+from users.models import CustomUser
 from django.urls import reverse
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from users.forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 class EditProfileFormTest(TestCase):
