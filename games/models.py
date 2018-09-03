@@ -66,6 +66,8 @@ assert set(s.value for s in Gender) == set(dict(GENDER_CHOICES))
 
 
 class Gamer(models.Model):
+    class Meta:
+        ordering = ['id']
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='gamers')
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, default=None, blank=True)
     nick = models.CharField(max_length=50, unique=False)

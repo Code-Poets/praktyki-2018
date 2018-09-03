@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-30 10:20+0200\n"
+"POT-Creation-Date: 2018-08-31 11:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -53,14 +53,14 @@ msgid "Are you sure you want to proceed"
 msgstr "Czy na pewno chcesz kontynuować"
 
 #: games/templates/games/delete_gamer.html:21
-#: games/templates/games/game_edit.html:60
+#: games/templates/games/game_edit.html:18
 #: games/templates/games/kick_gamer.html:19
 #: users/templates/users/delete_user.html:21
 msgid "Yes"
 msgstr "Tak"
 
 #: games/templates/games/delete_gamer.html:25
-#: games/templates/games/game_edit.html:64
+#: games/templates/games/game_edit.html:22
 #: games/templates/games/kick_gamer.html:23
 #: users/templates/users/delete_user.html:25
 msgid "No"
@@ -84,8 +84,8 @@ msgid "Classes"
 msgstr "Klasy"
 
 #: games/templates/games/encyclopedia.html:193
-#: games/templates/games/game_edit.html:46
-#: games/templates/games/gamer_edit.html:94
+#: games/templates/games/game_edit.html:98
+#: games/templates/games/gamer_edit.html:103
 #: users/templates/users/change_password.html:39
 msgid "Back"
 msgstr "Powrót"
@@ -107,16 +107,16 @@ msgstr "Ostatnio grane gry"
 #: games/templates/games/game_create.html:50
 #: users/templates/users/user_stats.html:11
 #: users/templates/users/user_stats.html:35
-#: users/templates/users/user_stats.html:68
-#: users/templates/users/user_stats.html:96
+#: users/templates/users/user_stats.html:74
+#: users/templates/users/user_stats.html:102
 msgid "Game name"
 msgstr "Nazwa gry"
 
 #: games/templates/games/game_access.html:53
 #: games/templates/games/game_end.html:22
 #: games/templates/games/game_stats.html:22
-#: users/templates/users/user_stats.html:67
-#: users/templates/users/user_stats.html:95
+#: users/templates/users/user_stats.html:73
+#: users/templates/users/user_stats.html:101
 msgid "Nick"
 msgstr "Pseudonim"
 
@@ -149,23 +149,23 @@ msgstr "Gry, które aktualnie prowadzisz"
 
 #: games/templates/games/game_create.html:51
 #: users/templates/users/user_stats.html:12
-#: users/templates/users/user_stats.html:69
+#: users/templates/users/user_stats.html:75
 msgid "Game code"
 msgstr "Kod gry"
 
 #: games/templates/games/game_create.html:52
 #: users/templates/users/user_stats.html:13
 #: users/templates/users/user_stats.html:36
-#: users/templates/users/user_stats.html:71
-#: users/templates/users/user_stats.html:98
+#: users/templates/users/user_stats.html:77
+#: users/templates/users/user_stats.html:104
 msgid "Players"
 msgstr "Gracze"
 
 #: games/templates/games/game_create.html:53
 #: users/templates/users/user_stats.html:14
 #: users/templates/users/user_stats.html:37
-#: users/templates/users/user_stats.html:72
-#: users/templates/users/user_stats.html:99
+#: users/templates/users/user_stats.html:78
+#: users/templates/users/user_stats.html:105
 msgid "Game created at"
 msgstr "Gra utworzona dnia"
 
@@ -174,37 +174,53 @@ msgstr "Gra utworzona dnia"
 msgid "You are not hosting any games"
 msgstr "Nie prowadzisz żadnych gier"
 
-#: games/templates/games/game_edit.html:14
+#: games/templates/games/game_edit.html:37
+msgid "Yes, I know"
+msgstr "Tak, wiem"
+
+#: games/templates/games/game_edit.html:41
+msgid "Oh, really"
+msgstr "O, naprawdę"
+
+#: games/templates/games/game_edit.html:67
 msgid "Edit your game"
 msgstr "Edytuj grę"
 
-#: games/templates/games/game_edit.html:43
+#: games/templates/games/game_edit.html:96
 msgid "Save"
 msgstr "Zapisz"
 
-#: games/templates/games/game_edit.html:78
+#: games/templates/games/game_edit.html:100
+msgid "Watch out"
+msgstr "Uwaga"
+
+#: games/templates/games/game_edit.html:101
+msgid "Some gamer does not have his order"
+msgstr "Gracz nie posiada swojego miejsca"
+
+#: games/templates/games/game_edit.html:110
 msgid "End game"
 msgstr "Zakończ grę"
 
-#: games/templates/games/game_edit.html:80
+#: games/templates/games/game_edit.html:112
 msgid "Are you sure"
 msgstr "Czy jesteś pewien/pewna"
 
-#: games/templates/games/game_edit.html:81
+#: games/templates/games/game_edit.html:113
 msgid "Do you want to end"
 msgstr "Czy chcesz zakończyć grę"
 
-#: games/templates/games/game_edit.html:82
+#: games/templates/games/game_edit.html:114
 msgid "and save all gamers stats"
 msgstr "i zapisać jej wszystkie statystyki"
 
-#: games/templates/games/game_edit.html:102
+#: games/templates/games/game_edit.html:134
 #: games/templates/games/game_end.html:93
 #: games/templates/games/game_panel.html:248
 msgid "Edit"
 msgstr "Edytuj"
 
-#: games/templates/games/game_edit.html:107
+#: games/templates/games/game_edit.html:139
 msgid "Kick"
 msgstr "Wyrzuć"
 
@@ -307,24 +323,24 @@ msgstr "To są wszystkie statystyki dla"
 msgid "Winner"
 msgstr "Zwycięzca"
 
-#: games/templates/games/gamer.html:117
-#: games/templates/games/gamer_edit.html:90
+#: games/templates/games/gamer.html:101
+#: games/templates/games/gamer_edit.html:99
 msgid "Update"
 msgstr "Aktualizuj"
 
-#: games/templates/games/gamer.html:121
+#: games/templates/games/gamer.html:105
 msgid "Withdraw from game"
 msgstr "Wycofaj się"
 
-#: games/templates/games/gamer.html:126
+#: games/templates/games/gamer.html:110
 msgid "Wait, wait, wait..."
 msgstr "Zaczekaj..."
 
-#: games/templates/games/gamer.html:127
+#: games/templates/games/gamer.html:111
 msgid "I think we have a winner"
 msgstr "Wydaje mi się, że mamy zwycięzcę"
 
-#: games/templates/games/gamer.html:127
+#: games/templates/games/gamer.html:111
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
 
@@ -738,7 +754,7 @@ msgid "Games you have been hosting"
 msgstr "Gry, które prowadziłeś/aś"
 
 #: users/templates/users/user_stats.html:38
-#: users/templates/users/user_stats.html:100
+#: users/templates/users/user_stats.html:106
 msgid "Game finished at"
 msgstr "Gra ukończona dnia"
 
@@ -746,31 +762,31 @@ msgstr "Gra ukończona dnia"
 msgid "Game winner"
 msgstr "Zwycięzca gry"
 
-#: users/templates/users/user_stats.html:58
+#: users/templates/users/user_stats.html:64
 msgid "You not have been hosting any finished games"
 msgstr "Nie prowadziłeś żadnych zakończonych gier"
 
-#: users/templates/users/user_stats.html:62
+#: users/templates/users/user_stats.html:68
 msgid "Played games"
 msgstr "Gry, w których grałeś/aś"
 
-#: users/templates/users/user_stats.html:64
+#: users/templates/users/user_stats.html:70
 msgid "You are playing as"
 msgstr "Grasz jako"
 
-#: users/templates/users/user_stats.html:70
-#: users/templates/users/user_stats.html:97
+#: users/templates/users/user_stats.html:76
+#: users/templates/users/user_stats.html:103
 msgid "Game host"
 msgstr "Prowadzący grę"
 
-#: users/templates/users/user_stats.html:86
+#: users/templates/users/user_stats.html:92
 msgid "You are not playing any games as gamer"
 msgstr "Nie grasz w żadną grę"
 
-#: users/templates/users/user_stats.html:92
+#: users/templates/users/user_stats.html:98
 msgid "You have been playing as"
 msgstr "Grałeś jako"
 
-#: users/templates/users/user_stats.html:114
+#: users/templates/users/user_stats.html:120
 msgid "You not have been playing any finished games as gamer"
 msgstr "Nie grałeś/aś w żadną zakończoną grę"

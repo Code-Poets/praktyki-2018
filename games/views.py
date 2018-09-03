@@ -8,12 +8,13 @@ import random
 import string
 from django.utils import timezone
 # from django.http import JsonResponse
+from django.core.exceptions import ObjectDoesNotExist
 
 
 class GamerForm(forms.ModelForm):
     class Meta:
         model = Gamer
-        fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2', 'order']
+        fields = ['status', 'level', 'bonus', 'gender', 'race_slot_1', 'race_slot_2', 'class_slot_1', 'class_slot_2']
     status = forms.CharField(label='Status', required=False)
     level = forms.IntegerField(label='Level', initial=1, min_value=1)
     bonus = forms.IntegerField(label='Bonus', initial=0)
@@ -22,12 +23,9 @@ class GamerForm(forms.ModelForm):
     race_slot_2 = forms.ModelChoiceField(queryset=CharacterRace.objects.all(), required=False)
     class_slot_1 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False, label='Class')
     class_slot_2 = forms.ModelChoiceField(queryset=CharacterClass.objects.all(), required=False)
-    order = forms.IntegerField(label='Order', initial=1, min_value=1)
 
     def clean(self):
         cleaned_data = super(GamerForm, self).clean()
-
-        order = self.cleaned_data['order']
 
         race1 = cleaned_data['race_slot_1']
         race2 = cleaned_data['race_slot_2']
@@ -44,16 +42,27 @@ class GamerForm(forms.ModelForm):
             cleaned_data['race_slot_1'] = race2
             cleaned_data['race_slot_2'] = None
 
+        return cleaned_data
+
+
+class GamerOrderForm(forms.ModelForm):
+    class Meta:
+        model = Gamer
+        fields = ['order']
+    order = forms.IntegerField(label='Order', initial=1, min_value=1, required=False)
+
+    def clean(self):
+        cleaned_data = super(GamerOrderForm, self).clean()
+        order = self.cleaned_data['order']
+
         gamers = self.instance.game.gamers.all()
         error = False
         for gamer in gamers:
-            if gamer.order == order:
+            if gamer.id is not self.instance.id and order is not None and gamer.order == order:
                 error = True
         if error is True:
             raise forms.ValidationError('This order has already been taken :(')
         return cleaned_data
-
-
 """
 class AjaxableResponseMixin:
     def form_invalid(self, form):
@@ -199,7 +208,14 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
             game=game,
             nick=nick
         )
-        gamer.order = gamer.id % 8 + 1
+
+        for x in range(1,game.max_players+1):
+            try:
+                gamegamer = Gamer.objects.get(game__game_code=game_pass, order=x)
+            except Gamer.DoesNotExist:
+                gamegamer = None
+                gamer.order = x
+                break
         self.request.session['gamer_id'] = gamer.id  # Add gamer id to actual session
         if self.request.user.is_authenticated:
             gamer.user = self.request.user
@@ -274,12 +290,12 @@ class EditGameView(generic.UpdateView):
 
     def form_valid(self, form):
         form.save()
-        return HttpResponseRedirect(reverse('games:game_panel', args=(form.instance.id,)))
+        return HttpResponseRedirect(reverse('games:edit_game', args=(form.instance.id,)))
 
 
 class EditGamerOrderView(generic.UpdateView):
     model = Gamer
-    fields = ['order']
+    form_class = GamerOrderForm
     template_name = 'games/gamer_edit.html'
 
     def get_queryset(self):
@@ -362,7 +378,7 @@ class GamePanelView(generic.DetailView):
 
 def game_panel_view(request, pk):
         game = Game.objects.get(pk=pk)
-        gamers = Gamer.objects.filter(game__game_code=game.game_code)
+        gamers = Gamer.objects.filter(game__game_code=game.game_code).order_by('order')
         context = {'gamers': gamers, 'game': game}
 
         return render(request, 'games/game_panel.html', context)
