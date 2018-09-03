@@ -58,7 +58,7 @@ class GamerOrderForm(forms.ModelForm):
         gamers = self.instance.game.gamers.all()
         error = False
         for gamer in gamers:
-            if gamer.id is not self.instance.id and gamer.order == order:
+            if gamer.id is not self.instance.id and order is not None and gamer.order == order:
                 error = True
         if error is True:
             raise forms.ValidationError('This order has already been taken :(')
