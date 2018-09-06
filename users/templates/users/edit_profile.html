@@ -16,57 +16,22 @@
     <form method="post">
         {% csrf_token %}
             <table align="center">
-                <tr>
-                    <td>{{ user_form.username.label_tag }}</td>
-                    <td>{{ user_form.username }}</td>
-                </tr>
-                <tr>
-                    {% for error in user_form.username.errors %}
-                        <tr>
-                            <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
-                        </tr>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <td>{{ user_form.email.label_tag }}</td>
-                    <td>{{ user_form.email }}</td>
-                </tr>
-                <tr>
-                    {% for error in user_form.email.errors %}
-                        <tr>
-                            <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
-                        </tr>
-                    {% endfor %}
-                </tr>
-                <tr>
-                    <td>{{ user_form.nick.label_tag }}</td>
-                    <td>{{ user_form.nick }}</td>
-                </tr>
-                <tr>
-                    {% for error in user_form.nick.errors %}
-                        <tr>
-                            <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
-                        </tr>
-                    {% endfor %}
-                </tr>
+                {% for field in user_form %}
 
-                <!--{% for field in user_form %}-->
-
-                    <!--{% if field.label_tag is not 'username' %}-->
-                        <!--<tr>-->
-                            <!--<td>{{ field.label_tag }}</td>-->
-                            <!--<td>{{ field }}</td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-
-                            <!--{% for error in field.errors %}-->
-                                <!--<tr>-->
-                                    <!--<td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>-->
-                                <!--</tr>-->
-                            <!--{% endfor %}-->
-                        <!--</tr>-->
-                    <!--{% endif %}-->
-                <!--{% endfor %}-->
+                    {% if field.label_tag is not 'username' %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                        </tr>
+                        <tr>
+                            {% for error in field.errors %}
+                                <tr>
+                                    <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
+                                </tr>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
             </table>
         <input type="submit" value="{% trans 'Save changes' %}" class="green_button"/>
   </form>
