@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-08-31 11:18+0200\n"
+"POT-Creation-Date: 2018-09-06 12:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,8 +84,8 @@ msgid "Classes"
 msgstr "Klasy"
 
 #: games/templates/games/encyclopedia.html:193
-#: games/templates/games/game_edit.html:98
-#: games/templates/games/gamer_edit.html:103
+#: games/templates/games/game_edit.html:148
+#: games/templates/games/gamer_edit.html:133
 #: users/templates/users/change_password.html:39
 msgid "Back"
 msgstr "Powrót"
@@ -190,39 +190,39 @@ msgstr "Edytuj grę"
 msgid "Save"
 msgstr "Zapisz"
 
-#: games/templates/games/game_edit.html:100
-msgid "Watch out"
-msgstr "Uwaga"
-
-#: games/templates/games/game_edit.html:101
-msgid "Some gamer does not have his order"
-msgstr "Gracz nie posiada swojego miejsca"
-
-#: games/templates/games/game_edit.html:110
-msgid "End game"
-msgstr "Zakończ grę"
-
-#: games/templates/games/game_edit.html:112
-msgid "Are you sure"
-msgstr "Czy jesteś pewien/pewna"
-
-#: games/templates/games/game_edit.html:113
-msgid "Do you want to end"
-msgstr "Czy chcesz zakończyć grę"
-
-#: games/templates/games/game_edit.html:114
-msgid "and save all gamers stats"
-msgstr "i zapisać jej wszystkie statystyki"
-
-#: games/templates/games/game_edit.html:134
+#: games/templates/games/game_edit.html:120
 #: games/templates/games/game_end.html:93
-#: games/templates/games/game_panel.html:248
+#: games/templates/games/game_panel.html:250
 msgid "Edit"
 msgstr "Edytuj"
 
-#: games/templates/games/game_edit.html:139
+#: games/templates/games/game_edit.html:125
 msgid "Kick"
 msgstr "Wyrzuć"
+
+#: games/templates/games/game_edit.html:140
+msgid "End game"
+msgstr "Zakończ grę"
+
+#: games/templates/games/game_edit.html:142
+msgid "Are you sure"
+msgstr "Czy jesteś pewien/pewna"
+
+#: games/templates/games/game_edit.html:143
+msgid "Do you want to end"
+msgstr "Czy chcesz zakończyć grę"
+
+#: games/templates/games/game_edit.html:144
+msgid "and save all gamers stats"
+msgstr "i zapisać jej wszystkie statystyki"
+
+#: games/templates/games/game_edit.html:150
+msgid "Watch out"
+msgstr "Uwaga"
+
+#: games/templates/games/game_edit.html:151
+msgid "Some gamer does not have his order"
+msgstr "Gracz nie posiada swojego miejsca"
 
 #: games/templates/games/game_end.html:13
 msgid "This is the end of the"
@@ -250,9 +250,9 @@ msgstr "Płeć"
 
 #: games/templates/games/game_end.html:42
 #: games/templates/games/game_end.html:51
-#: games/templates/games/game_panel.html:164
-#: games/templates/games/game_panel.html:171
-#: games/templates/games/game_panel.html:185
+#: games/templates/games/game_panel.html:165
+#: games/templates/games/game_panel.html:172
+#: games/templates/games/game_panel.html:186
 #: games/templates/games/game_stats.html:42
 #: games/templates/games/game_stats.html:51
 msgid "Race"
@@ -260,9 +260,9 @@ msgstr "Rasa"
 
 #: games/templates/games/game_end.html:60
 #: games/templates/games/game_end.html:69
-#: games/templates/games/game_panel.html:165
-#: games/templates/games/game_panel.html:177
-#: games/templates/games/game_panel.html:191
+#: games/templates/games/game_panel.html:166
+#: games/templates/games/game_panel.html:178
+#: games/templates/games/game_panel.html:192
 #: games/templates/games/game_stats.html:60
 #: games/templates/games/game_stats.html:69
 msgid "Class"
@@ -278,40 +278,40 @@ msgid "That's right"
 msgstr "Zgadza się"
 
 #: games/templates/games/game_panel.html:129
-#: games/templates/games/game_panel.html:201
+#: games/templates/games/game_panel.html:203
 msgid "Free place for gamer"
 msgstr "Wolne miejsce dla gracza"
 
-#: games/templates/games/game_panel.html:202
+#: games/templates/games/game_panel.html:204
 msgid "Chair number"
 msgstr "Numer krzesła"
 
-#: games/templates/games/game_panel.html:213
+#: games/templates/games/game_panel.html:215
 msgid "Do we have a winner"
 msgstr "Czy mamy zwycięzcę"
 
-#: games/templates/games/game_panel.html:214
+#: games/templates/games/game_panel.html:216
 msgid "Is that the end of a game"
 msgstr "Czy to już koniec gry"
 
-#: games/templates/games/game_panel.html:214
+#: games/templates/games/game_panel.html:216
 msgid "Oh no"
 msgstr "O nie"
 
-#: games/templates/games/game_panel.html:223
+#: games/templates/games/game_panel.html:225
 msgid "Yes, that's right"
 msgstr "Tak, zgadza się"
 
-#: games/templates/games/game_panel.html:227
+#: games/templates/games/game_panel.html:229
 msgid "No, we change rules"
 msgstr "Nie, zmieniamy zasady"
 
-#: games/templates/games/game_panel.html:239 templates/base.html:36
+#: games/templates/games/game_panel.html:241 templates/base.html:36
 #: templates/base.html:48
 msgid "Home"
 msgstr "Start"
 
-#: games/templates/games/game_panel.html:244
+#: games/templates/games/game_panel.html:246
 msgid "made by"
 msgstr "utworzona przez"
 
@@ -324,7 +324,6 @@ msgid "Winner"
 msgstr "Zwycięzca"
 
 #: games/templates/games/gamer.html:101
-#: games/templates/games/gamer_edit.html:99
 msgid "Update"
 msgstr "Aktualizuj"
 
@@ -343,6 +342,14 @@ msgstr "Wydaje mi się, że mamy zwycięzcę"
 #: games/templates/games/gamer.html:111
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
+
+#: games/templates/games/gamer_edit.html:128
+msgid "Save and back"
+msgstr "Zapisz i wróć"
+
+#: games/templates/games/gamer_edit.html:131
+msgid "Cancel"
+msgstr "Anuluj"
 
 #: games/templates/games/instruction_manual.html:9
 msgid "Instruction manual"
