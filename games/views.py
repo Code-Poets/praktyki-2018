@@ -10,7 +10,7 @@ from django.utils import timezone
 # from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 
-from .forms import GamerForm, GamerOrderForm, JoinForm, EditGameForm
+from .forms import GamerForm, GamerOrderForm, GamerEditForm, JoinForm, EditGameForm
 
 
 """
@@ -290,7 +290,7 @@ class EndGameView(generic.DetailView):
 
 class EditGamerView(generic.UpdateView):
     model = Gamer
-    fields = ['level', 'bonus']
+    form_class = GamerEditForm
     template_name = 'games/gamer_edit.html'
 
     def get_queryset(self):
