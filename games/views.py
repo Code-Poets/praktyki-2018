@@ -148,8 +148,9 @@ def generate_game_code():
 
 class CreateGameView(generic.CreateView):
     model = Game
-    fields = ['name', 'max_players', 'winning_level']
+    #fields = ['name', 'max_players', 'winning_level']
     template_name = 'games/game_create.html'
+    form_class = EditGameForm
 
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
@@ -169,9 +170,10 @@ class CreateGameView(generic.CreateView):
 
 
 class EditGameView(generic.UpdateView):
-    model = Game
-    fields = ['name', 'max_players', 'winning_level']
+    #model = Game
+    #fields = ['name', 'max_players', 'winning_level']
     template_name = 'games/game_edit.html'
+    form_class = EditGameForm
 
     def dispatch(self, request, *args, **kwargs):
         if not self.request.user.is_authenticated:
