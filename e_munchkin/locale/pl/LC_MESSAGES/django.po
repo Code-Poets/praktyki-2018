@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-06 14:10+0200\n"
+"POT-Creation-Date: 2018-09-06 16:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -173,7 +173,6 @@ msgstr "Klasy"
 
 #: games/templates/games/encyclopedia.html:193
 #: games/templates/games/game_edit.html:148
-#: games/templates/games/gamer_edit.html:103
 #: users/templates/users/change_password.html:39
 msgid "Back"
 msgstr "Powrót"
@@ -387,11 +386,11 @@ msgstr "Wydaje mi się, że mamy zwycięzcę"
 msgid "But wait for game-master decision"
 msgstr "Ale zaczekaj na decyzję mistrza gry"
 
-#: games/templates/games/gamer_edit.html:128
+#: games/templates/games/gamer_edit.html:142
 msgid "Save and back"
 msgstr "Zapisz i wróć"
 
-#: games/templates/games/gamer_edit.html:131
+#: games/templates/games/gamer_edit.html:145
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -724,6 +723,22 @@ msgstr "raz"
 msgid "times"
 msgstr "razy"
 
+#: users/forms.py:9
+msgid "Password"
+msgstr "Hasło"
+
+#: users/forms.py:9
+msgid "Your password must contain at least 8 characters."
+msgstr "Twoje hasło musi zawierać co najmniej 8 znaków."
+
+#: users/forms.py:10
+msgid "Password confirmation"
+msgstr "Potwierdzenie hasła"
+
+#: users/forms.py:10
+msgid "Enter the same password as above, for verification."
+msgstr "Wpisz takie samo hasło jak powyżej, dla weryfikacji"
+
 #: users/models.py:8
 msgid "username"
 msgstr "nazwa użytkownika"
@@ -751,12 +766,12 @@ msgid "Change account details"
 msgstr "Zmień dane konta"
 
 #: users/templates/users/change_password.html:15
-#: users/templates/users/edit_profile.html:41
+#: users/templates/users/edit_profile.html:44
 msgid "Change password"
 msgstr "Zmień hasło"
 
 #: users/templates/users/change_password.html:33
-#: users/templates/users/edit_profile.html:33
+#: users/templates/users/edit_profile.html:36
 msgid "Save changes"
 msgstr "Zapisz zmiany"
 
@@ -780,7 +795,7 @@ msgstr "Wszystkie twoje bieżące statystyki zostaną utracone"
 msgid "Change profile details"
 msgstr "Zmień dane profilu"
 
-#: users/templates/users/edit_profile.html:46
+#: users/templates/users/edit_profile.html:49
 msgid "Delete account"
 msgstr "Usuń konto"
 
