@@ -153,7 +153,7 @@
               }
               document.write('</td></tr>');
 
-              {% if gamers.0.status is not None and gamers.0.status != "" %}
+              {% if gamer.status is not None and gamer.status != "" %}
                   document.write('<tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamer.status }}"</font></td></tr>');
               {% else %}
                   document.write('<tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>');
