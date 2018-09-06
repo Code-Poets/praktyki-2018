@@ -13,24 +13,27 @@
 <br />
 
 <h3> {% trans 'Change profile details' %}</h3>
-  <form method="post">
-    {% csrf_token %}
-        <table align="center">
-    {% for field in user_form %}
-        <tr>
-        <td>{{ field.label_tag }}</td>
-        <td>{{ field }}</td>
-        </tr>
-        <tr>
-        {% for error in field.errors %}
-            <tr>
-          <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
-            </tr>
-        {% endfor %}
-        </tr>
-    {% endfor %}
-        </table>
-    <input type="submit" value="{% trans 'Save changes' %}" class="green_button"/>
+    <form method="post">
+        {% csrf_token %}
+            <table align="center">
+                {% for field in user_form %}
+
+                    {% if field.label_tag is not 'username' %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                        </tr>
+                        <tr>
+                            {% for error in field.errors %}
+                                <tr>
+                                    <td colspan="2" align="center"><small style="color: red">{{ error }}</small></td>
+                                </tr>
+                            {% endfor %}
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </table>
+        <input type="submit" value="{% trans 'Save changes' %}" class="green_button"/>
   </form>
 <hr>
 

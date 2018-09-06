@@ -19,6 +19,10 @@ class CustomUserChangeForm(UserChangeForm):
         model = CustomUser
         fields = ('username', 'email', 'nick')
 
+    def __init__(self, *args, **kwargs):
+        super(CustomUserChangeForm, self).__init__(*args, **kwargs)
+        self.fields.pop('password')
+
     def clean_password(self):
         password1 = self.cleaned_data.get('password1', None)
         password2 = self.cleaned_data.get('password2', None)
