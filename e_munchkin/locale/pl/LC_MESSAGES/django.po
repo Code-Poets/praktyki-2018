@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-06 12:05+0200\n"
+"POT-Creation-Date: 2018-09-06 14:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -27,6 +27,94 @@ msgstr "Angielski"
 #: e_munchkin/settings/defaults.py:150
 msgid "Polish"
 msgstr "Polski"
+
+#: games/forms.py:10 games/templates/games/game_end.html:79
+#: games/templates/games/game_stats.html:79
+msgid "Status"
+msgstr "Status"
+
+#: games/forms.py:11 games/templates/games/game_access.html:54
+#: games/templates/games/game_end.html:27
+#: games/templates/games/game_stats.html:27
+msgid "Level"
+msgstr "Poziom"
+
+#: games/forms.py:12 games/templates/games/game_end.html:32
+#: games/templates/games/game_stats.html:32
+msgid "Bonus"
+msgstr "Bonus"
+
+#: games/forms.py:14 games/templates/games/game_end.html:42
+#: games/templates/games/game_end.html:51
+#: games/templates/games/game_panel.html:165
+#: games/templates/games/game_panel.html:172
+#: games/templates/games/game_panel.html:186
+#: games/templates/games/game_stats.html:42
+#: games/templates/games/game_stats.html:51
+msgid "Race"
+msgstr "Rasa"
+
+#: games/forms.py:16 games/templates/games/game_end.html:60
+#: games/templates/games/game_end.html:69
+#: games/templates/games/game_panel.html:166
+#: games/templates/games/game_panel.html:178
+#: games/templates/games/game_panel.html:192
+#: games/templates/games/game_stats.html:60
+#: games/templates/games/game_stats.html:69
+msgid "Class"
+msgstr "Klasa"
+
+#: games/forms.py:44
+msgid "Order"
+msgstr "Miejsce"
+
+#: games/forms.py:56
+msgid "This order has already been taken :("
+msgstr "To miejsce już jest zajęte :("
+
+#: games/forms.py:71 games/templates/games/game_access.html:53
+#: games/templates/games/game_end.html:22
+#: games/templates/games/game_stats.html:22
+#: users/templates/users/user_stats.html:73
+#: users/templates/users/user_stats.html:101
+msgid "Nick"
+msgstr "Pseudonim"
+
+#: games/forms.py:72
+msgid "Game access code"
+msgstr "Kod dostępu gry"
+
+#: games/forms.py:96
+msgid "WHOOPS! No such game could be found!"
+msgstr "UPS! Nie znaleziono takiej gry!"
+
+#: games/forms.py:102
+msgid "You have already joined this game!"
+msgstr "Już bierzesz udział w tej grze!"
+
+#: games/forms.py:105
+msgid "Sorry, this game has already finished."
+msgstr "Wybacz, ta gra już się skończyła."
+
+#: games/forms.py:107
+msgid "Sorry, no more places available. :-("
+msgstr "Wybacz, brak wolnych miejsc. :-("
+
+#: games/forms.py:113
+msgid "This nickname has already been taken. :-("
+msgstr "Ten pseudonim jest już zajęty. :-("
+
+#: games/forms.py:118
+msgid "Name"
+msgstr "Imię"
+
+#: games/forms.py:119
+msgid "Players number"
+msgstr "Liczba graczy"
+
+#: games/forms.py:120
+msgid "Finish at level"
+msgstr "Skończ wraz z poziomem"
 
 #: games/templates/games/delete_gamer.html:8
 msgid "Withdraw"
@@ -85,7 +173,7 @@ msgstr "Klasy"
 
 #: games/templates/games/encyclopedia.html:193
 #: games/templates/games/game_edit.html:148
-#: games/templates/games/gamer_edit.html:133
+#: games/templates/games/gamer_edit.html:103
 #: users/templates/users/change_password.html:39
 msgid "Back"
 msgstr "Powrót"
@@ -111,20 +199,6 @@ msgstr "Ostatnio grane gry"
 #: users/templates/users/user_stats.html:102
 msgid "Game name"
 msgstr "Nazwa gry"
-
-#: games/templates/games/game_access.html:53
-#: games/templates/games/game_end.html:22
-#: games/templates/games/game_stats.html:22
-#: users/templates/users/user_stats.html:73
-#: users/templates/users/user_stats.html:101
-msgid "Nick"
-msgstr "Pseudonim"
-
-#: games/templates/games/game_access.html:54
-#: games/templates/games/game_end.html:27
-#: games/templates/games/game_stats.html:27
-msgid "Level"
-msgstr "Poziom"
 
 #: games/templates/games/game_access.html:55
 msgid "Game started at"
@@ -238,40 +312,10 @@ msgstr "Statystyki"
 msgid "Gamer"
 msgstr "Gracz"
 
-#: games/templates/games/game_end.html:32
-#: games/templates/games/game_stats.html:32
-msgid "Bonus"
-msgstr "Bonus"
-
 #: games/templates/games/game_end.html:37
 #: games/templates/games/game_stats.html:37
 msgid "Gender"
 msgstr "Płeć"
-
-#: games/templates/games/game_end.html:42
-#: games/templates/games/game_end.html:51
-#: games/templates/games/game_panel.html:165
-#: games/templates/games/game_panel.html:172
-#: games/templates/games/game_panel.html:186
-#: games/templates/games/game_stats.html:42
-#: games/templates/games/game_stats.html:51
-msgid "Race"
-msgstr "Rasa"
-
-#: games/templates/games/game_end.html:60
-#: games/templates/games/game_end.html:69
-#: games/templates/games/game_panel.html:166
-#: games/templates/games/game_panel.html:178
-#: games/templates/games/game_panel.html:192
-#: games/templates/games/game_stats.html:60
-#: games/templates/games/game_stats.html:69
-msgid "Class"
-msgstr "Klasa"
-
-#: games/templates/games/game_end.html:79
-#: games/templates/games/game_stats.html:79
-msgid "Status"
-msgstr "Status"
 
 #: games/templates/games/game_end.html:103
 msgid "That's right"
