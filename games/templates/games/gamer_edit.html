@@ -16,6 +16,20 @@
         document.getElementById(target).value = value;
     };
   </script>
+
+  <script>
+    function cancelFunction() {
+      var url = window.location.href;
+      var lastPart = url.substr(url.lastIndexOf('/') + 1);
+
+      if (lastPart === "order") {
+        window.location.href = "{% url 'games:edit_game' gamer.game.id%}";
+      }
+      else {
+        window.location.href = "{% url 'games:end_game' gamer.game.id%}";
+      }
+    }
+  </script>
 </head>
 
 <body>
@@ -60,19 +74,48 @@
   {% csrf_token %}
    <table align="center">
      {% for field in form %}
+     {% if field is form.level or field is form.bonus or field is form.order %}
+        <!-- integer fields -->
         <tr>
-          <td>{{ field.label_tag }}</td>
-          <td>
-            <i class="btn btn-danger btn-sm" onclick="increment(-1, '{{ field.auto_id }}')">-</i>
-            {{ field }}
-            <i class="btn btn-success btn-sm" onclick="increment(1, '{{ field.auto_id }}')">+</i>
-          </td>
+            <td>{{ field.label_tag }}</td>
+            <td>
+                <i class="btn btn-danger btn-sm" onclick="increment(-1, '{{ field.auto_id }}')">-</i>
+                {{ field }}
+                <i class="btn btn-success btn-sm" onclick="increment(1, '{{ field.auto_id }}')">+</i>
+            </td>
         </tr>
-        <tr>
-          {% if field.help_text %}
-              <td colspan="2" align="center"><small style="color: LightGray ">{{ field.help_text }}</small></td>
-          {% endif %}
-        </tr>
+     {% else %}
+        {% if field is form.race_slot_2 %}
+            {% if form.race_slot_1.value != None or gamer.race_slot_1 != None %}
+                <!-- Race field -->
+                <tr>
+                    <td></td>
+                    <td>
+                        {{ field }}
+                    </td>
+                </tr>
+            {% endif %}
+        {% else %}
+            {% if field is form.class_slot_2 %}
+                {% if form.class_slot_1.value != None or gamer.class_slot_1 != None %}
+                    <!-- Class field -->
+                    <tr>
+                        <td></td>
+                        <td>
+                            {{ field }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% else %}
+                <tr>
+                    <td>{{ field.label_tag }}</td>
+                    <td>
+                        {{ field }}
+                    </td>
+                </tr>
+            {% endif %}
+        {% endif %}
+     {% endif %}
 
         <tr>
           {% for error in field.errors %}
@@ -96,12 +139,10 @@
     <table>
       <tr>
         <td>
-          <input type="submit" value="{% trans 'Update' %}" class="green_button"/>
+          <input type="submit" value="{% trans 'Save and back' %}" class="green_button"/>
         </td>
         <td>
-          <!--
-          <input action="action" onclick="window.history.go(-1); return false;" class="grey" value="{% trans 'Back' %}" />
-         S-->
+          <input type="button" onclick="cancelFunction();" value="{% trans 'Cancel' %}" class="back_button"/>
         </td>
     </table>
 </form>

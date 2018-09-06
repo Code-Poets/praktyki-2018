@@ -10,7 +10,7 @@ from django.utils import timezone
 # from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
 
-from .forms import GamerForm, GamerOrderForm, JoinForm, EditGameForm
+from .forms import GamerForm, GamerOrderForm, GamerEditForm, JoinForm, EditGameForm
 
 
 """
@@ -184,6 +184,11 @@ class EditGameView(generic.UpdateView):
     def get_queryset(self):
         return Game.objects
 
+    def get_context_data(self, **kwargs):
+        context = super(EditGameView, self).get_context_data(**kwargs)
+        context['gamers'] = Gamer.objects.filter(game__id=self.kwargs['pk']).order_by('order')
+        return context
+
     def form_valid(self, form):
         form.save()
         return HttpResponseRedirect(reverse('games:edit_game', args=(form.instance.id,)))
@@ -290,7 +295,7 @@ class EndGameView(generic.DetailView):
 
 class EditGamerView(generic.UpdateView):
     model = Gamer
-    fields = ['level', 'bonus']
+    form_class = GamerEditForm
     template_name = 'games/gamer_edit.html'
 
     def get_queryset(self):

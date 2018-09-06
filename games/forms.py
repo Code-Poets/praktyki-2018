@@ -36,10 +36,10 @@ class GamerForm(forms.ModelForm):
         return cleaned_data
 
 
-class GamerOrderForm(forms.ModelForm):
-    class Meta:
+class GamerOrderForm(GamerForm):
+    class Meta(GamerForm.Meta):
         model = Gamer
-        fields = ['order']
+        fields = GamerForm.Meta.fields + ['order']
     order = forms.IntegerField(label='Order', initial=1, min_value=1, required=False)
 
     def clean(self):
@@ -54,6 +54,15 @@ class GamerOrderForm(forms.ModelForm):
         if error is True:
             raise forms.ValidationError('This order has already been taken :(')
         return cleaned_data
+
+
+class GamerEditForm(GamerForm):
+    class Meta(GamerForm.Meta):
+        model = Gamer
+
+    def __init__(self, *args, **kwargs):
+        super(GamerEditForm, self).__init__(*args, **kwargs)
+        self.fields.pop('status')
 
 
 class JoinForm(forms.Form):
