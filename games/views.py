@@ -9,8 +9,11 @@ import string
 from django.utils import timezone
 # from django.http import JsonResponse
 from django.core.exceptions import ObjectDoesNotExist
-
-from .forms import GamerForm, GamerOrderForm, GamerEditForm, JoinForm, EditGameForm
+from .forms.form_gamer import GamerForm
+from .forms.form_gamer_order import GamerOrderForm
+from .forms.form_gamer_edit import GamerEditForm
+from .forms.form_join import JoinForm
+from .forms.form_edit_game import EditGameForm
 
 
 """
