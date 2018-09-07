@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import redirect
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from users.forms.form_custom_user_creation import CustomUserCreationForm
+from users.forms.form_custom_user_change import  CustomUserChangeForm
 from .models import CustomUser
 from games.models.model_game import Game
 from games.models.model_gamer import Gamer
