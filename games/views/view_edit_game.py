@@ -1,7 +1,8 @@
 from django.http import HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse
-from games.models import Game, Gamer
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
 from games.forms.form_edit_game import EditGameForm
 
 

@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse
-from games.models import Gamer
+from games.models.model_gamer import Gamer
 
 
 class DeleteGamerView(generic.DeleteView):

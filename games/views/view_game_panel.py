@@ -1,5 +1,6 @@
 from django.views import generic
-from games.models import Game, Gamer
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
 
 
 class GamePanelView(generic.DetailView):

@@ -1,5 +1,5 @@
 from django.views import generic
-from games.models import Game
+from games.models.model_game import Game
 
 
 class StatsGameView(generic.DetailView):

@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
-from games.models import Gamer
+from games.models.model_gamer import Gamer
 from games.forms.form_gamer_order import GamerOrderForm
 
 

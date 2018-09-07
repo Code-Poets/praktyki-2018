@@ -1,7 +1,11 @@
 from django.http import HttpResponseRedirect, Http404
 from django.views import generic
 from django.urls import reverse
-from games.models import Game, Gamer, CharacterRace, CharacterClass, GENDER_CHOICES
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
+from games.models.model_character_race import CharacterRace
+from games.models.model_character_class import CharacterClass
+from games.models.enum_gender import GENDER_CHOICES
 # from django.http import JsonResponse
 from games.forms.form_gamer import GamerForm
 
