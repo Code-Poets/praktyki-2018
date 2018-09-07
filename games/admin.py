@@ -1,6 +1,9 @@
 from django.contrib import admin
 
-from .models import Game, Gamer, CharacterClass, CharacterRace
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
+from games.models.model_character_race import CharacterRace
+from games.models.model_character_class import CharacterClass
 
 
 class GamerInline(admin.TabularInline):

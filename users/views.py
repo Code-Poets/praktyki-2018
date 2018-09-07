@@ -3,7 +3,8 @@ from django.views import generic
 from django.shortcuts import redirect
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from .models import CustomUser
-from games.models import Game, Gamer
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
 from django.db.models import Q
 from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
