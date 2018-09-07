@@ -1,6 +1,10 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from games.models import Game, Gamer, CharacterRace, CharacterClass, GENDER_CHOICES
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
+from games.models.model_character_race import CharacterRace
+from games.models.model_character_class import CharacterClass
+from games.models.enum_gender import GENDER_CHOICES
 
 
 class GamerForm(forms.ModelForm):

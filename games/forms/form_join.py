@@ -1,6 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from games.models import Game, Gamer
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
 
 
 class JoinForm(forms.Form):

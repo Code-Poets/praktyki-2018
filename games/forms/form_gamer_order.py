@@ -1,7 +1,7 @@
 from django import forms
 from .form_gamer import GamerForm
 from django.utils.translation import ugettext_lazy as _
-from games.models import Gamer
+from games.models.model_gamer import Gamer
 
 
 class GamerOrderForm(GamerForm):
