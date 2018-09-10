@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-10 10:37+0200\n"
+"POT-Creation-Date: 2018-09-10 10:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -746,7 +746,7 @@ msgstr "Potwierdzenie hasła"
 
 #: users/forms/form_custom_user_creation.py:10
 msgid "Enter the same password as above, for verification."
-msgstr "Wpisz takie samo hasło jak powyżej, dla weryfikacji"
+msgstr "Wpisz takie samo hasło jak powyżej, dla weryfikacji."
 
 #: users/models.py:8
 msgid "username"
@@ -761,9 +761,17 @@ msgstr "Wymagane. 30 znaków lub więcej. Litery, cyfry i znaki @/./+/-/_"
 msgid "nick name"
 msgstr "pseudonim"
 
+#: users/models.py:11
+msgid "It will be used for games. You can change it later."
+msgstr "Używany podczas gry. Możesz go zmienić później."
+
 #: users/models.py:12
 msgid "email address"
 msgstr "adres email"
+
+#: users/models.py:12
+msgid "Required to account verification."
+msgstr "Wymagane do weryfikacji konta."
 
 #: users/models.py:13
 msgid "date joined"
