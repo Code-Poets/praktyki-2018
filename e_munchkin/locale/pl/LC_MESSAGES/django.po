@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-06 16:59+0200\n"
+"POT-Creation-Date: 2018-09-10 10:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,23 +28,35 @@ msgstr "Angielski"
 msgid "Polish"
 msgstr "Polski"
 
-#: games/forms.py:10 games/templates/games/game_end.html:79
+#: games/forms/form_edit_game.py:10
+msgid "Name"
+msgstr "Imię"
+
+#: games/forms/form_edit_game.py:11
+msgid "Players number"
+msgstr "Liczba graczy"
+
+#: games/forms/form_edit_game.py:12
+msgid "Finish at level"
+msgstr "Skończ wraz z poziomem"
+
+#: games/forms/form_gamer.py:14 games/templates/games/game_end.html:79
 #: games/templates/games/game_stats.html:79
 msgid "Status"
 msgstr "Status"
 
-#: games/forms.py:11 games/templates/games/game_access.html:54
+#: games/forms/form_gamer.py:15 games/templates/games/game_access.html:54
 #: games/templates/games/game_end.html:27
 #: games/templates/games/game_stats.html:27
 msgid "Level"
 msgstr "Poziom"
 
-#: games/forms.py:12 games/templates/games/game_end.html:32
+#: games/forms/form_gamer.py:16 games/templates/games/game_end.html:32
 #: games/templates/games/game_stats.html:32
 msgid "Bonus"
 msgstr "Bonus"
 
-#: games/forms.py:14 games/templates/games/game_end.html:42
+#: games/forms/form_gamer.py:18 games/templates/games/game_end.html:42
 #: games/templates/games/game_end.html:51
 #: games/templates/games/game_panel.html:165
 #: games/templates/games/game_panel.html:172
@@ -54,7 +66,7 @@ msgstr "Bonus"
 msgid "Race"
 msgstr "Rasa"
 
-#: games/forms.py:16 games/templates/games/game_end.html:60
+#: games/forms/form_gamer.py:20 games/templates/games/game_end.html:60
 #: games/templates/games/game_end.html:69
 #: games/templates/games/game_panel.html:166
 #: games/templates/games/game_panel.html:178
@@ -64,15 +76,15 @@ msgstr "Rasa"
 msgid "Class"
 msgstr "Klasa"
 
-#: games/forms.py:44
+#: games/forms/form_gamer_order.py:11
 msgid "Order"
 msgstr "Miejsce"
 
-#: games/forms.py:56
+#: games/forms/form_gamer_order.py:23
 msgid "This order has already been taken :("
 msgstr "To miejsce już jest zajęte :("
 
-#: games/forms.py:71 games/templates/games/game_access.html:53
+#: games/forms/form_join.py:9 games/templates/games/game_access.html:53
 #: games/templates/games/game_end.html:22
 #: games/templates/games/game_stats.html:22
 #: users/templates/users/user_stats.html:73
@@ -80,41 +92,29 @@ msgstr "To miejsce już jest zajęte :("
 msgid "Nick"
 msgstr "Pseudonim"
 
-#: games/forms.py:72
+#: games/forms/form_join.py:10
 msgid "Game access code"
 msgstr "Kod dostępu gry"
 
-#: games/forms.py:96
+#: games/forms/form_join.py:31
 msgid "WHOOPS! No such game could be found!"
 msgstr "UPS! Nie znaleziono takiej gry!"
 
-#: games/forms.py:102
+#: games/forms/form_join.py:37
 msgid "You have already joined this game!"
 msgstr "Już bierzesz udział w tej grze!"
 
-#: games/forms.py:105
+#: games/forms/form_join.py:40
 msgid "Sorry, this game has already finished."
 msgstr "Wybacz, ta gra już się skończyła."
 
-#: games/forms.py:107
+#: games/forms/form_join.py:42
 msgid "Sorry, no more places available. :-("
 msgstr "Wybacz, brak wolnych miejsc. :-("
 
-#: games/forms.py:113
+#: games/forms/form_join.py:48
 msgid "This nickname has already been taken. :-("
 msgstr "Ten pseudonim jest już zajęty. :-("
-
-#: games/forms.py:118
-msgid "Name"
-msgstr "Imię"
-
-#: games/forms.py:119
-msgid "Players number"
-msgstr "Liczba graczy"
-
-#: games/forms.py:120
-msgid "Finish at level"
-msgstr "Skończ wraz z poziomem"
 
 #: games/templates/games/delete_gamer.html:8
 msgid "Withdraw"
@@ -170,6 +170,14 @@ msgstr "Opis"
 #: games/templates/games/encyclopedia.html:126
 msgid "Classes"
 msgstr "Klasy"
+
+#: games/templates/games/encyclopedia.html:159
+msgid "Instruction"
+msgstr "Instrukcja"
+
+#: games/templates/games/encyclopedia.html:160
+msgid "How to play"
+msgstr "Jak grać"
 
 #: games/templates/games/encyclopedia.html:193
 #: games/templates/games/game_edit.html:148
@@ -723,19 +731,19 @@ msgstr "raz"
 msgid "times"
 msgstr "razy"
 
-#: users/forms.py:9
+#: users/forms/form_custom_user_creation.py:9
 msgid "Password"
 msgstr "Hasło"
 
-#: users/forms.py:9
+#: users/forms/form_custom_user_creation.py:9
 msgid "Your password must contain at least 8 characters."
 msgstr "Twoje hasło musi zawierać co najmniej 8 znaków."
 
-#: users/forms.py:10
+#: users/forms/form_custom_user_creation.py:10
 msgid "Password confirmation"
 msgstr "Potwierdzenie hasła"
 
-#: users/forms.py:10
+#: users/forms/form_custom_user_creation.py:10
 msgid "Enter the same password as above, for verification."
 msgstr "Wpisz takie samo hasło jak powyżej, dla weryfikacji"
 
