@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-09-10 10:25+0200\n"
+"POT-Creation-Date: 2018-09-10 10:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -76,7 +76,7 @@ msgstr "Rasa"
 msgid "Class"
 msgstr "Klasa"
 
-#: games/forms/form_gamer_order.py:11
+#: games/forms/form_gamer_order.py:11 games/templates/games/game_edit.html:109
 msgid "Order"
 msgstr "Miejsce"
 
@@ -85,6 +85,7 @@ msgid "This order has already been taken :("
 msgstr "To miejsce już jest zajęte :("
 
 #: games/forms/form_join.py:9 games/templates/games/game_access.html:53
+#: games/templates/games/game_edit.html:110
 #: games/templates/games/game_end.html:22
 #: games/templates/games/game_stats.html:22
 #: users/templates/users/user_stats.html:73
