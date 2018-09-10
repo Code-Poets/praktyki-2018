@@ -7,6 +7,15 @@
     padding: 6px 15px;
     cursor: pointer;
 }
+
+.class_button:active {
+  background-color: #baceff;
+  transform: translateY(4px);
+}
+
+.class_button:hover {
+  box-shadow: 2px 8px 10px #2162ff;
+}
 /*Encyclopedia Race button*/
 .race_button {
     background-color: #ffe5ba;
@@ -17,6 +26,16 @@
     cursor: pointer;
 }
 
+.race_button:active {
+  background-color: #fcc6a9;
+  transform: translateY(4px);
+}
+
+.race_button:hover {
+  box-shadow: 2px 8px 10px #f93109;
+}
+
+/*Back Class button*/
 .back_button {
     background-color: #ffe5ba;
     border-radius: 8px;
@@ -26,6 +45,16 @@
     cursor: pointer;
 }
 
+.back_button:active {
+  background-color: #b7b7b5;
+  transform: translateY(4px);
+}
+
+.back_button:hover {
+  box-shadow: 2px 8px 10px #30302f;
+}
+
+/*Green Class button*/
 .green_button {
     background-color: #ffe5ba;
     border-radius: 8px;
@@ -35,6 +64,16 @@
     cursor: pointer;
 }
 
+.green_button:active {
+  background-color: #b0ff6b;
+  transform: translateY(4px);
+}
+
+.green_button:hover {
+  box-shadow: 2px 8px 10px #0d8e08;
+}
+
+/*Red Class button*/
 .red_button {
     background-color: #ffe5ba;
     border-radius: 8px;
@@ -44,6 +83,16 @@
     cursor: pointer;
 }
 
+.red_button:active {
+  background-color: #fcc6a9;
+  transform: translateY(4px);
+}
+
+.red_button:hover {
+  box-shadow: 2px 8px 10px #f93109;
+}
+
+/*Blue Class button*/
 .blue_button {
     background-color: #ffe5ba;
     border-radius: 8px;
@@ -53,10 +102,29 @@
     cursor: pointer;
 }
 
+.blue_button:active {
+  background-color: #baceff;
+  transform: translateY(4px);
+}
+
+.blue_button:hover {
+  box-shadow: 2px 8px 10px #2162ff;
+}
+
+/*Grey Small Class button*/
 .grey_small_button {
     background-color: #ffe5ba;
     border-radius: 50%;
     color: #4d5f8c;
     border: 2px solid #b2b2b2;
     cursor: pointer;
+}
+
+.grey_small_button:active {
+  background-color: #b7b7b5;
+  transform: translateY(4px);
+}
+
+.grey_small_button:hover {
+  box-shadow: 2px 6px 10px #4d5f8c;
 }
