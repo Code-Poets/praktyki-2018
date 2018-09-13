@@ -30,7 +30,7 @@ msgstr "Polski"
 
 #: games/forms/form_edit_game.py:10
 msgid "Name"
-msgstr "Imię"
+msgstr "Nazwa"
 
 #: games/forms/form_edit_game.py:11
 msgid "Players number"
