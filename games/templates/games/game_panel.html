@@ -28,13 +28,15 @@
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
       <script>
-      $( function() {
-        $( "#dialog" ).dialog();
-      } );
+        var popup_message_title = "{% trans 'Do we have a winner' %}?";
+        var popup_message_yes = "{% trans "Yes, that's right" %}!";
+        var popup_message_no = "{% trans "No, we change rules" %}";
+        var path_yes = "{% url 'games:end_game' game.id%}";
+        var path_no = "{% url 'games:edit_game' game.id%}";
       </script>
+      <script type="text/javascript" src="{% static 'games/popup.js' %}"></script>
 
-      <script type="text/javascript" src="{% static 'games/refresh.js' %}">
-      </script>
+      <script type="text/javascript" src="{% static 'games/refresh.js' %}"></script>
 
       <script>
         var order = 0;
@@ -67,27 +69,11 @@
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
 
-        <div id="dialog" title="{% trans 'Do we have a winner' %}?" align="center">
+        <div id="dialog" style="display: none" align="center">
             <p>{% trans 'Is that the end of a game' %}? <br />{% trans 'Oh no' %}!</p>
         </div>
         {% endif %}
     {% endfor %}
-
-    <script>
-    $("div#dialog").dialog ({
-        modal: true,
-        buttons : {
-            "{% trans "Yes, that's right" %}!" : function ()
-            {
-                window.location.href = "{% url 'games:end_game' game.id%}";
-            },
-            "{% trans 'No, we change rules' %}" : function ()
-            {
-                window.location.href = "{% url 'games:edit_game' game.id%}";
-            }
-        }
-    }).prev().find(".ui-dialog-titlebar-close").hide ();
-    </script>
 
     <table width="100%" align="center">
       <tr>
@@ -107,8 +93,6 @@
         </td>
       </tr>
     </table>
-
-
 
     <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
       <tr align="center" height="33%">
