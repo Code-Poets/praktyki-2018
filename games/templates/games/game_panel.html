@@ -33,102 +33,33 @@
       } );
       </script>
 
-      <script type="text/javascript">
-      //<script type="text/javascript" src="{% static 'games/game_panel.js' %}">
-      function myFunction(id) {
-          var count = 0;
-          /*
-          {% for gamer in gamers.all %}
-            if ( {{ gamer.order }} == id){
-              document.write('<table bgcolor="ffe5ba"><tr><td>{{ gamer.nick }}</td><td>{{ gamer.order }}</td></tr></table>');
-              if ( {{ gamer.gender }} == "None"){
-                document.write("None");
-              }
-
-              count = count + 1;
-            }
-          {% endfor %}
-          if (count == 0){
-            document.write("{% trans 'Free place for gamer' %}");
-          }
-          */
-          /*
-          document.write("<p>{{ gamers.0.nick }}</p>");
-          if ( "{{ gamers.0.gender }}" == "Female"){
-            document.write('<img src="{% static "games/images/female.png" %}" alt="Fema"le" style="width:10%;">');
-          }
-          */
-          {% for gamer in gamers.all %}
-            {% if gamer.order is not null %}
-            if ( {{ gamer.order }} == id){
-              document.write('<table id="gamer" bgcolor="ffe5ba"><col width="25%"><col width="25%"><col width="25%"><col width="25%">');
-              document.write('<tr align="center"><td style="border: 1px solid black;border-style: dotted;"><font color="DimGray" size="3">'+id+'</font></td>');
-              document.write('<td colspan="2"><font size="5%">{{ gamer.nick }}</font></td>');
-              document.write('<td align="left">');
-              if ("{{ gamer.gender }}" == "Female"){
-                document.write('<img src="{% static "games/images/female.png" %}" alt="Female" style="width:40%;">');
-              }
-              else if ("{{ gamer.gender }}" == "Male") {
-                document.write('<img src="{% static "games/images/male.png" %}" alt="Male" style="width:40%;">');
-              }
-              else{
-                document.write('<img src="{% static "games/images/none.png" %}" alt="None" style="width:40%;">');
-              }
-              document.write('</td></tr>');
-
-              {% if gamer.status is not None and gamer.status != "" %}
-                  document.write('<tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamer.status }}"</font></td></tr>');
-              {% else %}
-                  document.write('<tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>');
-              {% endif %}
-
-              document.write('<tr><td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamer.level }}</font</td>');
-              document.write('<td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamer.bonus }}</font></td></tr>');
-
-              document.write('<tr align="center"><td colspan="2"><font size="2%" color="DimGray">{% trans "Race" %}: </font></td>');
-              document.write('<td colspan="2"><font size="2%" color="DimGray">{% trans "Class" %}: </font></td></tr>');
-
-              document.write('<tr align="center"><td colspan="2">');
-              {% if gamer.race_slot_1 != None %}
-                document.write('{{ gamer.race_slot_1 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Race" %}: </font>');
-              {% endif %}
-              document.write('</td><td colspan="2">');
-              {% if gamer.class_slot_1 != None %}
-                document.write('{{ gamer.class_slot_1 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Class" %}: </font>');
-              {% endif %}
-              document.write('</td></tr>');
-
-              document.write('<tr align="center"><td colspan="2">');
-              {% if gamer.race_slot_2 != None %}
-                document.write('{{ gamer.race_slot_2 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Race" %}2: </font>');
-              {% endif %}
-              document.write('</td><td colspan="2">');
-              {% if gamer.class_slot_2 != None %}
-                document.write('{{ gamer.class_slot_2 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Class" %}2: </font>');
-              {% endif %}
-              document.write('</td></tr>');
-
-              document.write('</table>');
-
-              count = count + 1;
-            }
-            {% endif %}
-          {% endfor %}
-          if (count == 0){
-            document.write('<font color="DimGray">{% trans "Free place for gamer" %}');
-            document.write('<font size="2"><br>{% trans "Chair number" %} '+id+'</font>');
-          }
-        }
-      </script>
       <script type="text/javascript" src="{% static 'games/refresh.js' %}">
+      </script>
+
+      <script>
+        var order = 0;
+        var trans_race = "{% trans 'Race' %}";
+        var trans_class = "{% trans 'Class' %}";
+        var message_free = "{% trans 'Free place for gamer' %}";
+        var message_order = "{% trans 'Chair number' %}";
+
+        var gamers = [];
+        {% for gamer in gamers.all %}
+          var temp = {
+                  id:"{{ gamer.id }}",
+                  nick:"{{ gamer.nick }}",
+                  order:"{{ gamer.order }}",
+                  gender:"{{ gamer.gender }}",
+                  level:"{{ gamer.level }}",
+                  bonus:"{{ gamer.bonus }}",
+                  status:"{{ gamer.status }}",
+                  race_1:"{{ gamer.race_slot_1 }}",
+                  race_2:"{{ gamer.race_slot_2 }}",
+                  class_1:"{{ gamer.class_slot_1 }}",
+                  class_2:"{{ gamer.class_slot_2 }}",
+          }
+          gamers.push(temp);
+        {% endfor %}
       </script>
 </head>
 <body>
@@ -177,49 +108,60 @@
       </tr>
     </table>
 
+
+
     <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
       <tr align="center" height="33%">
-        <td><font color="DimGray">X</font></td>
+        <td><font color="DimGray">X</font>
+        </td>
         <td width="20%">
     <!-- 1. gamer -->
-            <script type="text/javascript">myFunction(1);</script>
+              <script>var order = 1;</script>
+              <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 7. gamer -->
-            <script type="text/javascript">myFunction(7);</script>
+            <script>order = 7;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 3. gamer -->
-            <script type="text/javascript">myFunction(3);</script>
+            <script>order = 3;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
       <tr align="center" height="33%">
         <td width="20%">
     <!-- 6. gamer -->
-            <script type="text/javascript">myFunction(6);</script>
+            <script>order = 6;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%">
     <!-- 5. gamer -->
-            <script type="text/javascript">myFunction(5);</script>
+            <script>order = 5;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
       </tr>
       <tr align="center" height="33%">
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%">
     <!-- 4. gamer -->
-            <script type="text/javascript">myFunction(4);</script>
+            <script>order = 4;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 8. gamer -->
-            <script type="text/javascript">myFunction(8);</script>
+            <script>order = 8;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 2. gamer -->
-            <script type="text/javascript">myFunction(2);</script>
+            <script>order = 2;</script>
+            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
