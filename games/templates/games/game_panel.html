@@ -33,12 +33,7 @@
         var popup_message_no = "{% trans "No, we change rules" %}";
         var path_yes = "{% url 'games:end_game' game.id%}";
         var path_no = "{% url 'games:edit_game' game.id%}";
-      </script>
-      <script type="text/javascript" src="{% static 'games/popup.js' %}"></script>
 
-      <script type="text/javascript" src="{% static 'games/refresh.js' %}"></script>
-
-      <script>
         var order = 0;
         var trans_race = "{% trans 'Race' %}";
         var trans_class = "{% trans 'Class' %}";
@@ -63,6 +58,10 @@
           gamers.push(temp);
         {% endfor %}
       </script>
+
+      <script type="text/javascript" src="{% static 'games/scripts/popup.js' %}"></script>
+
+      <script type="text/javascript" src="{% static 'games/scripts/refresh.js' %}"></script>
 </head>
 <body>
 
@@ -101,17 +100,17 @@
         <td width="20%">
     <!-- 1. gamer -->
               <script>var order = 1;</script>
-              <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+              <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 7. gamer -->
             <script>order = 7;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 3. gamer -->
             <script>order = 3;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
@@ -119,7 +118,7 @@
         <td width="20%">
     <!-- 6. gamer -->
             <script>order = 6;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
@@ -127,7 +126,7 @@
         <td width="20%">
     <!-- 5. gamer -->
             <script>order = 5;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
       </tr>
       <tr align="center" height="33%">
@@ -135,23 +134,23 @@
         <td width="20%">
     <!-- 4. gamer -->
             <script>order = 4;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 8. gamer -->
             <script>order = 8;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 2. gamer -->
             <script>order = 2;</script>
-            <script type="text/javascript" src="{% static 'games/game_panel.js' %}"></script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
     </table>
 
     <br/><br/>
-    <script type="text/javascript" src="{% static 'games/MobileDevice.js' %}"></script>
+    <script type="text/javascript" src="{% static 'games/scripts/MobileDevice.js' %}"></script>
 </body>
 </html>
