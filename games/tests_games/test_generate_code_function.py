@@ -1,6 +1,6 @@
 from django.test import TestCase
-from games.views import generate_game_code
-from games.models import GAME_CODE_LENGTH
+from games.views.view_create_game import generate_game_code
+from games.models.model_game import GAME_CODE_LENGTH
 
 
 class GenerateGameCodeTests(TestCase):

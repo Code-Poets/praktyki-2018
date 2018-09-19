@@ -1,6 +1,6 @@
 from django.test import TestCase
-from games.forms import EditGameForm
-from games.models import Game, MAX_GAMERS_PER_GAME, MIN_GAMERS_PER_GAME, MIN_WINNING_LEVEL
+from games.forms.form_edit_game import EditGameForm
+from games.models.model_game import Game, MAX_GAMERS_PER_GAME, MIN_GAMERS_PER_GAME, MIN_WINNING_LEVEL
 
 
 class EditGameFormTests(TestCase):

@@ -1,6 +1,11 @@
 from django.test import TestCase
 from django.urls import reverse
-from games.models import Game, Gamer, CustomUser, Gender, CharacterRace, CharacterClass
+from games.models.model_game import Game
+from games.models.model_gamer import Gamer
+from users.models import CustomUser
+from games.models.enum_gender import Gender
+from games.models.model_character_race import CharacterRace
+from games.models.model_character_class import CharacterClass
 
 
 class EndGameViewTests(TestCase):

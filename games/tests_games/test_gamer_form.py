@@ -1,6 +1,9 @@
 from django.test import TestCase
-from games.forms import GamerForm
-from games.models import Gamer, Gender, CharacterRace, CharacterClass
+from games.forms.form_gamer import GamerForm
+from games.models.model_gamer import Gamer
+from games.models.enum_gender import Gender
+from games.models.model_character_race import CharacterRace
+from games.models.model_character_class import CharacterClass
 
 
 class GamerFormTests(TestCase):

@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
-from games.models import Game, CustomUser, Gamer
+from games.models.model_game import Game
+from users.models import CustomUser
+from games.models.model_gamer import Gamer
 
 
 class GamePanel(TestCase):

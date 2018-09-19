@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
-from games.models import CharacterRace, CharacterClass
-from ipdb import set_trace
+from games.models.model_character_race import CharacterRace
+from games.models.model_character_class import CharacterClass
 
 
 class EncyclopediaViewTests(TestCase):

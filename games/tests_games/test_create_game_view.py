@@ -1,6 +1,7 @@
 from django.test import TestCase
 from django.urls import reverse
-from games.models import Game, CustomUser
+from games.models.model_game import Game
+from users.models import CustomUser
 
 
 class CreateGameViewTests(TestCase):
