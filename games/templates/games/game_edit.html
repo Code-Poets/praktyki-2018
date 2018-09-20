@@ -113,7 +113,11 @@
                 </tr>
                 {% for gamer in gamers %}
                 <tr>
+                    {% if gamer.order == None %}
+                      <td align="center" style="border: 1px solid;background-color:white;"> </td>
+                    {% else %}
                     <td align="center" style="border: 1px solid;background-color:white;">{{ gamer.order }}</td>
+                    {% endif %}
                     <td align="left" style="border: 1px solid;background-color:white;">{{ gamer.nick }}</td>
                     <td align="center">
                       <form action="{% url 'games:edit_gamer_order' gamer.id%}">
