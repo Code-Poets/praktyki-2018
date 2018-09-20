@@ -139,7 +139,7 @@
     <td>
       <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red_button"/>
 
-      <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
+      <div id="dialog" style="display: none" title="{% trans 'Are you sure' %}?" align="center">
           {% trans 'Do you want to end' %} <b> {{ game.name }} </b> <br />
           {% trans 'and save all gamers stats' %}?
       </div>
@@ -147,7 +147,7 @@
     <td>
       <input type="button" id="AlertShow" value="{% trans 'Back' %}" class="back_button"/>
 
-      <div id="alert" title="{% trans 'Watch out' %}!" align="center">
+      <div id="alert" style="display: none" title="{% trans 'Watch out' %}!" align="center">
           {% trans 'Some gamer does not have his order' %}!
       </div>
     </td>
