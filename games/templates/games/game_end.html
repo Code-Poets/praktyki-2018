@@ -1,13 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 {% load i18n %}
 <head>
 
     <script>
-window.setTimeout(function () {
-    location.href = "/games/{{ game.pk }}/end/";
-}, 5000);
+      var path = "/games/{{ game.pk }}/end/";
     </script>
+    <script type="text/javascript" src="{% static 'games/scripts/reload_page.js' %}"></script>
 </head>
 
 <h1>{% trans 'This is the end of the' %} {{ game.name }} </h1>
