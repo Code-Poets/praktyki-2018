@@ -8,13 +8,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 <!--<link rel="stylesheet" type="text/css" href="{% static 'games/style2.css' %}" />-->
 
-<script type="text/javascript">
-function increment(incrementor, target){
-    var value = parseInt(document.getElementById(target).value);
-    value+=incrementor;
-    document.getElementById(target).value = value;
-};
-</script>
+<script type="text/javascript" src="{% static 'games/scripts/increment.js' %}"></script>
 <table align="center">
     <tr>
       <form action="{% url 'games:encyclopedia' %}">
