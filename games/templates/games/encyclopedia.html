@@ -19,6 +19,7 @@
                 $(function () {
                     $("#{{charakterRace.name}}").dialog ({
                         modal: false,
+                        title: "{{charakterRace.name}}",
                         autoOpen: false,
                         buttons : {
                             "Ok" : function ()
@@ -34,7 +35,7 @@
                 });
             </script>
             <input type="button" id=dRace{{charakterRace.pk}} class="race_button" value={{charakterRace.name}} />
-            <div id={{charakterRace.name}}  title={{charakterRace.name}} align="center">
+            <div id={{charakterRace.name}} style="display: none" align="center">
             {% trans 'Description' %}: {{charakterRace.description }}
             </div>
         </td>
@@ -51,6 +52,7 @@
                 $(function () {
                     $("#{{charakterClass.name}}").dialog ({
                         modal: false,
+                        title: "{{charakterClass.name}}",
                         autoOpen: false,
                         buttons : {
                             "Ok" : function ()
@@ -66,7 +68,7 @@
                 });
             </script>
             <input type="button" id=dClass{{charakterClass.pk}} class="class_button" value={{charakterClass.name}} />
-            <div id={{charakterClass.name}}  title={{charakterClass.name}} align="center">
+            <div id={{charakterClass.name}} style="display: none" align="center">
             {% trans 'Description' %}: {{charakterClass.description }}
             </div>
         </td>
