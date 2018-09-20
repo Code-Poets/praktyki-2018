@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 {% load i18n %}
 <head>
   <script>
@@ -9,13 +10,7 @@
     }
   </script>
 
-  <script type="text/javascript">
-    function increment(incrementor, target){
-        var value = parseInt(document.getElementById(target).value);
-        value+=incrementor;
-        document.getElementById(target).value = value;
-    };
-  </script>
+<script type="text/javascript" src="{% static 'games/scripts/increment.js' %}"></script>
 
   <script>
     function cancelFunction() {
