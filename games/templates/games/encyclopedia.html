@@ -156,8 +156,8 @@
 
 <br />
 <hr>
-<h4><b>Instruction</b></h4>
-<img id="myImg" src="{% static 'games/images/Instrukcja.jpg' %}" alt="How to play?" style="width:100%;max-width:300px">
+<h4><b>{% trans 'Instruction' %}</b></h4>
+<img id="myImg" src="{% static 'games/images/Instrukcja.jpg' %}" alt="{% trans 'How to play' %}?" style="width:100%;max-width:300px">
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -190,7 +190,7 @@ span.onclick = function() {
 </script>
 
 <hr>
-<input action="action" onclick="window.history.go(-1); return false;" type="button" class="grey" value="{% trans 'Back' %}" />
+<input action="action" onclick="window.history.go(-1); return false;" type="button" class="back_button" value="{% trans 'Back' %}" />
 <p></p>
 
 {% endblock %}
