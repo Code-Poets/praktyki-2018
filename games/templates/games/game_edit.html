@@ -10,58 +10,24 @@
     <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
     <script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog ({
-                modal: true,
-                autoOpen: false,
-                buttons : {
-                    "{% trans 'Yes' %}" : function ()
-                    {
-                        window.location.href = "{% url 'games:end_game' game.id%}";
-                    },
-                    "{% trans 'No' %}" : function ()
-                    {
-                        $(this).dialog('close');
-                    }
-                }
-            }).prev().find(".ui-dialog-titlebar-close").hide ();
+      var end_game_path = "{% url 'games:end_game' game.id%}";
+      var game_panel_path = "{% url 'games:game_panel' game.id%}";
+      var trans_yes = "{% trans 'Yes' %}";
+      var trans_no = "{% trans 'No' %}";
+      var message_yes = "{% trans 'Yes, I know' %}";
+      var message_no = "{% trans 'Oh, really' %}?";
 
-            $("#DialogShow").click(function () {
-                $('#dialog').dialog('open');
-            });
-
-            $("#alert").dialog ({
-                modal: true,
-                autoOpen: false,
-                buttons : {
-                    "{% trans 'Yes, I know' %}" : function ()
-                    {
-                        window.location.href = "{% url 'games:game_panel' game.id%}";
-                    },
-                    "{% trans 'Oh, really' %}?" : function ()
-                    {
-                        $(this).dialog('close');
-                    }
-                }
-            }).prev().find(".ui-dialog-titlebar-close").hide ();
-
-            $("#AlertShow").click(function () {
-              var check = false
-              {% for gamer in game.gamers.all %}
-                {% if gamer.order == null %}
-                  check = true
-                {% endif %}
-              {% endfor %}
-              if ( check == true ){
-                $('#alert').dialog('open');
-              }
-              else {
-                window.location.href = "{% url 'games:game_panel' game.id%}";
-              }
-            });
-        });
+      var gamers = [];
+      {% for gamer in gamers.all %}
+        var temp = {
+                  id:"{{ gamer.id }}",
+                  nick:"{{ gamer.nick }}",
+                  order:"{{ gamer.order }}",
+          }
+        gamers.push(temp);
+      {% endfor %}
     </script>
-
+    <script type="text/javascript" src="{% static 'games/scripts/game_edit_popup.js' %}"></script>
 </head>
 
 <h1>{% trans 'Edit your game' %}</h1>
@@ -113,7 +79,11 @@
                 </tr>
                 {% for gamer in gamers %}
                 <tr>
+                    {% if gamer.order == None %}
+                      <td align="center" style="border: 1px solid;background-color:white;"> </td>
+                    {% else %}
                     <td align="center" style="border: 1px solid;background-color:white;">{{ gamer.order }}</td>
+                    {% endif %}
                     <td align="left" style="border: 1px solid;background-color:white;">{{ gamer.nick }}</td>
                     <td align="center">
                       <form action="{% url 'games:edit_gamer_order' gamer.id%}">
@@ -139,7 +109,7 @@
     <td>
       <input type="button" id="DialogShow" value="{% trans 'End game' %}" class="red_button"/>
 
-      <div id="dialog" title="{% trans 'Are you sure' %}?" align="center">
+      <div id="dialog" style="display: none" title="{% trans 'Are you sure' %}?" align="center">
           {% trans 'Do you want to end' %} <b> {{ game.name }} </b> <br />
           {% trans 'and save all gamers stats' %}?
       </div>
@@ -147,7 +117,7 @@
     <td>
       <input type="button" id="AlertShow" value="{% trans 'Back' %}" class="back_button"/>
 
-      <div id="alert" title="{% trans 'Watch out' %}!" align="center">
+      <div id="alert" style="display: none" title="{% trans 'Watch out' %}!" align="center">
           {% trans 'Some gamer does not have his order' %}!
       </div>
     </td>

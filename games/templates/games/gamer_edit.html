@@ -1,42 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load static %}
 {% load i18n %}
 <head>
-  <script>
-    function myFunction() {
-      document.getElementById("demo1").innerHTML = document.referrer;
-    //  document.getElementById("demo2").innerHTML = window.history.back();
-    }
-  </script>
-
-  <script type="text/javascript">
-    function increment(incrementor, target){
-        var value = parseInt(document.getElementById(target).value);
-        value+=incrementor;
-        document.getElementById(target).value = value;
-    };
-  </script>
+<script type="text/javascript" src="{% static 'games/scripts/increment.js' %}"></script>
 
   <script>
-    function cancelFunction() {
-      var url = window.location.href;
-      var lastPart = url.substr(url.lastIndexOf('/') + 1);
-
-      if (lastPart === "order") {
-        window.location.href = "{% url 'games:edit_game' gamer.game.id%}";
-      }
-      else {
-        window.location.href = "{% url 'games:end_game' gamer.game.id%}";
-      }
-    }
+    path1 = "{% url 'games:edit_game' gamer.game.id%}";
+    path2 = "{% url 'games:end_game' gamer.game.id%}";
   </script>
+  <script type="text/javascript" src="{% static 'games/scripts/cancel.js' %}"></script>
 </head>
 
 <body>
-<!--
-<h2 id="demo1">demo1</h2>
-<button onclick="myFunction()">Try it</button>
--->
 <table align="center">
     <tr>
       <form action="{% url 'games:encyclopedia' %}">
@@ -53,20 +29,6 @@
       <td align="center"><font color=#b32d00><h2>{{ gamer.game.name}}</h2></font><td>
     </tr>
 </table>
-<!--
-<form method="post">{% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
-</form>
-
-<hr>
--->
-<!--
-<select id="mainselect" onchange="Hide()">
-  <option value="1">1</option>
-  <option value="2">2</option>
-</select>
--->
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
