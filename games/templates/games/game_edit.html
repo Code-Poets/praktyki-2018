@@ -10,58 +10,24 @@
     <link rel="stylesheet" type="text/css" href="{% static 'games/style.css' %}" />
 
     <script type="text/javascript">
-        $(function () {
-            $("#dialog").dialog ({
-                modal: true,
-                autoOpen: false,
-                buttons : {
-                    "{% trans 'Yes' %}" : function ()
-                    {
-                        window.location.href = "{% url 'games:end_game' game.id%}";
-                    },
-                    "{% trans 'No' %}" : function ()
-                    {
-                        $(this).dialog('close');
-                    }
-                }
-            }).prev().find(".ui-dialog-titlebar-close").hide ();
+      var end_game_path = "{% url 'games:end_game' game.id%}";
+      var game_panel_path = "{% url 'games:game_panel' game.id%}";
+      var trans_yes = "{% trans 'Yes' %}";
+      var trans_no = "{% trans 'No' %}";
+      var message_yes = "{% trans 'Yes, I know' %}";
+      var message_no = "{% trans 'Oh, really' %}?";
 
-            $("#DialogShow").click(function () {
-                $('#dialog').dialog('open');
-            });
-
-            $("#alert").dialog ({
-                modal: true,
-                autoOpen: false,
-                buttons : {
-                    "{% trans 'Yes, I know' %}" : function ()
-                    {
-                        window.location.href = "{% url 'games:game_panel' game.id%}";
-                    },
-                    "{% trans 'Oh, really' %}?" : function ()
-                    {
-                        $(this).dialog('close');
-                    }
-                }
-            }).prev().find(".ui-dialog-titlebar-close").hide ();
-
-            $("#AlertShow").click(function () {
-              var check = false
-              {% for gamer in game.gamers.all %}
-                {% if gamer.order == null %}
-                  check = true
-                {% endif %}
-              {% endfor %}
-              if ( check == true ){
-                $('#alert').dialog('open');
-              }
-              else {
-                window.location.href = "{% url 'games:game_panel' game.id%}";
-              }
-            });
-        });
+      var gamers = [];
+      {% for gamer in gamers.all %}
+        var temp = {
+                  id:"{{ gamer.id }}",
+                  nick:"{{ gamer.nick }}",
+                  order:"{{ gamer.order }}",
+          }
+        gamers.push(temp);
+      {% endfor %}
     </script>
-
+    <script type="text/javascript" src="{% static 'games/scripts/game_edit_popup.js' %}"></script>
 </head>
 
 <h1>{% trans 'Edit your game' %}</h1>
