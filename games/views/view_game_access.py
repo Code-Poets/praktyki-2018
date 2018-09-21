@@ -32,6 +32,7 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
             initial['user'] = self.request.user.id
         else:
             initial['user'] = None
+            initial['gamer_id'] = self.request.session['gamer_id']
 
         return initial
 
@@ -48,7 +49,7 @@ class GameAccessView(generic.FormView):                     # GUI for joining ex
             nick=nick
         )
 
-        for x in range(1,game.max_players+1):
+        for x in range(1, game.max_players+1):
             try:
                 gamegamer = Gamer.objects.get(game__game_code=game_pass, order=x)
             except Gamer.DoesNotExist:
