@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.views import generic
 from django.urls import reverse
+from django.utils import timezone
 from games.models.model_game import Game
 from games.models.model_gamer import Gamer
 
