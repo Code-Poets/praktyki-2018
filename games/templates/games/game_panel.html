@@ -23,216 +23,56 @@
     <link rel="stylesheet" type="text/css" href="{% static 'button.css' %}" />
     <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
 
-    <SCRIPT LANGUAGE="JavaScript">
-        function getCookie(name)
-        {
-            var start = document.cookie.indexOf( name + "=" );
-            var len = start + name.length + 1;
-            if ( ( !start ) && ( name != document.cookie.substring( 0, name.length ) ) ) {
-                return null;
-            }
-            if ( start == -1 ) return null;
-            var end = document.cookie.indexOf( ";", len );
-            if ( end == -1 ) end = document.cookie.length;
-            return unescape( document.cookie.substring( len, end ) );
-        }
-
-        function doload()
-        {
-            var scrollTop = getCookie ("scrollTop");
-            var scrollLeft = getCookie("scrollLeft");
-
-            if (!isNaN(scrollTop))
-            {
-		          document.body.scrollTop = scrollTop;
-		          document.documentElement.scrollTop = scrollTop;
-
-            }
-            if (!isNaN(scrollLeft))
-          	{
-          			  document.body.scrollLeft = scrollLeft;
-          			  document.documentElement.scrollLeft = scrollLeft;
-            }
-
-            Delete_Cookie("scrollTop");
-            Delete_Cookie("scrollLeft");
-            setTimeout( "Refresh()", 10000 );
-        }
-
-        function Refresh()
-        {
-            document.cookie = 'scrollTop=' + f_scrollTop();
-            document.cookie = 'scrollLeft=' + f_scrollLeft();
-            document.location.reload(true);
-        }
-
-        //Setting the cookie for vertical position
-        function f_scrollTop() {
-            return f_filterResults (
-                window.pageYOffset ? window.pageYOffset : 0,
-                document.documentElement ? document.documentElement.scrollTop : 0,
-                document.body ? document.body.scrollTop : 0
-            );
-        }
-
-        function f_filterResults(n_win, n_docel, n_body) {
-            var n_result = n_win ? n_win : 0;
-            if (n_docel && (!n_result || (n_result > n_docel)))
-                n_result = n_docel;
-            return n_body && (!n_result || (n_result > n_body)) ? n_body : n_result;
-        }
-
-        //Setting the cookie for horizontal position
-        function f_scrollLeft() {
-            return f_filterResults (
-                window.pageXOffset ? window.pageXOffset : 0,
-                document.documentElement ? document.documentElement.scrollLeft : 0,
-                document.body ? document.body.scrollLeft : 0
-            );
-        }
-
-        function Delete_Cookie(name)
-        {
-            document.cookie = name + "=" + ";expires=Thu, 01-Jan-1970 00:00:01 GMT";
-
-        }
-        window.onload=doload;
-    </SCRIPT>
-
-
       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
       <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
       <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
       <script>
-      $( function() {
-        $( "#dialog" ).dialog();
-      } );
+        var popup_message_title = "{% trans 'Do we have a winner' %}?";
+        var popup_message_yes = "{% trans "Yes, that's right" %}!";
+        var popup_message_no = "{% trans "No, we change rules" %}";
+        var path_yes = "{% url 'games:end_game' game.id%}";
+        var path_no = "{% url 'games:edit_game' game.id%}";
+
+        var order = 0;
+        var trans_race = "{% trans 'Race' %}";
+        var trans_class = "{% trans 'Class' %}";
+        var message_free = "{% trans 'Free place for gamer' %}";
+        var message_order = "{% trans 'Chair number' %}";
+
+        var gamers = [];
+        {% for gamer in gamers.all %}
+          var temp = {
+                  id:"{{ gamer.id }}",
+                  nick:"{{ gamer.nick }}",
+                  order:"{{ gamer.order }}",
+                  gender:"{{ gamer.gender }}",
+                  level:"{{ gamer.level }}",
+                  bonus:"{{ gamer.bonus }}",
+                  status:"{{ gamer.status }}",
+                  race_1:"{{ gamer.race_slot_1 }}",
+                  race_2:"{{ gamer.race_slot_2 }}",
+                  class_1:"{{ gamer.class_slot_1 }}",
+                  class_2:"{{ gamer.class_slot_2 }}",
+          }
+          gamers.push(temp);
+        {% endfor %}
       </script>
 
-      <script type="text/javascript">
-      //<script type="text/javascript" src="{% static 'games/game_panel.js' %}">
-      function myFunction(id) {
-          var count = 0;
-          /*
-          {% for gamer in gamers.all %}
-            if ( {{ gamer.order }} == id){
-              document.write('<table bgcolor="ffe5ba"><tr><td>{{ gamer.nick }}</td><td>{{ gamer.order }}</td></tr></table>');
-              if ( {{ gamer.gender }} == "None"){
-                document.write("None");
-              }
+      <script type="text/javascript" src="{% static 'games/scripts/popup.js' %}"></script>
 
-              count = count + 1;
-            }
-          {% endfor %}
-          if (count == 0){
-            document.write("{% trans 'Free place for gamer' %}");
-          }
-          */
-          /*
-          document.write("<p>{{ gamers.0.nick }}</p>");
-          if ( "{{ gamers.0.gender }}" == "Female"){
-            document.write('<img src="{% static "games/images/female.png" %}" alt="Fema"le" style="width:10%;">');
-          }
-          */
-          {% for gamer in gamers.all %}
-            {% if gamer.order is not null %}
-            if ( {{ gamer.order }} == id){
-              document.write('<table id="gamer" bgcolor="ffe5ba"><col width="25%"><col width="25%"><col width="25%"><col width="25%">');
-              document.write('<tr align="center"><td style="border: 1px solid black;border-style: dotted;"><font color="DimGray" size="3">'+id+'</font></td>');
-              document.write('<td colspan="2"><font size="5%">{{ gamer.nick }}</font></td>');
-              document.write('<td align="left">');
-              if ("{{ gamer.gender }}" == "Female"){
-                document.write('<img src="{% static "games/images/female.png" %}" alt="Female" style="width:40%;">');
-              }
-              else if ("{{ gamer.gender }}" == "Male") {
-                document.write('<img src="{% static "games/images/male.png" %}" alt="Male" style="width:40%;">');
-              }
-              else{
-                document.write('<img src="{% static "games/images/none.png" %}" alt="None" style="width:40%;">');
-              }
-              document.write('</td></tr>');
-
-              {% if gamer.status is not None and gamer.status != "" %}
-                  document.write('<tr><td align="center" colspan="4" style="word-wrap:break-word"><font color="#cc7e00" size="1%">"{{ gamer.status }}"</font></td></tr>');
-              {% else %}
-                  document.write('<tr><td id="status" colspan="4" style="word-wrap:break-word"><font color="ffe5ba" size="1%">Status</font></td></tr>');
-              {% endif %}
-
-              document.write('<tr><td align="center" colspan="2"><font size="1%" color="DimGray">Lvl: <font size="6%" color="red">{{ gamer.level }}</font</td>');
-              document.write('<td align="left" colspan="2"><font size="1%"color="DimGray">Bonus: <font size="6%" color="green">{{ gamer.bonus }}</font></td></tr>');
-
-              document.write('<tr align="center"><td colspan="2"><font size="2%" color="DimGray">{% trans "Race" %}: </font></td>');
-              document.write('<td colspan="2"><font size="2%" color="DimGray">{% trans "Class" %}: </font></td></tr>');
-
-              document.write('<tr align="center"><td colspan="2">');
-              {% if gamer.race_slot_1 != None %}
-                document.write('{{ gamer.race_slot_1 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Race" %}: </font>');
-              {% endif %}
-              document.write('</td><td colspan="2">');
-              {% if gamer.class_slot_1 != None %}
-                document.write('{{ gamer.class_slot_1 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Class" %}: </font>');
-              {% endif %}
-              document.write('</td></tr>');
-
-              document.write('<tr align="center"><td colspan="2">');
-              {% if gamer.race_slot_2 != None %}
-                document.write('{{ gamer.race_slot_2 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Race" %}2: </font>');
-              {% endif %}
-              document.write('</td><td colspan="2">');
-              {% if gamer.class_slot_2 != None %}
-                document.write('{{ gamer.class_slot_2 }}');
-              {% else %}
-                document.write('<font color="ffe5ba">{% trans "Class" %}2: </font>');
-              {% endif %}
-              document.write('</td></tr>');
-
-              document.write('</table>');
-
-              count = count + 1;
-            }
-            {% endif %}
-          {% endfor %}
-          if (count == 0){
-            document.write('<font color="DimGray">{% trans "Free place for gamer" %}');
-            document.write('<font size="2"><br>{% trans "Chair number" %} '+id+'</font>');
-          }
-        }
-      </script>
-
+      <script type="text/javascript" src="{% static 'games/scripts/refresh.js' %}"></script>
 </head>
 <body>
 
     {% for gamer in gamers.all %}
         {% if gamer.level >= gamer.game.winning_level %}
 
-        <div id="dialog" title="{% trans 'Do we have a winner' %}?" align="center">
+        <div id="dialog" style="display: none" align="center">
             <p>{% trans 'Is that the end of a game' %}? <br />{% trans 'Oh no' %}!</p>
         </div>
         {% endif %}
     {% endfor %}
-
-    <script>
-    $("div#dialog").dialog ({
-        modal: true,
-        buttons : {
-            "{% trans "Yes, that's right" %}!" : function ()
-            {
-                window.location.href = "{% url 'games:end_game' game.id%}";
-            },
-            "{% trans 'No, we change rules' %}" : function ()
-            {
-                window.location.href = "{% url 'games:edit_game' game.id%}";
-            }
-        }
-    }).prev().find(".ui-dialog-titlebar-close").hide ();
-    </script>
 
     <table width="100%" align="center">
       <tr>
@@ -255,73 +95,62 @@
 
     <table id="game_panel_table" border="3" cellpadding="5" cellspacing="4" align="center">
       <tr align="center" height="33%">
-        <td><font color="DimGray">X</font></td>
+        <td><font color="DimGray">X</font>
+        </td>
         <td width="20%">
     <!-- 1. gamer -->
-            <script type="text/javascript">myFunction(1);</script>
+              <script>var order = 1;</script>
+              <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 7. gamer -->
-            <script type="text/javascript">myFunction(7);</script>
+            <script>order = 7;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 3. gamer -->
-            <script type="text/javascript">myFunction(3);</script>
+            <script>order = 3;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
       <tr align="center" height="33%">
         <td width="20%">
     <!-- 6. gamer -->
-            <script type="text/javascript">myFunction(6);</script>
+            <script>order = 6;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%">
     <!-- 5. gamer -->
-            <script type="text/javascript">myFunction(5);</script>
+            <script>order = 5;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
       </tr>
       <tr align="center" height="33%">
         <td width="20%"><font color="DimGray">X</font></td>
         <td width="20%">
     <!-- 4. gamer -->
-            <script type="text/javascript">myFunction(4);</script>
+            <script>order = 4;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 8. gamer -->
-            <script type="text/javascript">myFunction(8);</script>
+            <script>order = 8;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%">
     <!-- 2. gamer -->
-            <script type="text/javascript">myFunction(2);</script>
+            <script>order = 2;</script>
+            <script type="text/javascript" src="{% static 'games/scripts/game_panel.js' %}"></script>
         </td>
         <td width="20%"><font color="DimGray">X</font></td>
       </tr>
     </table>
 
     <br/><br/>
-
-    <script language="javascript" type="text/javascript">
-    function isMobileDevice() {
-        return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
-    };
-
-        if (isMobileDevice() == true){
-        document.getElementById('game_panel_table').setAttribute('height', 0.85*window.innerHeight);
-        document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
-            if (window.innerHeight<window.innerWidth){
-                document.getElementById('game_panel_table').style.fontSize = "75%";
-            }
-            else document.getElementById('game_panel_table').style.fontSize = "90%";
-        }
-        else {
-        document.getElementById('game_panel_table').setAttribute('height', 0.85*window.innerHeight);
-        document.getElementById('game_panel_table').setAttribute('width', 0.95*window.innerWidth);
-        document.getElementById('game_panel_table').style.fontSize = "90%";
-        }
-    </script>
-
+    <script type="text/javascript" src="{% static 'games/scripts/MobileDevice.js' %}"></script>
 </body>
 </html>
